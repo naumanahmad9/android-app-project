@@ -18,36 +18,38 @@
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="100dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="30dp"
         android:backgroundTint="#ffffff"
         android:hint="Email"
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:padding="18dp"
+        android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:drawableEnd="@drawable/ic_person_white_24dp"/>
 
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_below="@id/login_email"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="30dp"
         android:backgroundTint="#ffffff"
         android:hint="Password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:padding="18dp"
+        android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:drawableEnd="@drawable/ic_key_white"/>
 
     <Button
         android:id="@+id/login_btn"
@@ -57,31 +59,20 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/rounded_corners"
         android:text="Sign in"
         android:textColor="#7b005c"
         android:textSize="20sp" />
 
     <ImageView
-        android:id="@+id/facebook_signin"
-        android:layout_width="230dp"
+        android:id="@+id/google_signin_btn"
+        android:layout_width="220dp"
         android:layout_height="45dp"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:layout_below="@id/login_btn"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/facebook_signin_icon"
-        />
-
-    <ImageView
-        android:id="@+id/google_signin"
-        android:layout_width="230dp"
-        android:layout_height="45dp"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitXY"
-        android:layout_below="@id/facebook_signin"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/google_signin_icon"
         />
 
@@ -89,9 +80,9 @@
         android:id="@+id/create_account_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/google_signin"
+        android:layout_below="@id/google_signin_btn"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="60dp"
         android:text="Don't have an account?"
         android:textColor="#fff"
         android:textSize="16sp" />
@@ -100,9 +91,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/create_account_text"
-        android:layout_below="@id/google_signin"
-        android:layout_marginTop="23dp"
         android:layout_marginLeft="8dp"
+        android:layout_alignBaseline="@id/create_account_text"
         android:text="Sign up"
         android:textStyle="bold"
         android:textSize="18sp"

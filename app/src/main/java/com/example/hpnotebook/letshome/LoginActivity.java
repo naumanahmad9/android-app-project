@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -17,12 +21,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText login_email;
-    EditText login_pass;
+    EditText login_email, login_pass;
     Button login_btn;
+    ImageView google_signin_btn;
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser user;
+    GoogleSignInClient googleSignInClient;
+    GoogleSignInOptions signInOptions;
+    private int LOGIN=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +39,24 @@ public class LoginActivity extends AppCompatActivity {
         init();
 
         if(user!=null){
-            //startActivity(new Intent(this,MovieList.class));
+            //startActivity(new Intent(this, Explore.class));
         }
+
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email=login_email.getText().toString();
                 String pass=login_pass.getText().toString();
                 authUser(email,pass);
+            }
+        });
+
+        google_signin_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = googleSignInClient.getSignInIntent();
+                startActivityForResult(intent,LOGIN);
             }
         });
     }
@@ -49,7 +66,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     user=auth.getCurrentUser();
-                    //startActivity(new Intent(LoginActivity.this,MovieList.class));
+                    // startActivity(new Intent(LoginActivity.this, Explore.class));
+                    // finish();
                 }
             }
         });
@@ -60,6 +78,14 @@ public class LoginActivity extends AppCompatActivity {
         login_btn=findViewById(R.id.login_btn);
         firebaseDatabase=FirebaseDatabase.getInstance();
         auth=FirebaseAuth.getInstance();
+        google_signin_btn=findViewById(R.id.google_signin_btn);
+
+        signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("164531040229-k05u1trqs8jtbbc6c5qt5fbquhhkukdl.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, signInOptions);
     }
     public void signup(View view) {
         startActivity(new Intent(this, SignupActivity.class));

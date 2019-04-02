@@ -19,53 +19,56 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="90dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:backgroundTint="#ffffff"
         android:hint="Name"
         android:imeOptions="actionDone"
         android:inputType="text"
         android:maxLines="1"
-        android:padding="18dp"
+        android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:drawableEnd="@drawable/ic_person_white_24dp" />
 
     <EditText
         android:id="@+id/signup_email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_below="@+id/signup_name"
-        android:layout_marginLeft="40dp"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:backgroundTint="#ffffff"
         android:hint="Email"
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        android:padding="18dp"
+        android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:drawableEnd="@drawable/ic_email_white_24dp"/>
 
     <EditText
         android:id="@+id/signup_password"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_below="@id/signup_email"
-        android:layout_marginLeft="40dp"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:backgroundTint="#ffffff"
         android:hint="Password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:maxLines="1"
-        android:padding="18dp"
+        android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:drawableEnd="@drawable/ic_key_white"/>
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/signup_checkbox"
