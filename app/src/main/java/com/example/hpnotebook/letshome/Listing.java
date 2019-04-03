@@ -1,16 +1,20 @@
 package com.example.hpnotebook.letshome;
 
 public class Listing {
-    String listing_id, listing_name, listing_location, listing_rate, listing_host_name, listing_image;
+    String listing_id, listing_name, listing_location, listing_rate, listing_host_name,
+            listing_guest_space, listing_room, listing_bedrooms, listing_bathroom, listing_image;
     float listing_average_rating;
 
-    public Listing(String listing_id, String listing_name, String listing_location, String listing_rate, String listing_host_name, String listing_image) {
-
+    public Listing(String listing_id, String listing_name, String listing_location, String listing_rate, String listing_host_name, String listing_guest_space, String listing_room, String listing_bedrooms, String listing_bathroom, String listing_image) {
         this.listing_id = listing_id;
         this.listing_name = listing_name;
         this.listing_location = listing_location;
         this.listing_rate = listing_rate;
         this.listing_host_name = listing_host_name;
+        this.listing_guest_space = listing_guest_space;
+        this.listing_room = listing_room;
+        this.listing_bedrooms = listing_bedrooms;
+        this.listing_bathroom = listing_bathroom;
         this.listing_image = listing_image;
     }
 
@@ -55,6 +59,38 @@ public class Listing {
 
     public void setListing_host_name(String listing_host_name) {
         this.listing_host_name = listing_host_name;
+    }
+
+    public String getListing_guest_space() {
+        return listing_guest_space;
+    }
+
+    public void setListing_guest_space(String listing_guest_space) {
+        this.listing_guest_space = listing_guest_space;
+    }
+
+    public String getListing_room() {
+        return listing_room;
+    }
+
+    public void setListing_room(String listing_room) {
+        this.listing_room = listing_room;
+    }
+
+    public String getListing_bedrooms() {
+        return listing_bedrooms;
+    }
+
+    public void setListing_bedrooms(String listing_bedrooms) {
+        this.listing_bedrooms = listing_bedrooms;
+    }
+
+    public String getListing_bathroom() {
+        return listing_bathroom;
+    }
+
+    public void setListing_bathroom(String listing_bathroom) {
+        this.listing_bathroom = listing_bathroom;
     }
 
     public String getListing_image() {
