@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -82,14 +83,21 @@ public class LoginActivity extends AppCompatActivity {
     private void testConnection() {
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        NetworkCapabilities capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
+        NetworkCapabilities capabilities = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
+            }
+        }
 
         if (info != null && info.isConnected()) {
-            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                showSnackBar(1);
-            } else {
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR);
-                showSnackBar(2);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    showSnackBar(1);
+                } else {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR);
+                    showSnackBar(2);
+                }
             }
         } else {
             showSnackBar(0);
@@ -98,13 +106,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showSnackBar(int check) {
         if (check == 1) {
-            snackbar = Snackbar.make(container, "Connected to Wifi", Snackbar.LENGTH_LONG);
+            snackbar = Snackbar.make(login_container, "Connected to Wifi", Snackbar.LENGTH_LONG);
             snackbar.show();
         } else if (check == 2) {
-            snackbar = Snackbar.make(container, "Connected to Mobile Data", Snackbar.LENGTH_LONG);
+            snackbar = Snackbar.make(login_container, "Connected to Mobile Data", Snackbar.LENGTH_LONG);
             snackbar.show();
         } else {
-            snackbar = Snackbar.make(container, "No Internet Connection", Snackbar.LENGTH_INDEFINITE);
+            snackbar = Snackbar.make(login_container, "No Internet Connection", Snackbar.LENGTH_INDEFINITE);
             snackbar.show();
             snackbar.setAction("Retry", new View.OnClickListener() {
                 @Override
