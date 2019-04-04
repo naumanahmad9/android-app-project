@@ -60,6 +60,7 @@
         android:layout_below="@id/listingLocation"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="3dp"
         android:text="@string/listing_HostName_desc_text"
         android:textSize="16sp"/>
     <TextView
@@ -72,4 +73,73 @@
         android:layout_marginTop="4dp"
         android:text="@string/listing_HostName_placeholder_text"
         android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/icon_people"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/text_listingHostName"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/icon_people"/>
+
+    <ImageView
+        android:id="@+id/icon_house"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/text_listingHostName"
+        android:layout_toEndOf="@id/icon_people"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/icon_house"/>
+    <ImageView
+        android:id="@+id/icon_bed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/text_listingHostName"
+        android:layout_toEndOf="@id/icon_house"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/icon_bed"/>
+    <ImageView
+        android:id="@+id/icon_bathroom"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/text_listingHostName"
+        android:layout_toEndOf="@id/icon_bed"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/icon_bathtub"/>
+    d
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon_people"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="people"
+        android:textSize="14sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon_house"
+        android:text="rooms"
+        android:textSize="14sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon_bed"
+        android:text="beds"
+        android:textSize="14sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon_bathroom"
+        android:text="bathrooms"
+        android:textSize="14sp"/>
 </RelativeLayout>
