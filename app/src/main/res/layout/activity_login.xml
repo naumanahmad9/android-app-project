@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:id="@+id/login_container"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -82,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/google_signin_btn"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="55dp"
         android:text="Don't have an account?"
         android:textColor="#fff"
         android:textSize="16sp" />
