@@ -5,7 +5,7 @@
     <string name="listing_HostName_desc_text">Hosted by</string>
     <string name="listing_HostName_placeholder_text">John Doe</string>
     <string name="listing_location_placeholder_text">Hunza Valley, Northern Areas</string>
-    <string name="listing_Rate_placeholder_text">5000</string>
-    <string name="listing_Rate_desc_text">From Pkr.</string>
+    <string name="listing_Rate_placeholder_text">4000</string>
+    <string name="listing_Rate_desc_text">Pkr per night</string>
     <string name="contentDescription_listing_image">Listing Image</string>
 </resources>
