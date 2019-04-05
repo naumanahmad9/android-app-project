@@ -13,6 +13,7 @@
         android:src="@drawable/scenery_2_wide"
         android:scaleType="fitXY"
         android:contentDescription="@string/contentDescription_listing_image" />
+
     <TextView
         android:id="@+id/listingTitle"
         android:layout_width="wrap_content"
@@ -20,9 +21,10 @@
         android:layout_below="@id/listingImage"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/arsenal"
         android:text="@string/listing_title_placeholder_text"
-        android:textSize="22sp"
-        android:textStyle="bold"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
     <TextView
         android:id="@+id/text_listingRate"
         android:layout_width="wrap_content"

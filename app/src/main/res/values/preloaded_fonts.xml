@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/abel</item>
+        <item>@font/arsenal</item>
+        <item>@font/cairo</item>
+        <item>@font/cairo_extralight</item>
+        <item>@font/cairo_semibold</item>
+    </array>
+</resources>

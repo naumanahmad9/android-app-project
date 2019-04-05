@@ -57,7 +57,7 @@
                 android:textSize="18sp" />
 
             <RatingBar
-                android:id="@+id/ratingbar"
+                android:id="@+id/listingRatingbar"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,6 +68,17 @@
                 android:numStars="5"
                 android:progressTint="@color/colorPrimary"
                 android:stepSize="0.1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_listingRate"
+                android:layout_toRightOf="@id/listingRatingbar"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/number_string"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

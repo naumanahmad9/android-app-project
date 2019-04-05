@@ -8,4 +8,5 @@
     <string name="listing_Rate_placeholder_text">4000</string>
     <string name="listing_Rate_desc_text">Pkr per night</string>
     <string name="contentDescription_listing_image">Listing Image</string>
+    <string name="number_string">50</string>
 </resources>
