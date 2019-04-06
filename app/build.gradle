@@ -40,7 +40,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     implementation 'com.airbnb.android:lottie:2.7.0'
-    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
+    // implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 }
 apply plugin: 'com.google.gms.google-services'
