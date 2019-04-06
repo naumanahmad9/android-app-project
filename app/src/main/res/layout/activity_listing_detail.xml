@@ -7,7 +7,7 @@
     tools:context=".ListingDetail">
 
     <ImageView
-        android:id="@+id/listingImage"
+        android:id="@+id/listing_detail_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/scenery_2_wide"
@@ -15,10 +15,10 @@
         android:contentDescription="@string/contentDescription_listing_image" />
 
     <TextView
-        android:id="@+id/listingTitle"
+        android:id="@+id/listing_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/listingImage"
+        android:layout_below="@id/listing_detail_image"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/arsenal"
@@ -26,21 +26,21 @@
         android:textSize="24sp"
         android:textStyle="bold" />
     <TextView
-        android:id="@+id/text_listingRate"
+        android:id="@+id/text_listing_detail_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/listingTitle"
+        android:layout_below="@id/listing_detail_title"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
         android:text="@string/listing_Rate_desc_text"
         android:textSize="18sp"
         android:textStyle="bold"/>
     <TextView
-        android:id="@+id/listingRate"
+        android:id="@+id/listing_detail_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/text_listingRate"
-        android:layout_alignBaseline="@id/text_listingRate"
+        android:layout_toEndOf="@id/text_listing_detail_rate"
+        android:layout_alignBaseline="@id/text_listing_detail_rate"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
         android:text="@string/listing_Rate_placeholder_text"
@@ -48,10 +48,10 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/text_listingHostName"
+        android:id="@+id/text_listing_detail_HostName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_listingRate"
+        android:layout_below="@id/text_listing_detail_rate"
         android:layout_marginStart="6dp"
         android:layout_marginTop="20dp"
         android:text="@string/listing_HostName_desc_text"
@@ -60,18 +60,18 @@
         android:id="@+id/listingHostName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/text_listingHostName"
-        android:layout_alignBaseline="@id/text_listingHostName"
+        android:layout_toEndOf="@id/text_listing_detail_HostName"
+        android:layout_alignBaseline="@id/text_listing_detail_HostName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"
         android:text="@string/listing_HostName_placeholder_text"
         android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/listingLocation"
+        android:id="@+id/listing_detail_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_listingHostName"
+        android:layout_below="@id/text_listing_detail_HostName"
         android:layout_marginStart="6dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="25dp"
@@ -82,7 +82,7 @@
         android:id="@+id/profile_image"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_alignBaseline="@id/text_listingRate"
+        android:layout_alignBaseline="@id/text_listing_detail_rate"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"
         android:src="@drawable/host_picture"
@@ -93,14 +93,14 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#80CFCFCF"
-        android:layout_below="@id/listingLocation"
+        android:layout_below="@id/listing_detail_location"
         />
 
     <ImageView
         android:id="@+id/icon_people"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@id/listingLocation"
+        android:layout_below="@id/listing_detail_location"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -110,7 +110,7 @@
         android:id="@+id/icon_house"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@id/listingLocation"
+        android:layout_below="@id/listing_detail_location"
         android:layout_toEndOf="@id/icon_people"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
@@ -120,7 +120,7 @@
         android:id="@+id/icon_bed"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@id/listingLocation"
+        android:layout_below="@id/listing_detail_location"
         android:layout_toEndOf="@id/icon_house"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
@@ -130,7 +130,7 @@
         android:id="@+id/icon_bathroom"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@id/listingLocation"
+        android:layout_below="@id/listing_detail_location"
         android:layout_toEndOf="@id/icon_bed"
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
