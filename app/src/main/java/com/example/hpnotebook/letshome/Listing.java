@@ -1,11 +1,15 @@
 package com.example.hpnotebook.letshome;
 
 public class Listing {
-    String listing_id, listing_title, listing_location, listing_rate, listing_host_name,
+    private String listing_id, listing_title, listing_location, listing_rate, listing_host_name,
             listing_guest_space, listing_room, listing_bedrooms, listing_bathroom, listing_image;
-    float listing_average_rating;
+    private float listing_average_rating;
 
-    public Listing(String listing_id, String listing_title, String listing_location, String listing_rate, String listing_host_name, String listing_guest_space, String listing_room, String listing_bedrooms, String listing_bathroom, String listing_image) {
+    public Listing(String listing_id, String listing_title, String listing_location,
+                   String listing_rate, String listing_host_name, String listing_guest_space,
+                   String listing_room, String listing_bedrooms, String listing_bathroom,
+                   String listing_image) {
+
         this.listing_id = listing_id;
         this.listing_title = listing_title;
         this.listing_location = listing_location;
@@ -29,12 +33,12 @@ public class Listing {
         this.listing_id = listing_id;
     }
 
-    public String getListing_name() {
+    public String getListing_title() {
         return listing_title;
     }
 
-    public void setListing_name(String listing_name) {
-        this.listing_title = listing_name;
+    public void setListing_title(String listing_title) {
+        this.listing_title = listing_title;
     }
 
     public String getListing_location() {

@@ -5,21 +5,16 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:padding="10dp">
-
-    <android.support.v7.widget.CardView
-        android:layout_width="180dp"
-        android:layout_height="220dp"
-        app:cardElevation="10dp">
+    android:padding="10dp" >
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="175dp"
+            android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/listingImage"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:id="@+id/listingImage"
                 android:contentDescription="@string/contentDescription_listing_image"
                 android:scaleType="fitXY"
                 android:src="@drawable/scenery_2_wide" />
@@ -29,7 +24,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/listingImage"
-                android:layout_marginStart="6dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/listing_title_placeholder_text"
                 android:textSize="18sp"
@@ -40,7 +34,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/listingTitle"
-                android:layout_marginStart="6dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/listing_Rate_placeholder_text"
                 android:textSize="18sp" />
@@ -62,23 +55,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/listingRate"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="6dp"
                 android:rating="5"
                 android:numStars="5"
                 android:progressTint="@color/colorPrimary"
                 android:stepSize="0.1" />
+
             <TextView
+                android:id="@+id/listingRatingCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_listingRate"
-                android:layout_toRightOf="@id/listingRatingbar"
+                android:layout_toEndOf="@id/listingRatingbar"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/number_string"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 />
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
 </RelativeLayout>

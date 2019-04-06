@@ -1,4 +1,52 @@
 package com.example.hpnotebook.letshome;
 
-public class ListingAdapter {
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
+public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
+
+    private ArrayList<Listing> listings;
+    private Context mContext;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+
+    public ListingAdapter(ArrayList<Listing> listings, Context context) {
+        this.listings = listings;
+        this.mContext = context;
+    }
+
+    @NonNull
+    @Override
+    public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(mContext).inflate(R.id.listing_item, viewGroup, false);
+        return new ListingViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ListingViewHolder listingViewHolder, int i) {
+        Listing listing = listings.get(i);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference().child("listings").child(listing.getListing_id());
+
+        listingViewHolder.listing_title.setText(listing.getListing_title());
+        listingViewHolder.listing_rate.setText(listing.getListing_rate());
+        listingViewHolder.listing_ratingbar.setRating(listing.getListing_average_rating());
+
+        Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
+    }
+
+    @Override
+    public int getItemCount() {
+        return listings.size();
+    }
 }

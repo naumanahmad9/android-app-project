@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LetsHome</string>
     <string name="signup_button_text">Sign Up</string>
-    <string name="listing_title_placeholder_text">Cozy Cottage in Hunza</string>
+    <string name="listing_title_placeholder_text">The Cozy Cottage</string>
     <string name="listing_HostName_desc_text">Hosted by</string>
     <string name="listing_HostName_placeholder_text">John Doe</string>
     <string name="listing_location_placeholder_text">Hunza Valley, Northern Areas</string>
