@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/text_listingHostName"
         android:layout_alignBaseline="@id/text_listingHostName"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"
         android:text="@string/listing_HostName_placeholder_text"
         android:textSize="16sp"/>
@@ -101,7 +101,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_below="@id/listingLocation"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/icon_people"/>
@@ -141,17 +141,17 @@
         android:id="@+id/text_icon_guests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/icon_people"
-        android:layout_marginStart="45dp"
+        android:layout_below="@+id/icon_people"
+        android:layout_marginStart="42dp"
         android:text="guests"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
     <TextView
         android:id="@+id/text_icon_house"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/icon_house"
         android:layout_toEndOf="@id/text_icon_guests"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="54dp"
         android:text="rooms"
         android:textSize="14sp"/>
     <TextView
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/icon_bed"
         android:layout_toEndOf="@id/text_icon_house"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="58dp"
         android:text="beds"
         android:textSize="14sp"/>
     <TextView
@@ -169,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/icon_bathroom"
         android:layout_toEndOf="@id/text_icon_bed"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="46dp"
         android:text="bathrooms"
         android:textSize="14sp"/>
     <TextView
@@ -177,7 +177,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_icon_guests"
-        android:layout_marginStart="59dp"
+        android:layout_marginStart="55dp"
         android:text="5"
         android:textSize="20sp"
         />
@@ -187,8 +187,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_icon_house"
         android:layout_toEndOf="@id/listingGuests"
-        android:layout_marginStart="77dp"
-        android:text="2"
+        android:layout_marginStart="79dp"
+        android:text="3"
         android:textSize="20sp"
         />
     <TextView
@@ -197,8 +197,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_icon_bed"
         android:layout_toEndOf="@id/listingRooms"
-        android:layout_marginStart="77dp"
-        android:text="3"
+        android:layout_marginStart="79dp"
+        android:text="4"
         android:textSize="20sp"
         />
     <TextView
@@ -207,7 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_icon_bathroom"
         android:layout_toEndOf="@id/listingBeds"
-        android:layout_marginStart="77dp"
+        android:layout_marginStart="79dp"
         android:text="2"
         android:textSize="20sp"
         />
