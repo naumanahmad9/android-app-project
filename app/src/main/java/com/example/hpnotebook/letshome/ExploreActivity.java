@@ -27,26 +27,22 @@ public class ExploreActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.explore:
-                        Intent intent1 = new Intent(ExploreActivity.this, ExploreActivity.class);
-                        startActivity(intent1);
+                        startActivity(new Intent(getApplicationContext(), ExploreActivity.class));
                         break;
 
                     case R.id.favorites:
-                        Intent intent2 = new Intent(ExploreActivity.this, FavoriteActivity.class);
-                        startActivity(intent2);
+                        startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
+                        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                         break;
 
                     case R.id.messages:
-                        Intent intent3 = new Intent(ExploreActivity.this, MessageActivity.class);
-                        startActivity(intent3);
+                        startActivity(new Intent(getApplicationContext(), MessageActivity.class));
                         break;
 
                     case R.id.profile:
-                        Intent intent4 = new Intent(ExploreActivity.this, ProfileActivity.class);
-                        startActivity(intent4);
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         break;
                 }
-
                 return false;
             }
         });

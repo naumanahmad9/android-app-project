@@ -64,6 +64,7 @@
         android:background="@drawable/rounded_corners"
         android:text="Sign in"
         android:textColor="#7b005c"
+        android:textStyle="bold"
         android:textSize="20sp" />
 
     <ImageView

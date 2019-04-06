@@ -14,6 +14,7 @@ public class FavoriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
@@ -26,26 +27,22 @@ public class FavoriteActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.explore:
-                        Intent intent1 = new Intent(FavoriteActivity.this, ExploreActivity.class);
-                        startActivity(intent1);
+                        startActivity(new Intent(getApplicationContext(), ExploreActivity.class));
+                        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                         break;
 
                     case R.id.favorites:
-                        Intent intent2 = new Intent(FavoriteActivity.this, FavoriteActivity.class);
-                        startActivity(intent2);
+                        startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
                         break;
 
                     case R.id.messages:
-                        Intent intent3 = new Intent(FavoriteActivity.this, MessageActivity.class);
-                        startActivity(intent3);
+                        startActivity(new Intent(getApplicationContext(), MessageActivity.class));
                         break;
 
                     case R.id.profile:
-                        Intent intent4 = new Intent(FavoriteActivity.this, ProfileActivity.class);
-                        startActivity(intent4);
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         break;
                 }
-
                 return false;
             }
         });
