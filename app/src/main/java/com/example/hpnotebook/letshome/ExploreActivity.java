@@ -37,7 +37,7 @@ public class ExploreActivity extends AppCompatActivity {
                         break;
 
                     case R.id.messages:
-                        Intent intent3 = new Intent(ExploreActivity.this, MessagesActivity.class);
+                        Intent intent3 = new Intent(ExploreActivity.this, MessageActivity.class);
                         startActivity(intent3);
                         break;
 
