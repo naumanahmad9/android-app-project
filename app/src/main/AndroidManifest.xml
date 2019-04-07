@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ListingDetail" />
-        <activity android:name=".ExploreActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +24,11 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".ExploreActivity" />
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SplashScreen"></activity>
     </application>
 
 </manifest>
