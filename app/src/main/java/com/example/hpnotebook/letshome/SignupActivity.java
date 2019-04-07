@@ -118,7 +118,7 @@ public class SignupActivity extends AppCompatActivity {
 
         User user = new User(name, uid, email, pass);
         userRef.child(uid).setValue(user);
-        startActivity(new Intent(this, ExploreActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void init() {
