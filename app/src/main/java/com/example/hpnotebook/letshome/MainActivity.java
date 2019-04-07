@@ -1,12 +1,15 @@
 package com.example.hpnotebook.letshome;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 
 import com.example.hpnotebook.letshome.fragments.ExploreFragment;
@@ -23,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         searchview_main = (android.support.v7.widget.SearchView) findViewById(R.id.searchview_main);
+        searchview_main.setFocusable(false);
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavView_main);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
@@ -65,4 +68,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack();
+    }
 }
