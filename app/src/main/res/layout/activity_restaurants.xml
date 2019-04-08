@@ -4,12 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.RestaurantsActivity">
 
-    <TextView
+    <android.support.v7.widget.SearchView
+        android:id="@+id/searchview_restaurants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:elevation="10dp"
+        android:outlineAmbientShadowColor="@color/colorAccent"
+        android:outlineSpotShadowColor="@color/colorAccent"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search"
+        android:visibility="visible" >
+
+    </android.support.v7.widget.SearchView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_restaurants"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Restaurants Activity"
-        android:textSize="30sp"/>
+        android:layout_marginStart="20dp" >
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

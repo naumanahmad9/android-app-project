@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.RestaurantsActivity"></activity>
+        <activity android:name=".activities.RestaurantsActivity" />
         <activity android:name=".activities.ExperiencesActivity" />
         <activity android:name=".activities.HomesActivity" />
         <activity android:name=".ListingDetail" />
@@ -28,6 +28,10 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".activities.SplashScreen" />
+        <activity android:name=".activities.SelectListingTypeActivity" />
+        <activity android:name=".activities.AddHomeActivity" />
+        <activity android:name=".activities.AddExperienceActivity" />
+        <activity android:name=".activities.AddRestaurantActivity"></activity>
     </application>
 
 </manifest>
