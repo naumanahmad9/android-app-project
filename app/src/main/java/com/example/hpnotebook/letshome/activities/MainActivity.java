@@ -1,4 +1,4 @@
-package com.example.hpnotebook.letshome;
+package com.example.hpnotebook.letshome.activities;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 
+import com.example.hpnotebook.letshome.R;
 import com.example.hpnotebook.letshome.fragments.ExploreFragment;
 import com.example.hpnotebook.letshome.fragments.FavoritesFragment;
 import com.example.hpnotebook.letshome.fragments.MessagesFragment;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavView_main);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        //I added this if statement to keep the selected fragment when rotating the device
+        // added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer_main,
                     new ExploreFragment()).commit();
@@ -68,6 +69,5 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.hpnotebook.letshome;
+package com.example.hpnotebook.letshome.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hpnotebook.letshome.R;
 import com.example.hpnotebook.letshome.modelClasses.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +20,12 @@ import java.util.ArrayList;
 
 public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
-    private ArrayList<Listing> listings;
+    private ArrayList<HomeListing> listings;
     private Context mContext;
     private FirebaseDatabase database;
     private DatabaseReference reference, listingRef;
 
-    public ListingAdapter(ArrayList<Listing> listings, Context context) {
+    public ListingAdapter(ArrayList<HomeListing> listings, Context context) {
         this.listings = listings;
         this.mContext = context;
     }
@@ -38,12 +39,12 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
-        Listing listing = listings.get(i);
+        HomeListing listing = listings.get(i);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("listings").child(listing.getListing_id());
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
-        listingViewHolder.listing_rate.setText(listing.getListing_rate());
+        listingViewHolder.listing_rate.setText(listing.getListing_pricing());
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 

@@ -1,6 +1,7 @@
 package com.example.hpnotebook.letshome.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.activities.HomesActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +39,7 @@ public class ExploreFragment extends Fragment {
         cvHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new HomesFragment());
+                startActivity(new Intent(getContext(), HomesActivity.class));
             }
         });
         return view;
