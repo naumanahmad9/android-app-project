@@ -21,6 +21,14 @@
             "package_name": "com.example.hpnotebook.letshome",
             "certificate_hash": "ba6e1e09dcf998c325b5808ae375005dab632867"
           }
+        },
+        {
+          "client_id": "1011663763173-5cd7mk52qu17akn1agfhd5f65fje1s7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hpnotebook.letshome",
+            "certificate_hash": "bd4ae64de86ff56e793d9c149051659d395c136f"
+          }
         }
       ],
       "api_key": [

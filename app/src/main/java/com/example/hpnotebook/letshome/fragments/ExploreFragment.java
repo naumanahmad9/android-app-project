@@ -49,7 +49,11 @@ public class ExploreFragment extends Fragment {
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragmentContainer_main, fragmentObject);
-        transaction.commit();
+
+        // FragmentTransaction tx = fragmentManager.beginTransation();
+        //tx.replace( R.id.fragment, new MyFragment() ).addToBackStack( "tag" ).commit();
+
+        transaction.replace(R.id.fragmentContainer_main, fragmentObject).addToBackStack( "tag" ).commit();
+       // transaction.commit();
     }
 }
