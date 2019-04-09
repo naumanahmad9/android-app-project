@@ -1,4 +1,4 @@
-package com.example.hpnotebook.letshome;
+package com.example.hpnotebook.letshome.modelClasses;
 
 public class ListingRating {
     String uId, uName;

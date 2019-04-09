@@ -139,11 +139,14 @@
                 android:id="@+id/frameLayout_homes"
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
-                android:layout_below="@id/text2_main">
+                android:layout_below="@id/text2_main"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/homes_recyclerView_main"
