@@ -20,26 +20,26 @@ import java.util.ArrayList;
 
 public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
-    private ArrayList<HomeListing> listings;
+    private ArrayList<HomeListing> homeListings;
     private Context mContext;
     private FirebaseDatabase database;
     private DatabaseReference reference, listingRef;
 
-    public ListingAdapter(ArrayList<HomeListing> listings, Context context) {
-        this.listings = listings;
+    public ListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
+        this.homeListings = homeListings;
         this.mContext = context;
     }
 
     @NonNull
     @Override
     public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.listing_item, viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.homes_listing_item_small, viewGroup, false);
         return new ListingViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
-        HomeListing listing = listings.get(i);
+        HomeListing listing = homeListings.get(i);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("listings").child(listing.getListing_id());
 
@@ -71,6 +71,6 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     @Override
     public int getItemCount() {
-        return listings.size();
+        return homeListings.size();
     }
 }

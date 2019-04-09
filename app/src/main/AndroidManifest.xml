@@ -13,7 +13,7 @@
         <activity android:name=".activities.ExperiencesActivity" />
         <activity android:name=".activities.HomesActivity" />
         <activity android:name=".ListingDetail" />
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".activities.SplashScreen" />
+        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.SelectListingTypeActivity" />
         <activity android:name=".activities.AddHomeActivity" />
         <activity android:name=".activities.AddExperienceActivity" />

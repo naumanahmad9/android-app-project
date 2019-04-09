@@ -6,32 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".activities.SplashScreen">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view_1"
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+        <!--android:id="@+id/animation_view_1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:lottie_fileName="gradient_animated_background.json"-->
+        <!--app:lottie_loop="true"-->
+        <!--android:scaleType="fitXY"-->
+        <!--app:lottie_autoPlay="true"-->
+        <!--/>-->
+    <!---->
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="gradient_animated_background.json"
-        app:lottie_loop="true"
-        android:scaleType="fitXY"
-        app:lottie_autoPlay="true"
-        />
+        android:src="@drawable/picture_0"
+        android:scaleType="fitXY"/>
+
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@mipmap/logo1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/letshome1"
         android:adjustViewBounds="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="280dp"
         />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view_2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        app:lottie_fileName="trail_loading.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        />
+
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+        <!--android:id="@+id/animation_view_2"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--app:lottie_fileName="trail_loading.json"-->
+        <!--app:lottie_loop="true"-->
+        <!--app:lottie_autoPlay="true"-->
+        <!--/>-->
 
 </RelativeLayout>

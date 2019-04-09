@@ -53,6 +53,19 @@ public class SignupActivity extends AppCompatActivity {
         view.setBackgroundColor(Color.WHITE);
         TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(Color.parseColor("#e6610049"));
+
+        signup_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String email = signup_email.getText().toString();
+                String password = signup_password.getText().toString();
+                String name = signup_name.getText().toString();
+
+                authUser(name,email,password);
+
+            }
+        });
     }
 
     private void testConnection() {

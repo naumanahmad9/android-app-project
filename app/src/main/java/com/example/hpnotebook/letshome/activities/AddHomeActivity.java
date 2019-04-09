@@ -157,8 +157,8 @@ public class AddHomeActivity extends AppCompatActivity {
                             HomeListing homeListing = new HomeListing(homeId, title, location, pricing, imageUrl);
                             homeRef.child(homeId).setValue(homeListing);
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
-                            Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(AddHomeActivity.this, HomesActivity.class));
+                            Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(AddHomeActivity.this, MainActivity.class));
 
                         }
                     }

@@ -89,7 +89,7 @@
         android:textColor="#fff"
         android:textSize="16sp" />
     <TextView
-        android:id="@+id/create_account"
+        android:id="@+id/textview_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/create_account_text"

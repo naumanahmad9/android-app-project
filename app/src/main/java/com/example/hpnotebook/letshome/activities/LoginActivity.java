@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     RelativeLayout login_container;
     Snackbar snackbar;
     EditText login_email, login_pass;
+    TextView textview_signup;
     Button login_btn;
     ImageView google_signin_btn;
     FirebaseAuth auth;
@@ -77,6 +78,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = googleSignInClient.getSignInIntent();
                 startActivityForResult(intent,LOGIN);
+            }
+        });
+        textview_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
     }
@@ -142,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         login_email=findViewById(R.id.login_email);
         login_pass=findViewById(R.id.login_password);
         login_btn=findViewById(R.id.login_btn);
+        textview_signup=findViewById(R.id.textview_signup);
         firebaseDatabase=FirebaseDatabase.getInstance();
         auth=FirebaseAuth.getInstance();
         google_signin_btn=findViewById(R.id.google_signin_btn);
