@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="25dp">
+
+    <ImageView
+        android:id="@+id/homelistingImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/contentDescription_listing_image"
+        android:scaleType="fitXY"
+        android:src="@drawable/scenery_2_wide" />
+
+    <TextView
+        android:id="@+id/homelistingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/homelistingImage"
+        android:layout_marginTop="4dp"
+        android:text="@string/listing_title_placeholder_text"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/homelistingRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/homelistingTitle"
+        android:layout_marginTop="4dp"
+        android:text="@string/listing_Rate_placeholder_text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text_homelistingRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/homelistingRate"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/homelistingRate"
+        android:text="@string/listing_Rate_desc_text"
+        android:textSize="18sp" />
+
+    <RatingBar
+        android:id="@+id/homelistingRatingbar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/homelistingRate"
+        android:layout_marginTop="6dp"
+        android:rating="5"
+        android:numStars="5"
+        android:progressTint="@color/colorPrimary"
+        android:stepSize="0.1" />
+
+    <TextView
+        android:id="@+id/homelistingRatingCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_homelistingRate"
+        android:layout_toEndOf="@id/homelistingRatingbar"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/number_string"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+</RelativeLayout>
