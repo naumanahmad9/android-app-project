@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 auth.signOut();
                 startActivity(new Intent(getContext(), LoginActivity.class));
-                
+
             }
         });
         return view;

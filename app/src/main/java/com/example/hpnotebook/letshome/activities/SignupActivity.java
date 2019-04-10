@@ -38,6 +38,7 @@ public class SignupActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userRef;
     FirebaseUser user;
+    boolean connectionCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,29 +47,6 @@ public class SignupActivity extends AppCompatActivity {
 
         init();
 
-        testConnection();
-
-        snackbar.setActionTextColor(Color.parseColor("#e6610049"));
-        View view = snackbar.getView();
-        view.setBackgroundColor(Color.WHITE);
-        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.parseColor("#e6610049"));
-
-        signup_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String email = signup_email.getText().toString();
-                String password = signup_password.getText().toString();
-                String name = signup_name.getText().toString();
-
-                authUser(name,email,password);
-
-            }
-        });
-    }
-
-    private void testConnection() {
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
         NetworkCapabilities capabilities = null;
@@ -81,18 +59,76 @@ public class SignupActivity extends AppCompatActivity {
         if (info != null && info.isConnected()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    showSnackBar(1);
+
                 } else {
                     capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR);
-                    showSnackBar(2);
+
                 }
             }
+        } else if (info == null) {
+            testConnection();
+
+            snackbar.setActionTextColor(Color.parseColor("#e6610049"));
+            View view = snackbar.getView();
+            view.setBackgroundColor(Color.WHITE);
+            TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.parseColor("#e6610049"));
+        }
+
+//        testConnection();
+
+//        snackbar.setActionTextColor(Color.parseColor("#e6610049"));
+//        View view = snackbar.getView();
+//        view.setBackgroundColor(Color.WHITE);
+//        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+//        textView.setTextColor(Color.parseColor("#e6610049"));
+
+        signup_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String email = signup_email.getText().toString();
+                String password = signup_password.getText().toString();
+                String name = signup_name.getText().toString();
+
+                authUser(name, email, password);
+
+            }
+        });
+    }
+
+    private void testConnection() {
+
+
+        connectionCheck = false;
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = manager.getActiveNetworkInfo();
+        NetworkCapabilities capabilities = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
+            }
+        }
+
+
+        if (connectionCheck && info != null && info.isConnected()) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    snackBar(1);
+                } else {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR);
+                    snackBar(2);
+                }
+            }
+
         } else {
-            showSnackBar(0);
+            connectionCheck = true;
+            snackBar(0);
         }
     }
 
-    private void showSnackBar(int check) {
+    private void snackBar(int check) {
         if (check == 1) {
             snackbar = Snackbar.make(signup_container, "Connected to Wifi", Snackbar.LENGTH_LONG);
             snackbar.show();
@@ -102,6 +138,7 @@ public class SignupActivity extends AppCompatActivity {
         } else {
             snackbar = Snackbar.make(signup_container, "No Internet Connection", Snackbar.LENGTH_INDEFINITE);
             snackbar.show();
+
             snackbar.setAction("Retry", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -114,22 +151,21 @@ public class SignupActivity extends AppCompatActivity {
 
     private void authUser(final String name, final String email, final String pass) {
 
-        auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    user=auth.getCurrentUser();
-                    saveData(name,email,pass,user.getUid());
+                if (task.isSuccessful()) {
+                    user = auth.getCurrentUser();
+                    signupUser(name, email, pass, user.getUid());
                     finish();
-                }
-                else {
+                } else {
                     Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void saveData(String name, String email, String pass, String uid) {
+    private void signupUser(String name, String email, String pass, String uid) {
 
         User user = new User(name, uid, email, pass);
         userRef.child(uid).setValue(user);

@@ -51,13 +51,41 @@ public class LoginActivity extends AppCompatActivity {
 
         init();
 
-        testConnection();
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = manager.getActiveNetworkInfo();
+        NetworkCapabilities capabilities  = null;
+        // NetworkCapabilities capabilities  = manager.getNetworkCapabilities(manager.getActiveNetwork());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
+            }
+        }
 
-        snackbar.setActionTextColor(Color.parseColor("#e6610049"));
-        View view = snackbar.getView();
-        view.setBackgroundColor(Color.WHITE);
-        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.parseColor("#e6610049"));
+        if (info != null && info.isConnected()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+
+                } else {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR);
+
+                }
+            }
+        } else if (info == null){
+            testConnection();
+
+            snackbar.setActionTextColor(Color.parseColor("#e6610049"));
+            View view = snackbar.getView();
+            view.setBackgroundColor(Color.WHITE);
+            TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.parseColor("#e6610049"));
+        }
+//        testConnection();
+//
+//        snackbar.setActionTextColor(Color.parseColor("#e6610049"));
+//        View view = snackbar.getView();
+//        view.setBackgroundColor(Color.WHITE);
+//        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+//        textView.setTextColor(Color.parseColor("#e6610049"));
 
         if(user!=null){
             //startActivity(new Intent(this, Explore.class));

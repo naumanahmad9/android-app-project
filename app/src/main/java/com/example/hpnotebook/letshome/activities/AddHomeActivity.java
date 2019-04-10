@@ -159,6 +159,7 @@ public class AddHomeActivity extends AppCompatActivity {
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
                             Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(AddHomeActivity.this, MainActivity.class));
+                            finish();
 
                         }
                     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".ListingDetail">
+    tools:context=".activities.ListingDetail">
 
     <ImageView
         android:id="@+id/listing_detail_image"
@@ -78,7 +78,7 @@
         android:textSize="16sp"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/listing_host_image"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignBaseline="@id/text_listing_detail_rate"
@@ -211,11 +211,34 @@
         android:textSize="20sp"
         />
     <View
+        android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="3dp"
         android:background="#80CFCFCF"
         android:layout_below="@id/listingGuests"
+        />
+    <RatingBar
+        android:id="@+id/listingRatingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/line2"/>
+
+    <Button
+        android:id="@+id/listingRate_btn"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/listingRatingbar"
+
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corners"
+        android:text="Rate"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="20sp"
         />
 
 </RelativeLayout>
