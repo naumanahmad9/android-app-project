@@ -29,6 +29,10 @@
             "package_name": "com.example.hpnotebook.letshome",
             "certificate_hash": "bd4ae64de86ff56e793d9c149051659d395c136f"
           }
+        },
+        {
+          "client_id": "1011663763173-9on2bfkrdf66cnhpq8kskfn8jt296p1r.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
