@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
         final HomeListing listing = homeListings.get(i);
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("listings").child(listing.getListing_id());
+        reference = database.getReference().child("homes").child(listing.getListing_id());
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
@@ -53,15 +54,20 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
         if (listing.getListing_id() != null){
-             listingRef= reference.child(listing.getListing_id());
+             listingRef= reference;
 
             listingRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     if(dataSnapshot.hasChild("avgRating")) {
-                        float averageRating = dataSnapshot.child("avgRating").getValue(Float.class);
+                        Float averageRating = dataSnapshot.child("avgRating").getValue(Float.class);
+
+                        Log.e("averageRating ","averageRating "+ averageRating);
+
                         listingViewHolder.listing_ratingbar.setRating(averageRating);
+
+                        Log.e("Detail ","listing object "+ dataSnapshot);
                     }
                     if(dataSnapshot.hasChild("viewCount")) {
                         listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));

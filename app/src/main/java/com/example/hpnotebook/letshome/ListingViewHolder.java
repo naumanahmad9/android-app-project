@@ -18,7 +18,7 @@ public class ListingViewHolder extends RecyclerView.ViewHolder {
         listing_image = itemView.findViewById(R.id.listingImage);
         listing_title = itemView.findViewById(R.id.listingTitle);
         listing_rate = itemView.findViewById(R.id.listingRate);
-        listing_ratingbar = itemView.findViewById(R.id.listingRatingbar);
+        listing_ratingbar = (RatingBar) itemView.findViewById(R.id.listingRatingbar);
         listing_rating_count = itemView.findViewById(R.id.listingRatingCount);
     }
 }

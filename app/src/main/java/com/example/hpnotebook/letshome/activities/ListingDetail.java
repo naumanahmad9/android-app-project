@@ -111,9 +111,11 @@ public class ListingDetail extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        Log.e("Detail ","user "+userRef);
+                       // Log.e("Detail ","user "+userRef);
+
                         User user = dataSnapshot.getValue(User.class);
-                        Log.e("Detail ","user object "+dataSnapshot);
+
+                        // Log.e("Detail ","user object "+dataSnapshot);
                         String uId = user.getUid();
                         String uName = user.getName();
 
