@@ -92,7 +92,6 @@ public class SignupActivity extends AppCompatActivity {
                 String name = signup_name.getText().toString();
 
                 authUser(name, email, password);
-
             }
         });
     }
@@ -157,7 +156,7 @@ public class SignupActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
                     signupUser(name, email, pass, user.getUid());
-                    finish();
+
                 } else {
                     Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                 }

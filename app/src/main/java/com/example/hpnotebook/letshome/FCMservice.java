@@ -12,7 +12,7 @@ public class FCMservice extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "mNotification");
 
         //foreground
         if (remoteMessage.getData().size() > 0) {

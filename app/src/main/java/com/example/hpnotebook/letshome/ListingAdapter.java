@@ -1,6 +1,8 @@
 package com.example.hpnotebook.letshome;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.hpnotebook.letshome.activities.ListingDetail;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,12 +42,13 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
-        HomeListing listing = homeListings.get(i);
+        final HomeListing listing = homeListings.get(i);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("listings").child(listing.getListing_id());
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
+
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
@@ -59,7 +63,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
                         float averageRating = dataSnapshot.child("avgRating").getValue(Float.class);
                         listingViewHolder.listing_ratingbar.setRating(averageRating);
                     }
-                    listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));
+                    if(dataSnapshot.hasChild("viewCount")) {
+                        listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));
+                    }
 
                 }
                 @Override
@@ -67,6 +73,18 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
                 }
             });
         }
+
+        listingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("homeListingId", listing.getListing_id());
+                Intent mIntent = new Intent(mContext, ListingDetail.class);
+                mIntent.putExtras(bundle);
+                mContext.startActivity(mIntent);
+            }
+        });
+
     }
 
     @Override

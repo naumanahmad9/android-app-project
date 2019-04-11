@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 String email=login_email.getText().toString();
                 String pass=login_pass.getText().toString();
                 authUser(email,pass);
+
             }
         });
 
@@ -106,12 +107,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = googleSignInClient.getSignInIntent();
                 startActivityForResult(intent,LOGIN);
+
             }
         });
         textview_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+
             }
         });
     }
@@ -167,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     user=auth.getCurrentUser();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
+
                 }
             }
         });
