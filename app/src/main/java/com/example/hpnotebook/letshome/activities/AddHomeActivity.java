@@ -96,6 +96,11 @@ public class AddHomeActivity extends AppCompatActivity {
                 String title = addHome_title.getText().toString();
                 String location = addHome_location.getText().toString();
                 String pricing = addHome_pricing.getText().toString();
+                String host_name = addHome_pricing.getText().toString();
+                String guest_space = addHome_pricing.getText().toString();
+                String rooms = addHome_pricing.getText().toString();
+                String bedrooms = addHome_pricing.getText().toString();
+                String bathroom = addHome_pricing.getText().toString();
 
                 key=homeId;
                 if (homeId == null) {
@@ -103,12 +108,14 @@ public class AddHomeActivity extends AppCompatActivity {
                 }
                 imageRef = storage.getReference("home listing images/" + key);
 
-                addHome(title, location, pricing, key);
+                addHome(key, title, location, pricing, host_name, guest_space, rooms, bedrooms, bathroom);
             }
         });
     }
 
-    private void addHome(final String title, final String location, final String pricing, final String homeId) {
+    private void addHome(final String homeId, final String title, final String location, final String pricing,
+                         final String host_name, final String guest_space,
+                         final String rooms, final String bedrooms, final String bathroom) {
 
         BitmapDrawable drawable = (BitmapDrawable) addHome_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -154,7 +161,8 @@ public class AddHomeActivity extends AppCompatActivity {
                                 });
                             }
 
-                            HomeListing homeListing = new HomeListing(homeId, title, location, pricing, imageUrl);
+                            HomeListing homeListing = new HomeListing(homeId, title, location, pricing,
+                                    host_name, guest_space, rooms, bedrooms, bathroom, imageUrl);
                             homeRef.child(homeId).setValue(homeListing);
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
                             Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
