@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddExperienceActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:text="Add Home Listing Details"
+            android:text="Add Experience Listing Details"
             android:textSize="30sp"
             android:focusableInTouchMode="true"  />
 

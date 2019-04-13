@@ -103,12 +103,12 @@ public class AddHomeActivity extends AppCompatActivity {
                 }
                 imageRef = storage.getReference("home listing images/" + key);
 
-                uploadImage(title, location, pricing, key);
+                addHome(title, location, pricing, key);
             }
         });
     }
 
-    private void uploadImage(final String title, final String location, final String pricing, final String homeId) {
+    private void addHome(final String title, final String location, final String pricing, final String homeId) {
 
         BitmapDrawable drawable = (BitmapDrawable) addHome_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -170,6 +170,7 @@ public class AddHomeActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
             }
         });
+
     }
 
     private void init() {
