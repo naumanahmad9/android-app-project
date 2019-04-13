@@ -168,6 +168,7 @@ public class AddHomeActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddHomeActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

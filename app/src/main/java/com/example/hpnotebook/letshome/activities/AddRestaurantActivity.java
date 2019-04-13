@@ -70,18 +70,18 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
-                    if (homeListing != null) {
-                        rest_avgRating = homeListing.getListing_average_rating();
+                    RestaurantListing restaurantListing = dataSnapshot.getValue(RestaurantListing.class);
+                    if (restaurantListing != null) {
+                        rest_avgRating = restaurantListing.getListing_average_rating();
                     }
-                    addRest_title.setText(homeListing.getListing_title());
-                    addRest_location.setText(homeListing.getListing_location());
+                    addRest_title.setText(restaurantListing.getListing_title());
+                    addRest_location.setText(restaurantListing.getListing_location());
 
-                    addRest_pricing.setText(homeListing.getListing_pricing());
+                    addRest_pricing.setText(restaurantListing.getListing_pricing());
 
                     Glide
                             .with(AddRestaurantActivity.this)
-                            .load(homeListing.getListing_image())
+                            .load(restaurantListing.getListing_image())
                             .into(addRest_images);
                 }
 
@@ -109,7 +109,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         });
     }
 
-    private void addRest(final String title, final String location, final String pricing, final String homeId) {
+    private void addRest(final String title, final String location, final String pricing, final String restId) {
 
         BitmapDrawable drawable = (BitmapDrawable) addRest_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -159,9 +159,9 @@ public class AddRestaurantActivity extends AppCompatActivity {
                                 });
                             }
 
-                            RestaurantListing restaurantListing = new RestaurantListing(homeId, title, location, pricing, imageUrl);
-                            restRef.child(homeId).setValue(restaurantListing);
-                            restRef.child(homeId).child("avgRating").setValue(rest_avgRating);
+                            RestaurantListing restaurantListing = new RestaurantListing(restId, title, location, pricing, imageUrl);
+                            restRef.child(restId).setValue(restaurantListing);
+                            restRef.child(restId).child("avgRating").setValue(rest_avgRating);
                             Toast.makeText(AddRestaurantActivity.this, "Listing added", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(AddRestaurantActivity.this, MainActivity.class));
                             finish();
