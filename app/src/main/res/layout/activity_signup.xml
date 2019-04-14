@@ -30,7 +30,7 @@
         android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:drawableEnd="@drawable/ic_person_white_24dp" />
 
     <EditText
@@ -49,7 +49,7 @@
         android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:drawableEnd="@drawable/ic_email_white_24dp"/>
 
     <EditText
@@ -68,7 +68,7 @@
         android:padding="12dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:drawableEnd="@drawable/ic_key_white"/>
 
     <android.support.v7.widget.AppCompatCheckBox
