@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -31,6 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -54,6 +56,7 @@ public class AddHomeActivity extends AppCompatActivity {
     StorageReference imageRef;
     String homeId;
     String key;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,13 +168,22 @@ public class AddHomeActivity extends AppCompatActivity {
                                     host_name, guest_space, rooms, bedrooms, bathroom, imageUrl);
                             homeRef.child(homeId).setValue(homeListing);
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
+                            progressDialog.dismiss();
                             Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(AddHomeActivity.this, MainActivity.class));
                             finish();
-
                         }
                     }
                 });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                progressDialog.setMessage((int) progress + "% Uploaded");
+
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -195,6 +207,10 @@ public class AddHomeActivity extends AppCompatActivity {
         addHome_images = findViewById(R.id.addHome_images);
 
         addHome_button = findViewById(R.id.addHome_button);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading");
+        progressDialog.setMessage("Please Wait...");
 
         storage = FirebaseStorage.getInstance();
 

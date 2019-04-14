@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -45,6 +47,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
     Button addRest_button;
     private int Pick_image = 1;
     private Uri imageUri;
+    ProgressDialog progressDialog;
 
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
@@ -61,6 +64,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
 
+        init();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -173,9 +177,18 @@ public class AddRestaurantActivity extends AppCompatActivity {
                     }
                 });
             }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                progressDialog.setMessage((int) progress + "% Uploaded");
+
+            }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+
                 Toast.makeText(AddRestaurantActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -191,6 +204,10 @@ public class AddRestaurantActivity extends AppCompatActivity {
         addRest_images = findViewById(R.id.addRest_images);
 
         addRest_button = findViewById(R.id.addRest_button);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading");
+        progressDialog.setMessage("Please Wait...");
 
         storage = FirebaseStorage.getInstance();
 
