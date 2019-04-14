@@ -32,13 +32,15 @@
         <activity android:name=".activities.AddHomeActivity" />
         <activity android:name=".activities.AddExperienceActivity" />
         <activity android:name=".activities.AddRestaurantActivity" />
-        <activity android:name=".activities.BookingActivity"></activity>
+        <activity android:name=".activities.BookingActivity" />
 
         <service android:name=".FCMservice">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".activities.TickMarkActivity"></activity>
     </application>
 
 </manifest>

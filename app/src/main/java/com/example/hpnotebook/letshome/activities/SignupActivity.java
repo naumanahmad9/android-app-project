@@ -38,7 +38,7 @@ public class SignupActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userRef;
     FirebaseUser user;
-    boolean connectionCheck;
+    private boolean connectionCheck, fieldCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +87,30 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String name = signup_name.getText().toString();
                 String email = signup_email.getText().toString();
                 String password = signup_password.getText().toString();
-                String name = signup_name.getText().toString();
 
-                authUser(name, email, password);
+                if(name.isEmpty()){
+                    signup_name.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if(email.isEmpty()){
+                    signup_email.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if(password.isEmpty()){
+                    signup_password.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                else if(password.length() <= 6){
+                    signup_password.setError("Password is too short");
+                    fieldCheck = true;
+                }
+                if(!fieldCheck){
+                    authUser(name, email, password);
+                }
+
             }
         });
     }

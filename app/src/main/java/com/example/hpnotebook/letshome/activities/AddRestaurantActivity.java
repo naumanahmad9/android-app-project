@@ -97,6 +97,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 String title = addRest_title.getText().toString();
                 String location = addRest_location.getText().toString();
                 String pricing = addRest_pricing.getText().toString();
+                String host_name = addRest_host_name.getText().toString();
 
                 key = restId;
                 if (restId == null) {
@@ -104,12 +105,13 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 }
                 restImageRef = storage.getReference("restaurant listing images/" + key);
 
-                addRest(title, location, pricing, key);
+                addRest(key, title, location, pricing, host_name);
             }
         });
     }
 
-    private void addRest(final String title, final String location, final String pricing, final String restId) {
+    private void addRest(final String restId, final String title, final String location, final String pricing,
+                         final String host_name) {
 
         BitmapDrawable drawable = (BitmapDrawable) addRest_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -159,7 +161,8 @@ public class AddRestaurantActivity extends AppCompatActivity {
                                 });
                             }
 
-                            RestaurantListing restaurantListing = new RestaurantListing(restId, title, location, pricing, imageUrl);
+                            RestaurantListing restaurantListing = new RestaurantListing(restId, title, location, pricing,
+                                    host_name, imageUrl);
                             restRef.child(restId).setValue(restaurantListing);
                             restRef.child(restId).child("avgRating").setValue(rest_avgRating);
                             Toast.makeText(AddRestaurantActivity.this, "Listing added", Toast.LENGTH_LONG).show();

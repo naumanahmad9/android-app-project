@@ -99,6 +99,7 @@ public class AddExperienceActivity extends AppCompatActivity {
                 String title = addExpr_title.getText().toString();
                 String location = addExpr_location.getText().toString();
                 String pricing = addExpr_pricing.getText().toString();
+                String host_name = addExpr_host_name.getText().toString();
 
                 key = exprId;
                 if (exprId == null) {
@@ -106,12 +107,13 @@ public class AddExperienceActivity extends AppCompatActivity {
                 }
                 imageRef = storage.getReference("experience listing images/" + key);
 
-                addExpr(title, location, pricing, key);
+                addExpr(key, title, location, pricing, host_name);
             }
         });
     }
 
-    private void addExpr(final String title, final String location, final String pricing, final String exprId) {
+    private void addExpr(final String exprId, final String title, final String location, final String pricing,
+                         final String host_name) {
 
         BitmapDrawable drawable = (BitmapDrawable) addExpr_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -161,7 +163,8 @@ public class AddExperienceActivity extends AppCompatActivity {
                                 });
                             }
 
-                            ExperienceListing experienceListing = new ExperienceListing(exprId, title, location, pricing, imageUrl);
+                            ExperienceListing experienceListing = new ExperienceListing(exprId, title, location, pricing,
+                                    host_name, imageUrl);
                             exprRef.child(exprId).setValue(experienceListing);
                             exprRef.child(exprId).child("avgRating").setValue(expr_avgRating);
                             Toast.makeText(AddExperienceActivity.this, "Listing added", Toast.LENGTH_LONG).show();

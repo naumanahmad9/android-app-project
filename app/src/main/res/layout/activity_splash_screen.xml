@@ -20,15 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/picture_0"
+        android:foreground="#b97b005c"
         android:scaleType="fitXY"/>
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/letshome1"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:src="@mipmap/logo1"
         android:adjustViewBounds="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="280dp"
+        android:layout_centerVertical="true"
         />
 
     <!--<com.airbnb.lottie.LottieAnimationView-->

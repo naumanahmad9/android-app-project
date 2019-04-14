@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     GoogleSignInOptions signInOptions;
     private int LOGIN=1;
+    private boolean fieldCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +88,8 @@ public class LoginActivity extends AppCompatActivity {
 //        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
 //        textView.setTextColor(Color.parseColor("#e6610049"));
 
-        if(user!=null){
-            //startActivity(new Intent(this, Explore.class));
+        if(user != null){
+            startActivity(new Intent(this, MainActivity.class));
         }
 
         login_btn.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +97,22 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email=login_email.getText().toString();
                 String pass=login_pass.getText().toString();
-                authUser(email,pass);
+
+                if(email.isEmpty()){
+                    login_email.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if(pass.isEmpty()){
+                    login_pass.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                else if(pass.length() <= 6){
+                    login_pass.setError("Password is too short");
+                    fieldCheck = true;
+                }
+                if(!fieldCheck){
+                    authUser(email,pass);
+                }
 
             }
         });
@@ -113,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         textview_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
 
             }
@@ -169,8 +186,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     user=auth.getCurrentUser();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
+                    startActivity(new Intent(LoginActivity.this, TickMarkActivity.class));
                 }
             }
         });

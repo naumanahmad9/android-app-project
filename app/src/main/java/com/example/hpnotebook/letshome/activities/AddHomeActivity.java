@@ -96,11 +96,11 @@ public class AddHomeActivity extends AppCompatActivity {
                 String title = addHome_title.getText().toString();
                 String location = addHome_location.getText().toString();
                 String pricing = addHome_pricing.getText().toString();
-                String host_name = addHome_pricing.getText().toString();
-                String guest_space = addHome_pricing.getText().toString();
-                String rooms = addHome_pricing.getText().toString();
-                String bedrooms = addHome_pricing.getText().toString();
-                String bathroom = addHome_pricing.getText().toString();
+                String host_name = addHome_host_name.getText().toString();
+                String guest_space = addHome_guest_space.getText().toString();
+                String rooms = addHome_room.getText().toString();
+                String bedrooms = addHome_bedrooms.getText().toString();
+                String bathroom = addHome_bathroom.getText().toString();
 
                 key=homeId;
                 if (homeId == null) {
