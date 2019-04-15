@@ -40,7 +40,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activities.TickMarkActivity"></activity>
+        <activity android:name=".activities.TickMarkActivity" />
+        <activity android:name=".activities.RestListingDetail" />
+        <activity android:name=".activities.ExprListingDetail"></activity>
     </application>
 
 </manifest>
