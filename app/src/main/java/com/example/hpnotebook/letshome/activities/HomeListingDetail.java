@@ -1,10 +1,13 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,9 +44,11 @@ public class HomeListingDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listing_detail);
+        setContentView(R.layout.activity_home_listing_detail);
 
         init();
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavView_homeListingDetail);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -160,12 +165,27 @@ public class HomeListingDetail extends AppCompatActivity {
 
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.requestToBook:
+                            startActivity(new Intent(HomeListingDetail.this, BookingActivity.class));
+                            break;
+                    }
+                    return true;
+                };
+
+            };
     private void init() {
 
         listing_detail_title = findViewById(R.id.listing_detail_title);
         listing_detail_image = findViewById(R.id.listing_detail_image);
         listing_detail_Ratingbar= findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
+
+
 //
 //        auth = FirebaseAuth.getInstance();
 //        database = FirebaseDatabase.getInstance();
