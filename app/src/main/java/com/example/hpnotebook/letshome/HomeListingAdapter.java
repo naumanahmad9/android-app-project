@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.hpnotebook.letshome.activities.ListingDetail;
+import com.example.hpnotebook.letshome.activities.HomeListingDetail;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,22 +19,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
+public class HomeListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     private ArrayList<HomeListing> homeListings;
     private Context mContext;
     private FirebaseDatabase database;
     private DatabaseReference reference, listingRef;
 
-    public ListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
+    public HomeListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
         this.homeListings = homeListings;
         this.mContext = context;
     }
 
-    public ListingAdapter(ArrayList<HomeListing> homeListings) {
+    public HomeListingAdapter(ArrayList<HomeListing> homeListings) {
         this.homeListings = homeListings;
     }
 
@@ -89,7 +88,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("homeListingId", listing.getListing_id());
-                Intent mIntent = new Intent(mContext, ListingDetail.class);
+                Intent mIntent = new Intent(mContext, HomeListingDetail.class);
                 mIntent.putExtras(bundle);
                 mContext.startActivity(mIntent);
             }

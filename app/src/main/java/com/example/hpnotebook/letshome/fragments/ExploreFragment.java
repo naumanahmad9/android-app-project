@@ -9,16 +9,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filterable;
 import android.widget.Toast;
 
-import com.example.hpnotebook.letshome.ListingAdapter;
+import com.example.hpnotebook.letshome.HomeListingAdapter;
 import com.example.hpnotebook.letshome.R;
 import com.example.hpnotebook.letshome.activities.HomesActivity;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
@@ -30,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +41,7 @@ public class ExploreFragment extends Fragment implements android.support.v7.widg
     FragmentManager manager;
     FragmentTransaction transaction;
     ArrayList<HomeListing> homeListings;
-    ListingAdapter adapter;
+    HomeListingAdapter adapter;
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference homeListingRef;
@@ -67,7 +63,7 @@ public class ExploreFragment extends Fragment implements android.support.v7.widg
         cvHome = view.findViewById(R.id.cvHome);
 
         homeListings = new ArrayList<>();
-        adapter=new ListingAdapter(homeListings,getContext());
+        adapter=new HomeListingAdapter(homeListings,getContext());
 
         homes_recyclerView_main.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         homes_recyclerView_main.setAdapter(adapter);
@@ -170,7 +166,7 @@ public class ExploreFragment extends Fragment implements android.support.v7.widg
         final ArrayList<HomeListing> searchList = Search(homeListings, s);
 
         if (searchList.size() > 0) {
-            adapter = new ListingAdapter(searchList);
+            adapter = new HomeListingAdapter(searchList);
             homes_recyclerView_main.setAdapter(adapter);
             adapter.setFilter(searchList);
             return true;

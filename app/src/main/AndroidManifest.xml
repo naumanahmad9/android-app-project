@@ -12,7 +12,7 @@
         <activity android:name=".activities.RestaurantsActivity" />
         <activity android:name=".activities.ExperiencesActivity" />
         <activity android:name=".activities.HomesActivity" />
-        <activity android:name=".activities.ListingDetail" />
+        <activity android:name=".activities.HomeListingDetail" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

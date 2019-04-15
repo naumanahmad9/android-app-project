@@ -1,17 +1,13 @@
 package com.example.hpnotebook.letshome.activities;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.SearchView;
 
-import com.example.hpnotebook.letshome.ListingAdapter;
+import com.example.hpnotebook.letshome.HomeListingAdapter;
 import com.example.hpnotebook.letshome.R;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +24,7 @@ public class HomesActivity extends AppCompatActivity {
     android.support.v7.widget.SearchView searchview_homes;
     RecyclerView recyclerView_homes;
     ArrayList<HomeListing> homeListings;
-    ListingAdapter adapter;
+    HomeListingAdapter adapter;
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference homeListingRef;
@@ -42,7 +38,7 @@ public class HomesActivity extends AppCompatActivity {
         recyclerView_homes = findViewById(R.id.recyclerView_homes);
 
         homeListings = new ArrayList<>();
-        adapter=new ListingAdapter(homeListings, this);
+        adapter=new HomeListingAdapter(homeListings, this);
 
         recyclerView_homes.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_homes.setAdapter(adapter);

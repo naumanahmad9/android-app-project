@@ -10,24 +10,59 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent" >
+        <RelativeLayout
+            android:id="@+id/headerImage_main"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
 
-       <android.support.v7.widget.SearchView
-           android:id="@+id/searchview_main"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="5dp"
-           android:layout_marginEnd="5dp"
-           android:elevation="10dp"
-           app:iconifiedByDefault="false"
-           app:queryHint="Search" >
+            <ImageView
+                android:id="@+id/headerImage"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/headerImage1"
+                />
+            <TextView
+                android:id="@+id/headertext1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Explore"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_marginStart="18dp"
+                />
+            <TextView
+                android:id="@+id/headertext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:layout_below="@id/headertext1"
+            android:text="Northern"
+            android:textColor="#fff"
+                android:textSize="30sp"
+                android:layout_marginStart="18dp"
+            android:textStyle="bold"
+            />
+            <TextView
+                android:id="@+id/headertext3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:layout_below="@id/headertext2"
+            android:text="Pakistan"
+            android:textColor="#fff"
+                android:textSize="30sp"
+                android:layout_marginStart="18dp"
+            android:textStyle="bold"
+            />
+        </RelativeLayout>
 
-       </android.support.v7.widget.SearchView>
 
        <ScrollView
            android:id="@+id/scrollView_main"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:layout_below="@id/searchview_main"
+           android:layout_below="@id/headerImage_main"
            android:scrollbars="none">
 
            <RelativeLayout
@@ -40,7 +75,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginStart="20dp"
-                   android:layout_marginTop="12dp"
+                   android:layout_marginTop="15dp"
                    android:layout_marginBottom="5dp"
                    android:text="What can we help you find?"
                    android:textSize="24sp" />
@@ -148,7 +183,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_below="@id/horizontalScrollView_main"
-                   android:layout_marginTop="5dp"
+                   android:layout_marginTop="10dp"
                    android:layout_marginStart="20dp"
                    android:layout_marginBottom="15dp"
                    android:text="Homes in Northern Pakistan"
@@ -298,6 +333,5 @@
        </ScrollView>
 
    </RelativeLayout>
-
 
 </FrameLayout>

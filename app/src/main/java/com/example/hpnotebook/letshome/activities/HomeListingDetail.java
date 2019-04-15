@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ListingDetail extends AppCompatActivity {
+public class HomeListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
