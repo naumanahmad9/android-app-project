@@ -34,6 +34,10 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
         this.mContext = context;
     }
 
+    public ListingAdapter(ArrayList<HomeListing> homeListings) {
+        this.homeListings = homeListings;
+    }
+
     @NonNull
     @Override
     public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -97,4 +101,11 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
     public int getItemCount() {
         return homeListings.size();
     }
+
+    public void setFilter(ArrayList<HomeListing> filter) {
+        homeListings = new ArrayList<>();
+        homeListings.addAll(filter);
+        notifyDataSetChanged();
+    }
+
 }

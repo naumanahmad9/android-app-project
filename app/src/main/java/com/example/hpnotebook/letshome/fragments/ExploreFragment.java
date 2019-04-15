@@ -11,9 +11,12 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filterable;
+import android.widget.Toast;
 
 import com.example.hpnotebook.letshome.ListingAdapter;
 import com.example.hpnotebook.letshome.R;
@@ -27,12 +30,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ExploreFragment extends Fragment {
+public class ExploreFragment extends Fragment implements android.support.v7.widget.SearchView.OnQueryTextListener {
 
+    //
+
+    android.support.v7.widget.SearchView searchview_main;
     RecyclerView homes_recyclerView_main;
     CardView cvHome;
     FragmentManager manager;
@@ -52,6 +59,9 @@ public class ExploreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
+
+         searchview_main = (android.support.v7.widget.SearchView) view.findViewById(R.id.searchview_main);
+         searchview_main.setFocusable(false);
 
         homes_recyclerView_main = view.findViewById(R.id.homes_recyclerView_main);
         cvHome = view.findViewById(R.id.cvHome);
@@ -102,8 +112,30 @@ public class ExploreFragment extends Fragment {
                 startActivity(new Intent(getContext(), HomesActivity.class));
             }
         });
+
+//        searchview_main.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                if(homeListings.contains(query)){
+//                    adapter.getFilter().filter(query);
+//                }else{
+//                    Toast.makeText(getContext(), "No Match found",Toast.LENGTH_LONG).show();
+//                }
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                //    adapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
+
         return view;
     }
+
+
 
     private void replaceFragment(Fragment fragmentObject) {
 
@@ -112,4 +144,43 @@ public class ExploreFragment extends Fragment {
 
         transaction.replace(R.id.fragmentContainer_main, fragmentObject).addToBackStack( "tag" ).commit();
     }
+
+    public ArrayList<HomeListing> Search(ArrayList<HomeListing> studentList, String query) {
+        query = query.toLowerCase();
+        final ArrayList<HomeListing> searchList = new ArrayList<>();
+        for (HomeListing s : studentList) {
+            final String name = s.getListing_location().toLowerCase();
+            if (name.contains(query)) {
+                searchList.add(s);
+            }
+        }
+        return searchList;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        final ArrayList<HomeListing> searchList = Search(homeListings, s);
+
+        if (searchList.size() > 0) {
+            adapter = new ListingAdapter(searchList);
+            homes_recyclerView_main.setAdapter(adapter);
+            adapter.setFilter(searchList);
+            return true;
+
+        } else {
+            Toast.makeText(getContext(), "No Record Found", Toast.LENGTH_SHORT).show();
+            homes_recyclerView_main.setAdapter(null);
+            return false;
+        }
+    }
+
+
 }

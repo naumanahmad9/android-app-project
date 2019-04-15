@@ -16,7 +16,6 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="Tickmark_Animation.json"
         app:lottie_loop="false"
-
         />
 
 </RelativeLayout>

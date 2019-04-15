@@ -7,278 +7,297 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ExploreFragment">
 
-    <ScrollView
-        android:id="@+id/scrollView_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/searchview_main"
-        android:scrollbars="none">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusableInTouchMode="true">
+       <android.support.v7.widget.SearchView
+           android:id="@+id/searchview_main"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="5dp"
+           android:layout_marginEnd="5dp"
+           android:elevation="10dp"
+           app:iconifiedByDefault="false"
+           app:queryHint="Search" >
 
-            <TextView
-                android:id="@+id/intro_text_main"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="5dp"
-                android:text="What can we help you find?"
-                android:textSize="24sp" />
+       </android.support.v7.widget.SearchView>
 
-            <android.support.v4.widget.NestedScrollView
-                android:id="@+id/horizontalScrollView_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/intro_text_main">
+       <ScrollView
+           android:id="@+id/scrollView_main"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/searchview_main"
+           android:scrollbars="none">
 
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginBottom="18dp"
-                    android:fillViewport="true"
-                    android:scrollbars="none">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:focusableInTouchMode="true">
 
-                    <RelativeLayout
-                        android:id="@+id/LL"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+               <TextView
+                   android:id="@+id/intro_text_main"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginBottom="5dp"
+                   android:text="What can we help you find?"
+                   android:textSize="24sp" />
 
-                        <android.support.v7.widget.CardView
-                            android:id="@+id/cvHome"
-                            android:layout_width="140dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            app:cardCornerRadius="10dp">
+               <android.support.v4.widget.NestedScrollView
+                   android:id="@+id/horizontalScrollView_main"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/intro_text_main">
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                   <HorizontalScrollView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="14dp"
+                       android:layout_marginTop="25dp"
+                       android:layout_marginBottom="18dp"
+                       android:fillViewport="true"
+                       android:scrollbars="none">
 
-                                <ImageView
-                                    android:id="@+id/img1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/bedroom_pic" />
+                       <RelativeLayout
+                           android:id="@+id/LL"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal">
 
-                                <TextView
-                                    android:id="@+id/txt1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@id/img1"
-                                    android:layout_marginStart="12dp"
-                                    android:text="Homes"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-                            </RelativeLayout>
-                        </android.support.v7.widget.CardView>
+                           <android.support.v7.widget.CardView
+                               android:id="@+id/cvHome"
+                               android:layout_width="140dp"
+                               android:layout_height="wrap_content"
+                               android:layout_marginStart="10dp"
+                               app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:id="@+id/img2"
-                            android:layout_width="140dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_toRightOf="@id/cvHome"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/experiences_pic" />
+                               <RelativeLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/txt2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/img2"
-                            android:layout_marginStart="30dp"
-                            android:layout_toRightOf="@id/cvHome"
-                            android:text="Experiences"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                                   <ImageView
+                                       android:id="@+id/img1"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="100dp"
+                                       android:scaleType="fitXY"
+                                       android:src="@drawable/bedroom_pic" />
 
-                        <ImageView
-                            android:id="@+id/img3"
-                            android:layout_width="140dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_toRightOf="@id/img2"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/food_pic" />
+                                   <TextView
+                                       android:id="@+id/txt1"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:layout_below="@id/img1"
+                                       android:layout_marginStart="12dp"
+                                       android:text="Homes"
+                                       android:textSize="20sp"
+                                       android:textStyle="bold" />
+                               </RelativeLayout>
+                           </android.support.v7.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/txt3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/img3"
-                            android:layout_marginStart="10dp"
-                            android:layout_toRightOf="@id/img2"
-                            android:text="Restaurants"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
+                           <ImageView
+                               android:id="@+id/img2"
+                               android:layout_width="140dp"
+                               android:layout_height="100dp"
+                               android:layout_marginStart="20dp"
+                               android:layout_marginEnd="20dp"
+                               android:layout_toRightOf="@id/cvHome"
+                               android:scaleType="fitXY"
+                               android:src="@drawable/experiences_pic" />
 
-                </HorizontalScrollView>
+                           <TextView
+                               android:id="@+id/txt2"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_below="@id/img2"
+                               android:layout_marginStart="30dp"
+                               android:layout_toRightOf="@id/cvHome"
+                               android:text="Experiences"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
 
-            </android.support.v4.widget.NestedScrollView>
+                           <ImageView
+                               android:id="@+id/img3"
+                               android:layout_width="140dp"
+                               android:layout_height="100dp"
+                               android:layout_marginEnd="15dp"
+                               android:layout_toRightOf="@id/img2"
+                               android:scaleType="fitXY"
+                               android:src="@drawable/food_pic" />
 
-            <TextView
-                android:id="@+id/text2_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/horizontalScrollView_main"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="15dp"
-                android:text="Homes in Northern Pakistan"
-                android:textSize="24sp" />
+                           <TextView
+                               android:id="@+id/txt3"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_below="@id/img3"
+                               android:layout_marginStart="10dp"
+                               android:layout_toRightOf="@id/img2"
+                               android:text="Restaurants"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+                       </RelativeLayout>
 
-            <FrameLayout
-                android:id="@+id/frameLayout_homes"
-                android:layout_width="match_parent"
-                android:layout_height="510dp"
-                android:layout_below="@id/text2_main"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="20dp">
+                   </HorizontalScrollView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+               </android.support.v4.widget.NestedScrollView>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/homes_recyclerView_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20dp">
+               <TextView
+                   android:id="@+id/text2_main"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/horizontalScrollView_main"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginBottom="15dp"
+                   android:text="Homes in Northern Pakistan"
+                   android:textSize="24sp" />
 
-                    </android.support.v7.widget.RecyclerView>
+               <FrameLayout
+                   android:id="@+id/frameLayout_homes"
+                   android:layout_width="match_parent"
+                   android:layout_height="510dp"
+                   android:layout_below="@id/text2_main"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="20dp">
 
-                </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
 
-            </FrameLayout>
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/homes_recyclerView_main"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_marginStart="20dp">
 
-            <Button
-                android:id="@+id/button_homes"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@id/frameLayout_homes"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#be640071"
-                android:text="See all homes"
-                android:textColor="#fff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                       </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/text3_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/button_homes"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Experiences in Northern Pakistan"
-                android:textSize="24sp" />
+                   </LinearLayout>
 
-            <FrameLayout
-                android:id="@+id/frameLayout_experiences"
-                android:layout_width="match_parent"
-                android:layout_height="520dp"
-                android:layout_below="@id/text3_main"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="20dp">
+               </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+               <Button
+                   android:id="@+id/button_homes"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_below="@id/frameLayout_homes"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginEnd="20dp"
+                   android:background="@drawable/rounded_corners"
+                   android:backgroundTint="#be640071"
+                   android:text="See all homes"
+                   android:textColor="#fff"
+                   android:textSize="20sp"
+                   android:textStyle="bold" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/experiences_recyclerView_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20dp">
+               <TextView
+                   android:id="@+id/text3_main"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/button_homes"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginBottom="10dp"
+                   android:text="Experiences in Northern Pakistan"
+                   android:textSize="24sp" />
 
-                    </android.support.v7.widget.RecyclerView>
+               <FrameLayout
+                   android:id="@+id/frameLayout_experiences"
+                   android:layout_width="match_parent"
+                   android:layout_height="520dp"
+                   android:layout_below="@id/text3_main"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="20dp">
 
-                </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
 
-            </FrameLayout>
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/experiences_recyclerView_main"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_marginStart="20dp">
 
-            <Button
-                android:id="@+id/button_experiences"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@id/frameLayout_experiences"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#be640071"
-                android:text="See all experiences"
-                android:textColor="#fff"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                       </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/text4_main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/button_experiences"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Restaurants in Northern Pakistan"
-                android:textSize="24sp" />
+                   </LinearLayout>
 
-            <FrameLayout
-                android:id="@+id/frameLayout_restaurants"
-                android:layout_width="match_parent"
-                android:layout_height="520dp"
-                android:layout_below="@id/text4_main"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="20dp">
+               </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+               <Button
+                   android:id="@+id/button_experiences"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_below="@id/frameLayout_experiences"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginEnd="20dp"
+                   android:background="@drawable/rounded_corners"
+                   android:backgroundTint="#be640071"
+                   android:text="See all experiences"
+                   android:textColor="#fff"
+                   android:textSize="22sp"
+                   android:textStyle="bold" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/restaurants_recyclerView_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20dp">
+               <TextView
+                   android:id="@+id/text4_main"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/button_experiences"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginBottom="10dp"
+                   android:text="Restaurants in Northern Pakistan"
+                   android:textSize="24sp" />
 
-                    </android.support.v7.widget.RecyclerView>
+               <FrameLayout
+                   android:id="@+id/frameLayout_restaurants"
+                   android:layout_width="match_parent"
+                   android:layout_height="520dp"
+                   android:layout_below="@id/text4_main"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="20dp">
 
-                </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
 
-            </FrameLayout>
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/restaurants_recyclerView_main"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_marginStart="20dp">
 
-            <Button
-                android:id="@+id/button_restaurants"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@id/frameLayout_restaurants"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#be640071"
-                android:text="See all restaurants"
-                android:textColor="#fff"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                       </android.support.v7.widget.RecyclerView>
 
-        </RelativeLayout>
+                   </LinearLayout>
 
-    </ScrollView>
+               </FrameLayout>
+
+               <Button
+                   android:id="@+id/button_restaurants"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_below="@id/frameLayout_restaurants"
+                   android:layout_marginStart="20dp"
+                   android:layout_marginEnd="20dp"
+                   android:background="@drawable/rounded_corners"
+                   android:backgroundTint="#be640071"
+                   android:text="See all restaurants"
+                   android:textColor="#fff"
+                   android:textSize="22sp"
+                   android:textStyle="bold" />
+
+           </RelativeLayout>
+
+       </ScrollView>
+
+   </RelativeLayout>
+
 
 </FrameLayout>

@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,14 +22,11 @@ import com.example.hpnotebook.letshome.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    android.support.v7.widget.SearchView searchview_main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        searchview_main = (android.support.v7.widget.SearchView) findViewById(R.id.searchview_main);
-        searchview_main.setFocusable(false);
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavView_main);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
@@ -47,19 +46,15 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.explore:
                             selectedFragment = new ExploreFragment();
-                            searchview_main.setVisibility(View.VISIBLE);
                             break;
                         case R.id.favorites:
                             selectedFragment = new FavoritesFragment();
-                            searchview_main.setVisibility(View.GONE);
                             break;
                         case R.id.messages:
                             selectedFragment = new MessagesFragment();
-                            searchview_main.setVisibility(View.GONE);
                             break;
                         case R.id.profile:
                             selectedFragment = new ProfileFragment();
-                            searchview_main.setVisibility(View.GONE);
                             break;
                     }
 

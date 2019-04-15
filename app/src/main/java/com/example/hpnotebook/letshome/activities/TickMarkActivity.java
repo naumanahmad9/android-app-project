@@ -19,6 +19,7 @@ public class TickMarkActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(TickMarkActivity.this, MainActivity.class));
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
         };
         handler.postDelayed(runnable,6000);
