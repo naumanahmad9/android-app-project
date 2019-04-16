@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class BookingActivity extends AppCompatActivity {
 
-    private Button continueBooking_button;
+
     private TextView mDisplayDate, tvArrivalDate;
     private EditText etTotalDays;
     private String numberofdays, arrivaldate;
@@ -33,7 +33,6 @@ public class BookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
-        continueBooking_button = (Button) findViewById(R.id.continueBooking_button);
         etTotalDays = (EditText) findViewById(R.id.etTotalDays);
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
         tvArrivalDate = (TextView) findViewById(R.id.tvArrivalDate);
@@ -67,7 +66,6 @@ public class BookingActivity extends AppCompatActivity {
                 tvArrivalDate.setText(date);
             }
         };
-
 
     }
 
