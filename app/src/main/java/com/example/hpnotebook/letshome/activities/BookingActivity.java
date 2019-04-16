@@ -1,24 +1,31 @@
 package com.example.hpnotebook.letshome.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hpnotebook.letshome.R;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class BookingActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
-    private TextView mDisplayDate;
+    private Button continueBooking_button;
+    private TextView mDisplayDate, tvArrivalDate;
+    private EditText etTotalDays;
+    private String numberofdays, arrivaldate;
+    private boolean check;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
@@ -26,7 +33,10 @@ public class BookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
+        continueBooking_button = (Button) findViewById(R.id.continueBooking_button);
+        etTotalDays = (EditText) findViewById(R.id.etTotalDays);
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
+        tvArrivalDate = (TextView) findViewById(R.id.tvArrivalDate);
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +51,7 @@ public class BookingActivity extends AppCompatActivity {
                         android.R.style.Theme_Material_Dialog,
                         mDateSetListener,
                         year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#610049")));
                 dialog.show();
             }
         });
@@ -49,14 +59,46 @@ public class BookingActivity extends AppCompatActivity {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+
                 month = month + 1;
 
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+                String date = day + "/" + month + "/" + year;
 
-                String date = month + "/" + day + "/" + year;
-                mDisplayDate.setText(date);
+                tvArrivalDate.setText(date);
             }
         };
+
+
+    }
+
+    public void continueBooking(View view) {
+
+        numberofdays = etTotalDays.getText().toString();
+        arrivaldate = tvArrivalDate.getText().toString();
+
+        if(Objects.equals(arrivaldate, "")){
+
+            Toast.makeText(BookingActivity.this, "Enter the arrival date", Toast.LENGTH_LONG).show();
+            check = true;
+        }
+        if(numberofdays.isEmpty()){
+
+            etTotalDays.setError("Enter Number of Days");
+            check = true;
+        }
+        if(!check){
+
+            Intent mIntent = new Intent(BookingActivity.this, FinalBookingActivity.class);
+
+            Bundle bundle = new Bundle();
+
+            bundle.putString(arrivaldate, "arrivalDate");
+            bundle.putString(numberofdays, "numberOfDays");
+
+            mIntent.putExtras(bundle);
+
+            startActivity(mIntent);
+        }
     }
 }
 

@@ -104,7 +104,6 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
-
         listingRate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,7 +176,7 @@ public class HomeListingDetail extends AppCompatActivity {
         listing_detail_Ratingbar= findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
         goToBooking_button = findViewById(R.id.goToBooking_button);
-        
+
 //        auth = FirebaseAuth.getInstance();
 //        database = FirebaseDatabase.getInstance();
 //        homeRef = database.getReference().child("homes");

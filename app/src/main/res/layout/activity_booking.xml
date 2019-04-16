@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:hint="Select your arrival date "
         android:id="@+id/tvHeading"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:textSize="30sp"/>
 
@@ -18,19 +18,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="open Calender"
+        android:textColorHint="@color/colorPrimaryDark"
         android:id="@+id/tvDate"
         android:layout_below="@id/tvHeading"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvArrivalDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvDate"
+        android:text=""
+        android:textSize="25sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/tvQuestion1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvDate"
+        android:layout_below="@id/tvArrivalDate"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:text="How many days do you want to stay?"
         android:textSize="25sp"
         />
@@ -40,9 +56,31 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvQuestion1"
+        android:layout_marginTop="30dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
         android:layout_centerHorizontal="true"
         android:hint="Enter days"
-        android:textSize="25sp"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:textAlignment="center"
+        />
+
+    <Button
+        android:id="@+id/continueBooking_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_corners_2"
+        android:text="Continue"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:onClick="continueBooking"
         />
 
 </RelativeLayout>
