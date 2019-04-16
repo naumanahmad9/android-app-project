@@ -10,4 +10,20 @@
         <item name="fontFamily">@font/arsenal</item>
     </style>
 
+    <!--<style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">-->
+        <!--<item name="android:textSize">24sp</item>-->
+        <!--<item name="android:textColor">@android:color/white</item>-->
+        <!--<item name="fontFamily">@font/arsenal</item>-->
+        <!--<item name="android:background">@color/colorPrimary</item>-->
+
+        <!--<item name="android:backgroundTint">@color/colorPrimary</item>-->
+    <!--</style>-->
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/arsenal</item>
+    </style>
+
 </resources>

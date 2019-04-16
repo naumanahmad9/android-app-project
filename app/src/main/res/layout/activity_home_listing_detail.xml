@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:scrollbarStyle="outsideOverlay"
-    android:orientation="vertical"
     tools:context=".activities.HomeListingDetail">
 
     <ScrollView
@@ -252,7 +251,7 @@
                 android:layout_below="@id/listing_detail_Ratingbar"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="65dp"
                 android:background="@drawable/rounded_corners"
                 android:backgroundTint="@color/colorPrimary"
                 android:text="Rate"
@@ -260,19 +259,22 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <android.support.design.widget.BottomNavigationView
-                android:id="@+id/bottomNavView_homeListingDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
-                app:itemBackground="@android:color/white"
-                app:menu="@menu/bottom_navigation_menu_booking" />
-
         </RelativeLayout>
 
     </ScrollView>
 
 
+    <Button
+        android:id="@+id/goToBooking_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_corners_2"
+        android:text="Request To Book"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
 
-</LinearLayout>
+</RelativeLayout>

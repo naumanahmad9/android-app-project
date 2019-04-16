@@ -35,7 +35,7 @@ public class HomeListingDetail extends AppCompatActivity {
     ImageView listing_detail_image, listing_host_image;
     TextView listing_detail_title, listing_detail_rate, listingHostName, listing_detail_location,
             listingGuests, listingRooms, listingBeds, listingBathrooms;
-    Button listingRate_btn;
+    Button listingRate_btn, goToBooking_button;
     RatingBar listing_detail_Ratingbar;
     float homeRating, average, totalRating;
     int count = 0;
@@ -47,8 +47,6 @@ public class HomeListingDetail extends AppCompatActivity {
         setContentView(R.layout.activity_home_listing_detail);
 
         init();
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNavView_homeListingDetail);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -163,30 +161,23 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
+        goToBooking_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeListingDetail.this, BookingActivity.class));
+            }
+        });
+
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.requestToBook:
-                            startActivity(new Intent(HomeListingDetail.this, BookingActivity.class));
-                            break;
-                    }
-                    return true;
-                };
-
-            };
     private void init() {
 
         listing_detail_title = findViewById(R.id.listing_detail_title);
         listing_detail_image = findViewById(R.id.listing_detail_image);
         listing_detail_Ratingbar= findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
-
-
-//
+        goToBooking_button = findViewById(R.id.goToBooking_button);
+        
 //        auth = FirebaseAuth.getInstance();
 //        database = FirebaseDatabase.getInstance();
 //        homeRef = database.getReference().child("homes");
