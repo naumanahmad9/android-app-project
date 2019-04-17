@@ -1,4 +1,4 @@
-package com.example.hpnotebook.letshome;
+package com.example.hpnotebook.letshome.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hpnotebook.letshome.R;
 import com.bumptech.glide.Glide;
+import com.example.hpnotebook.letshome.ListingViewHolder;
 import com.example.hpnotebook.letshome.activities.HomeListingDetail;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.google.firebase.database.DataSnapshot;
@@ -21,19 +23,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
+public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     private ArrayList<HomeListing> homeListings;
     private Context mContext;
     private FirebaseDatabase database;
     private DatabaseReference reference, listingRef;
 
-    public HomeListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
+    public smallHomeListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
         this.homeListings = homeListings;
         this.mContext = context;
     }
 
-    public HomeListingAdapter(ArrayList<HomeListing> homeListings) {
+    public smallHomeListingAdapter(ArrayList<HomeListing> homeListings) {
         this.homeListings = homeListings;
     }
 
@@ -57,7 +59,7 @@ public class HomeListingAdapter extends RecyclerView.Adapter<ListingViewHolder> 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
         if (listing.getListing_id() != null){
-             listingRef= reference;
+            listingRef= reference;
 
             listingRef.addValueEventListener(new ValueEventListener() {
                 @Override

@@ -46,8 +46,9 @@ public class ProfileFragment extends Fragment {
         profile_signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auth.signOut();
+
                 startActivity(new Intent(getContext(), LoginActivity.class));
+                auth.signOut();
 
             }
         });

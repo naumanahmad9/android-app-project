@@ -15,11 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.hpnotebook.letshome.ExprListingAdapter;
-import com.example.hpnotebook.letshome.HomeListingAdapter;
 import com.example.hpnotebook.letshome.R;
-import com.example.hpnotebook.letshome.RestListingAdapter;
 import com.example.hpnotebook.letshome.activities.HomesActivity;
+import com.example.hpnotebook.letshome.adapters.smallExprListingAdapter;
+import com.example.hpnotebook.letshome.adapters.smallHomeListingAdapter;
+import com.example.hpnotebook.letshome.adapters.smallRestListingAdapter;
 import com.example.hpnotebook.letshome.modelClasses.ExperienceListing;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.example.hpnotebook.letshome.modelClasses.RestaurantListing;
@@ -46,9 +46,9 @@ public class ExploreFragment extends Fragment  {
     ArrayList<HomeListing> homeListings;
     ArrayList<ExperienceListing> exprListings;
     ArrayList<RestaurantListing> restListings;
-    HomeListingAdapter homeAdapter;
-    ExprListingAdapter exprAdapter;
-    RestListingAdapter restAdapter;
+    smallHomeListingAdapter homeAdapter;
+    smallExprListingAdapter exprAdapter;
+    smallRestListingAdapter restAdapter;
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference homeListingRef, exprListingRef, restListingRef;
@@ -73,9 +73,9 @@ public class ExploreFragment extends Fragment  {
         restListings = new ArrayList<>();
         exprListings = new ArrayList<>();
 
-        homeAdapter = new HomeListingAdapter(homeListings,getContext());
-        exprAdapter = new ExprListingAdapter(exprListings,getContext());
-        restAdapter = new RestListingAdapter(restListings,getContext());
+        homeAdapter = new smallHomeListingAdapter(homeListings,getContext());
+        exprAdapter = new smallExprListingAdapter(exprListings,getContext());
+        restAdapter = new smallRestListingAdapter(restListings,getContext());
 
         homes_recyclerView_main.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         homes_recyclerView_main.setAdapter(homeAdapter);
