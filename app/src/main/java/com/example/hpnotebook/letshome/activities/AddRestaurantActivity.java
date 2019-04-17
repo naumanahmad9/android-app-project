@@ -47,7 +47,6 @@ public class AddRestaurantActivity extends AppCompatActivity {
     Button addRest_button;
     private int Pick_image = 1;
     private Uri imageUri;
-    ProgressDialog progressDialog;
 
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
@@ -58,6 +57,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
     StorageReference restImageRef;
     String restId;
     String key;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -47,7 +47,6 @@ public class AddExperienceActivity extends AppCompatActivity {
     Button addExpr_button;
     private int Pick_image = 1;
     private Uri imageUri;
-    ProgressDialog progressDialog;
 
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
@@ -58,6 +57,7 @@ public class AddExperienceActivity extends AppCompatActivity {
     StorageReference imageRef;
     String exprId;
     String key;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,6 @@ public class AddExperienceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_experience);
 
         init();
-
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -147,7 +146,6 @@ public class AddExperienceActivity extends AppCompatActivity {
                                         exprRatingRef.child(ratingKey).setValue(listingRating);
 
                                     }
-
                                     @Override
                                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                                     }
@@ -170,8 +168,11 @@ public class AddExperienceActivity extends AppCompatActivity {
                                     host_name, imageUrl);
                             exprRef.child(exprId).setValue(experienceListing);
                             exprRef.child(exprId).child("avgRating").setValue(expr_avgRating);
+
                             Toast.makeText(AddExperienceActivity.this, "Listing added", Toast.LENGTH_LONG).show();
+
                             startActivity(new Intent(AddExperienceActivity.this, MainActivity.class));
+
                             finish();
 
                         }

@@ -13,10 +13,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.activities.ExperiencesActivity;
 import com.example.hpnotebook.letshome.activities.HomesActivity;
+import com.example.hpnotebook.letshome.activities.RestaurantsActivity;
 import com.example.hpnotebook.letshome.adapters.smallExprListingAdapter;
 import com.example.hpnotebook.letshome.adapters.smallHomeListingAdapter;
 import com.example.hpnotebook.letshome.adapters.smallRestListingAdapter;
@@ -52,6 +55,7 @@ public class ExploreFragment extends Fragment  {
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference homeListingRef, exprListingRef, restListingRef;
+    Button button_homes, button_experiences, button_restaurants;
 
     public ExploreFragment() {
         // Required empty public constructor
@@ -63,11 +67,15 @@ public class ExploreFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
+        cvHome = view.findViewById(R.id.cvHome);
+
+        button_homes = view.findViewById(R.id.button_homes);
+        button_experiences = view.findViewById(R.id.button_experiences);
+        button_restaurants = view.findViewById(R.id.button_restaurants);
+
         homes_recyclerView_main = view.findViewById(R.id.homes_recyclerView_main);
         experiences_recyclerView_main  = view.findViewById(R.id.experiences_recyclerView_main);
         restaurants_recyclerView_main = view.findViewById(R.id.restaurants_recyclerView_main);
-
-        cvHome = view.findViewById(R.id.cvHome);
 
         homeListings = new ArrayList<>();
         restListings = new ArrayList<>();
@@ -86,7 +94,7 @@ public class ExploreFragment extends Fragment  {
         restaurants_recyclerView_main.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         restaurants_recyclerView_main.setAdapter(restAdapter);
 
-        auth=FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         homeListingRef = database.getReference("homes");
         exprListingRef = database.getReference("experiences");
@@ -95,87 +103,66 @@ public class ExploreFragment extends Fragment  {
         homeListingRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
                 homeListings.add(homeListing);
                 homeAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
         exprListingRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 ExperienceListing exprListing = dataSnapshot.getValue(ExperienceListing.class);
                 exprListings.add(exprListing);
                 exprAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
         restListingRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 RestaurantListing restListing = dataSnapshot.getValue(RestaurantListing.class);
                 restListings.add(restListing);
                 restAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
@@ -186,14 +173,35 @@ public class ExploreFragment extends Fragment  {
             }
         });
 
+        button_homes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), HomesActivity.class));
+            }
+        });
+
+        button_experiences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ExperiencesActivity.class));
+            }
+        });
+
+        button_restaurants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), RestaurantsActivity.class));
+            }
+        });
+
         return view;
+
     }
 
     private void replaceFragment(Fragment fragmentObject) {
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-
         transaction.replace(R.id.fragmentContainer_main, fragmentObject).addToBackStack( "tag" ).commit();
     }
 

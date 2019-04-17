@@ -21,7 +21,6 @@ import java.util.Objects;
 
 public class BookingActivity extends AppCompatActivity {
 
-
     private TextView mDisplayDate, tvArrivalDate;
     private EditText etTotalDays;
     private String numberofdays, arrivaldate;
@@ -99,4 +98,3 @@ public class BookingActivity extends AppCompatActivity {
         }
     }
 }
-

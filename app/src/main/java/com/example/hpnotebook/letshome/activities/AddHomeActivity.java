@@ -168,9 +168,13 @@ public class AddHomeActivity extends AppCompatActivity {
                                     host_name, guest_space, rooms, bedrooms, bathroom, imageUrl);
                             homeRef.child(homeId).setValue(homeListing);
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
+
                             progressDialog.dismiss();
+
                             Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
+
                             startActivity(new Intent(AddHomeActivity.this, MainActivity.class));
+
                             finish();
                         }
                     }

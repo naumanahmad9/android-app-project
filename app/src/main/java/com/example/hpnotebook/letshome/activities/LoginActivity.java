@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInOptions signInOptions;
     private int LOGIN=1;
     private boolean fieldCheck;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         init();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
 
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
@@ -181,9 +185,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void authUser(String email, String pass) {
+
+        progressDialog.show();
+
         auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                progressDialog.dismiss();
+
                 if(task.isSuccessful()){
                     user=auth.getCurrentUser();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));

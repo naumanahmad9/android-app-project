@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -39,6 +40,7 @@ public class SignupActivity extends AppCompatActivity {
     DatabaseReference userRef;
     FirebaseUser user;
     private boolean connectionCheck, fieldCheck;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         init();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
 
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
@@ -117,7 +121,6 @@ public class SignupActivity extends AppCompatActivity {
 
     private void testConnection() {
 
-
         connectionCheck = false;
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
@@ -127,7 +130,6 @@ public class SignupActivity extends AppCompatActivity {
                 capabilities = manager.getNetworkCapabilities(manager.getActiveNetwork());
             }
         }
-
 
         if (connectionCheck && info != null && info.isConnected()) {
 
@@ -169,9 +171,14 @@ public class SignupActivity extends AppCompatActivity {
 
     private void authUser(final String name, final String email, final String pass) {
 
+        progressDialog.show();
+
         auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                progressDialog.dismiss();
+
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
                     signupUser(name, email, pass, user.getUid());

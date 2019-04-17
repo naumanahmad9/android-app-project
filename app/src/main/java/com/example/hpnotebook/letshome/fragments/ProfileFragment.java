@@ -1,6 +1,5 @@
 package com.example.hpnotebook.letshome.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,6 +34,7 @@ public class ProfileFragment extends Fragment {
 
         becomeHost = view.findViewById(R.id.profile_becomeHost);
         profile_signout = view.findViewById(R.id.profile_signout);
+        auth = FirebaseAuth.getInstance();
 
         becomeHost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +47,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getContext(), LoginActivity.class));
                 auth.signOut();
-
+                startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
         return view;
