@@ -41,6 +41,7 @@ public class HomeListingDetail extends AppCompatActivity {
     int count = 0;
     String homeListingId;
     private boolean mProcessLike = false;
+    HomeListing homeListing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,12 @@ public class HomeListingDetail extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        homeRef = database.getReference().child("homes");
+
         database = FirebaseDatabase.getInstance();
         homeRef = database.getReference("homes").child(homeListingId);
         viewRef = database.getReference("homes").child(homeListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
-        likeRef = userRef.child("likes");
+        likeRef = database.getReference("Likes");
 
         homeRef.keepSynced(true);
         viewRef.keepSynced(true);
@@ -72,7 +73,10 @@ public class HomeListingDetail extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
+                //HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
+                homeListing= dataSnapshot.getValue(HomeListing.class);
+
+
 
                 listing_detail_title.setText(homeListing.getListing_title());
 
@@ -173,6 +177,8 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
+
+
         listing_detail_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,7 +198,10 @@ public class HomeListingDetail extends AppCompatActivity {
 
                             } else {
 
-                                likeRef.child(homeListingId).setValue(homeListingId);
+                                //HomeListing data=dataSnapshot.getValue(HomeListing.class);
+                                Log.e("Home Deatail","dataa "+homeListing);
+                                Log.e("Home Deatail","ref "+likeRef);
+                                likeRef.child(homeListingId).setValue(homeListing);
                                 listing_detail_like.setImageResource(R.drawable.icon_liked);
                                 mProcessLike = false;
                             }

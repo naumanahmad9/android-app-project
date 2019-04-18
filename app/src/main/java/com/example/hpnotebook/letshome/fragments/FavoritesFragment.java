@@ -55,7 +55,7 @@ public class FavoritesFragment extends Fragment {
 
         auth=FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        homeListingRef=database.getReference("homes");
+        homeListingRef=database.getReference("Likes");
 
         homeListingRef.addChildEventListener(new ChildEventListener() {
             @Override

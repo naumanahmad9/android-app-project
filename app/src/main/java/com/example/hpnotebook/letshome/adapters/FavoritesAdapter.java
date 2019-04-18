@@ -51,12 +51,10 @@ public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
 
-
         final HomeListing listing = homeListings.get(i);
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        likesReference = database.getReference().child("users").child(auth.getCurrentUser().getUid()).child("likes").child(listing.getListing_id());
-
+        likesReference = database.getReference().child("Likes");
 
         // reference = database.getReference().child("homes").child(likesReference);
 
