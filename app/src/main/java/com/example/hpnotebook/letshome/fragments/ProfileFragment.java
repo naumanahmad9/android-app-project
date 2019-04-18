@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.activities.AboutUsActivity;
 import com.example.hpnotebook.letshome.activities.LoginActivity;
 import com.example.hpnotebook.letshome.activities.SelectListingTypeActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,9 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class ProfileFragment extends Fragment {
 
-    TextView becomeHost, profile_signout;
+    TextView becomeHost, goto_aboutus, profile_signout;
     FirebaseAuth auth;
-
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -33,13 +33,23 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         becomeHost = view.findViewById(R.id.profile_becomeHost);
+        goto_aboutus = view.findViewById(R.id.goto_aboutus);
         profile_signout = view.findViewById(R.id.profile_signout);
         auth = FirebaseAuth.getInstance();
 
         becomeHost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(getContext(), SelectListingTypeActivity.class));
+            }
+        });
+
+        goto_aboutus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), AboutUsActivity.class));
             }
         });
 
@@ -52,7 +62,9 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
         return view;
+
     }
 
 }

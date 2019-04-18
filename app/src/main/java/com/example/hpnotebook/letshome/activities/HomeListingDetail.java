@@ -31,8 +31,8 @@ public class HomeListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference homeRef, userRef, viewRef, mDatabaseLike;
-    ImageView listing_detail_image, listing_host_image, listing_detail_likeButton;
+    DatabaseReference homeRef, userRef, viewRef, mDatabaseLike, likeRef;
+    ImageView listing_detail_image, listing_host_image, listing_detail_like;
     TextView listing_detail_title, listing_detail_rate, listingHostName, listing_detail_location,
             listingGuests, listingRooms, listingBeds, listingBathrooms;
     Button listingRate_btn, goToBooking_button;
@@ -62,8 +62,13 @@ public class HomeListingDetail extends AppCompatActivity {
         viewRef = database.getReference("homes").child(homeListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         mDatabaseLike = database.getReference().child("likes");
+        likeRef = userRef.child("likes");
 
+        homeRef.keepSynced(true);
+        viewRef.keepSynced(true);
+        userRef.keepSynced(true);
         mDatabaseLike.keepSynced(true);
+        likeRef.keepSynced(true);
 
         homeRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -116,7 +121,7 @@ public class HomeListingDetail extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                       // Log.e("Detail ","user "+userRef);
+                        // Log.e("Detail ","user "+userRef);
 
                         User user = dataSnapshot.getValue(User.class);
 
@@ -170,13 +175,12 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
-        listing_detail_likeButton.setOnClickListener(new View.OnClickListener() {
+        /*
+        listing_detail_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mProcessLike = true;
-
-
 
                     mDatabaseLike.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -200,6 +204,42 @@ public class HomeListingDetail extends AppCompatActivity {
 
             }
         });
+        */
+
+        listing_detail_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mProcessLike = true;
+
+                likeRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (mProcessLike) {
+                            if (dataSnapshot.hasChild(homeListingId)) {
+
+                                likeRef.child(homeListingId).removeValue();
+                                listing_detail_like.setImageResource(R.drawable.heart);
+                                mProcessLike = false;
+                                
+                            } else {
+
+                                likeRef.child(homeListingId).setValue("liked listing");
+                                listing_detail_like.setImageResource(R.drawable.icon_liked);
+                                mProcessLike = false;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
 
     }
 
@@ -207,9 +247,9 @@ public class HomeListingDetail extends AppCompatActivity {
 
         listing_detail_title = findViewById(R.id.listing_detail_title);
         listing_detail_image = findViewById(R.id.listing_detail_image);
-        listing_detail_Ratingbar= findViewById(R.id.listing_detail_Ratingbar);
+        listing_detail_Ratingbar = findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
-        listing_detail_likeButton = findViewById(R.id.listing_detail_likeButton);
+        listing_detail_like = findViewById(R.id.listing_detail_like);
         goToBooking_button = findViewById(R.id.goToBooking_button);
 
 //        auth = FirebaseAuth.getInstance();
@@ -221,4 +261,5 @@ public class HomeListingDetail extends AppCompatActivity {
 //        userRef = database.getReference("homes").child(auth.getCurrentUser().getUid());
 
     }
+
 }
