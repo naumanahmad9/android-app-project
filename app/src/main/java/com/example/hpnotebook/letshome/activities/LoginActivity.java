@@ -222,4 +222,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, SignupActivity.class));
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
+    @Override
+    public void onBackPressed() { }
 }

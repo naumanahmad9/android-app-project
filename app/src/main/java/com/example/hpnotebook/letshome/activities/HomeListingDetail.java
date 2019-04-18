@@ -31,8 +31,8 @@ public class HomeListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference homeRef, userRef, viewRef;
-    ImageView listing_detail_image, listing_host_image;
+    DatabaseReference homeRef, userRef, viewRef, mDatabaseLike;
+    ImageView listing_detail_image, listing_host_image, listing_detail_likeButton;
     TextView listing_detail_title, listing_detail_rate, listingHostName, listing_detail_location,
             listingGuests, listingRooms, listingBeds, listingBathrooms;
     Button listingRate_btn, goToBooking_button;
@@ -40,6 +40,7 @@ public class HomeListingDetail extends AppCompatActivity {
     float homeRating, average, totalRating;
     int count = 0;
     String homeListingId;
+    private boolean mProcessLike = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,9 @@ public class HomeListingDetail extends AppCompatActivity {
         homeRef = database.getReference("homes").child(homeListingId);
         viewRef = database.getReference("homes").child(homeListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
+        mDatabaseLike = database.getReference().child("likes");
 
+        mDatabaseLike.keepSynced(true);
 
         homeRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,6 +170,37 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
+        listing_detail_likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mProcessLike = true;
+
+
+
+                    mDatabaseLike.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            if(mProcessLike) {
+                                if (dataSnapshot.child(homeListingId).hasChild(auth.getCurrentUser().getUid())) {
+
+                                } else {
+                                    mDatabaseLike.child(homeListingId).child(auth.getCurrentUser().getUid()).setValue("test value");
+                                    listing_detail_likeButton.setImageResource(R.drawable.icon_liked);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+            }
+        });
+
     }
 
     private void init() {
@@ -175,6 +209,7 @@ public class HomeListingDetail extends AppCompatActivity {
         listing_detail_image = findViewById(R.id.listing_detail_image);
         listing_detail_Ratingbar= findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
+        listing_detail_likeButton = findViewById(R.id.listing_detail_likeButton);
         goToBooking_button = findViewById(R.id.goToBooking_button);
 
 //        auth = FirebaseAuth.getInstance();

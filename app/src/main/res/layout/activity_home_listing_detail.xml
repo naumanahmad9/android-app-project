@@ -23,6 +23,14 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/scenery_2_wide" />
 
+            <ImageView
+                android:id="@+id/listing_detail_likeButton"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_alignParentEnd="true"
+                android:padding="12dp"
+                android:src="@drawable/heart"/>
+
             <TextView
                 android:id="@+id/listing_detail_title"
                 android:layout_width="wrap_content"
@@ -95,7 +103,6 @@
                 android:layout_height="75dp"
                 android:layout_alignBaseline="@id/text_listing_detail_rate"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
                 android:src="@drawable/host_picture"
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="2dp" />
