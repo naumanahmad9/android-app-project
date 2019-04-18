@@ -61,13 +61,11 @@ public class HomeListingDetail extends AppCompatActivity {
         homeRef = database.getReference("homes").child(homeListingId);
         viewRef = database.getReference("homes").child(homeListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
-        mDatabaseLike = database.getReference().child("likes");
         likeRef = userRef.child("likes");
 
         homeRef.keepSynced(true);
         viewRef.keepSynced(true);
         userRef.keepSynced(true);
-        mDatabaseLike.keepSynced(true);
         likeRef.keepSynced(true);
 
         homeRef.addValueEventListener(new ValueEventListener() {
@@ -175,37 +173,6 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
-        /*
-        listing_detail_like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                mProcessLike = true;
-
-                    mDatabaseLike.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                            if(mProcessLike) {
-                                if (dataSnapshot.child(homeListingId).hasChild(auth.getCurrentUser().getUid())) {
-
-                                } else {
-                                    mDatabaseLike.child(homeListingId).child(auth.getCurrentUser().getUid()).setValue("test value");
-                                    listing_detail_likeButton.setImageResource(R.drawable.icon_liked);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-
-            }
-        });
-        */
-
         listing_detail_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,10 +189,10 @@ public class HomeListingDetail extends AppCompatActivity {
                                 likeRef.child(homeListingId).removeValue();
                                 listing_detail_like.setImageResource(R.drawable.heart);
                                 mProcessLike = false;
-                                
+
                             } else {
 
-                                likeRef.child(homeListingId).setValue("liked listing");
+                                likeRef.child(homeListingId).setValue(homeListingId);
                                 listing_detail_like.setImageResource(R.drawable.icon_liked);
                                 mProcessLike = false;
                             }
@@ -251,15 +218,6 @@ public class HomeListingDetail extends AppCompatActivity {
         listingRate_btn = findViewById(R.id.listingRate_btn);
         listing_detail_like = findViewById(R.id.listing_detail_like);
         goToBooking_button = findViewById(R.id.goToBooking_button);
-
-//        auth = FirebaseAuth.getInstance();
-//        database = FirebaseDatabase.getInstance();
-//        homeRef = database.getReference().child("homes");
-//        database = FirebaseDatabase.getInstance();
-//        homeRef = database.getReference("homes").child(homeListingId);
-//        viewRef = database.getReference("homes").child(homeListingId).child("views");
-//        userRef = database.getReference("homes").child(auth.getCurrentUser().getUid());
-
     }
 
 }

@@ -5,16 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.hpnotebook.letshome.R;
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.letshome.ListingViewHolder;
+import com.example.hpnotebook.letshome.R;
 import com.example.hpnotebook.letshome.activities.HomeListingDetail;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,19 +23,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
+public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     private ArrayList<HomeListing> homeListings;
     private Context mContext;
+    FirebaseAuth auth;
     private FirebaseDatabase database;
-    private DatabaseReference reference, listingRef;
+    private DatabaseReference likesReference, reference;
 
-    public smallHomeListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
+    public FavoritesAdapter(ArrayList<HomeListing> homeListings, Context context) {
         this.homeListings = homeListings;
         this.mContext = context;
     }
 
-    public smallHomeListingAdapter(ArrayList<HomeListing> homeListings) {
+    public FavoritesAdapter(ArrayList<HomeListing> homeListings) {
         this.homeListings = homeListings;
     }
 
@@ -50,9 +51,14 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
     @Override
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
 
+
         final HomeListing listing = homeListings.get(i);
+        auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("homes").child(listing.getListing_id());
+        likesReference = database.getReference().child("users").child(auth.getCurrentUser().getUid()).child("likes").child(listing.getListing_id());
+
+
+        // reference = database.getReference().child("homes").child(likesReference);
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
@@ -60,9 +66,8 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
         if (listing.getListing_id() != null){
-            listingRef= reference;
 
-            listingRef.addValueEventListener(new ValueEventListener() {
+            likesReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -102,12 +107,6 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
     @Override
     public int getItemCount() {
         return homeListings.size();
-    }
-
-    public void setFilter(ArrayList<HomeListing> filter) {
-        homeListings = new ArrayList<>();
-        homeListings.addAll(filter);
-        notifyDataSetChanged();
     }
 
 }
