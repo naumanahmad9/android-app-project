@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AboutUsActivity"></activity>
+        <activity android:name=".activities.AboutUsActivity" />
         <activity android:name=".activities.FinalBookingActivity" />
         <activity android:name=".activities.RestaurantsActivity" />
         <activity android:name=".activities.ExperiencesActivity" />
@@ -45,6 +45,7 @@
         <activity android:name=".activities.TickMarkActivity" />
         <activity android:name=".activities.RestListingDetail" />
         <activity android:name=".activities.ExprListingDetail" />
+        <activity android:name=".activities.OnboardingActivity"></activity>
     </application>
 
 </manifest>
