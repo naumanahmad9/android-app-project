@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-/*
+
 public class OnboardingViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer [] images = {R.drawable.onboarding_layout_1};
+    private Integer [] images = {R.drawable.onboarding_image_1, R.drawable.onboarding_image_2, R.drawable.onboarding_image_3, R.drawable.onboarding_image_4};
 
     public OnboardingViewPagerAdapter(Context context) {
         this.context = context;
@@ -33,7 +33,7 @@ public class OnboardingViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.custom_layout, null);
+        View view = layoutInflater.inflate(R.layout.onboarding_screens_layout, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
 
@@ -49,4 +49,3 @@ public class OnboardingViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
     }
 }
-*/
