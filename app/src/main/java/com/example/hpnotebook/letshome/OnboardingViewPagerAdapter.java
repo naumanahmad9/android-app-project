@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
+/*
 public class OnboardingViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer [] images = {R.drawable.img1,R.drawable.img2,R.drawable.img_post1,R.drawable.img_post2};
+    private Integer [] images = {R.drawable.onboarding_layout_1};
 
     public OnboardingViewPagerAdapter(Context context) {
         this.context = context;
@@ -49,3 +49,4 @@ public class OnboardingViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
     }
 }
+*/
