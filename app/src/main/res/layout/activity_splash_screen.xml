@@ -16,12 +16,7 @@
         <!--app:lottie_autoPlay="true"-->
         <!--/>-->
     <!---->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/picture_onboarding_1"
-        android:foreground="#b97b005c"
-        android:scaleType="fitXY"/>
+
 
     <ImageView
         android:layout_width="170dp"
