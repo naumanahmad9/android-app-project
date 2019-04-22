@@ -2,16 +2,22 @@ package com.example.hpnotebook.letshome.modelClasses;
 
 public class User {
 
-    String name;
-    String uid;
-    String email;
-    String pass;
+    private String name, uid, email, pass, imageURL, status;
 
     public User(String name, String uid, String email, String pass) {
         this.name = name;
         this.uid = uid;
         this.email = email;
         this.pass = pass;
+    }
+
+    public User(String name, String uid, String email, String pass, String imageURL, String status) {
+        this.name = name;
+        this.uid = uid;
+        this.email = email;
+        this.pass = pass;
+        this.imageURL = imageURL;
+        this.status = status;
     }
 
     public User() {
@@ -47,5 +53,21 @@ public class User {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
