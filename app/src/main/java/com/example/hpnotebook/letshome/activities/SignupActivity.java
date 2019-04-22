@@ -94,6 +94,7 @@ public class SignupActivity extends AppCompatActivity {
                 String name = signup_name.getText().toString();
                 String email = signup_email.getText().toString();
                 String password = signup_password.getText().toString();
+                String imageUrl = "default";
 
                 if(name.isEmpty()){
                     signup_name.setError("This field is empty");
@@ -112,7 +113,7 @@ public class SignupActivity extends AppCompatActivity {
                     fieldCheck = true;
                 }
                 if(!fieldCheck){
-                    authUser(name, email, password);
+                    authUser(name, email, password, imageUrl);
                 }
 
             }
@@ -169,7 +170,7 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    private void authUser(final String name, final String email, final String pass) {
+    private void authUser(final String name, final String email, final String pass, final String imageURL) {
 
         progressDialog.show();
 
@@ -181,7 +182,8 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
-                    signupUser(name, email, pass, user.getUid());
+                    signupUser(name, email, pass, user.getUid(), imageURL);
+
 
                 } else {
                     Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
@@ -190,9 +192,9 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void signupUser(String name, String email, String pass, String uid) {
+    private void signupUser(String name, String email, String pass, String uid, String imageURL ) {
 
-        User user = new User(name, uid, email, pass);
+        User user = new User(name, uid, email, pass, imageURL);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(this, MainActivity.class));
     }

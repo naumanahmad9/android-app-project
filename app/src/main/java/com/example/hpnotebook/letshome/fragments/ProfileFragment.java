@@ -28,13 +28,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
 
-    TextView profile_name, becomeHost, goto_aboutus, profile_signout;
-    ImageView profile_pic;
+    TextView profile_name, profile_email, becomeHost, goto_aboutus, profile_signout;
+    CircleImageView  profile_pic;
     FirebaseAuth auth;
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -48,12 +50,13 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         profile_name = view.findViewById(R.id.profile_name);
+        profile_email = view.findViewById(R.id.profile_email);
         profile_pic = view.findViewById(R.id.profile_pic);
         becomeHost = view.findViewById(R.id.profile_becomeHost);
         goto_aboutus = view.findViewById(R.id.goto_aboutus);
@@ -63,16 +66,21 @@ public class ProfileFragment extends Fragment {
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("users").child(fuser.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 User user = dataSnapshot.getValue(User.class);
+
                 profile_name.setText(user.getName());
+                profile_email.setText(user.getEmail());
+
                 if (user.getImageURL().equals("default")){
-                    profile_pic.setImageResource(R.mipmap.ic_launcher);
-                } else {
+                    profile_pic.setImageResource(R.drawable.user_pic_default);
+                }
+                else {
                     Glide.with(getContext()).load(user.getImageURL()).into(profile_pic);
                 }
             }

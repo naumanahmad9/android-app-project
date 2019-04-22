@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.Notifications.Token;
 import com.example.hpnotebook.letshome.adapters.UserAdapter;
 import com.example.hpnotebook.letshome.modelClasses.Chatlist;
 import com.example.hpnotebook.letshome.modelClasses.User;
@@ -47,9 +48,9 @@ public class MessagesFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chats, container, false);
+        View view = inflater.inflate(R.layout.fragment_messages, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

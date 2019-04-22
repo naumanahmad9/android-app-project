@@ -11,6 +11,9 @@ public class User {
         this.pass = pass;
     }
 
+    public User() {
+    }
+
     public User(String name, String uid, String email, String pass, String imageURL, String status) {
         this.name = name;
         this.uid = uid;
@@ -20,7 +23,13 @@ public class User {
         this.status = status;
     }
 
-    public User() {
+
+    public User(String name, String uid, String email, String pass, String imageURL) {
+        this.name = name;
+        this.uid = uid;
+        this.email = email;
+        this.pass = pass;
+        this.imageURL = imageURL;
     }
 
     public String getName() {
