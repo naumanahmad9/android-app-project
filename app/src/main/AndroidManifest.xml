@@ -44,7 +44,8 @@
 
         <activity android:name=".activities.RestListingDetail" />
         <activity android:name=".activities.ExprListingDetail" />
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.MessageActivity"></activity>
     </application>
 
 </manifest>
