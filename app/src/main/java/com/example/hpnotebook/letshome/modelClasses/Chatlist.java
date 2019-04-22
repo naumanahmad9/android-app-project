@@ -1,6 +1,7 @@
 package com.example.hpnotebook.letshome.modelClasses;
 
 public class Chatlist {
+
     public String id;
 
     public Chatlist(String id) {
@@ -17,4 +18,5 @@ public class Chatlist {
     public void setId(String id) {
         this.id = id;
     }
+
 }

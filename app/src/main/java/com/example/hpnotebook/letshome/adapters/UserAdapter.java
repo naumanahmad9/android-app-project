@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.letshome.activities.MessageActivity;
+import com.example.hpnotebook.letshome.modelClasses.Chat;
 import com.example.hpnotebook.letshome.modelClasses.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
