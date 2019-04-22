@@ -3,7 +3,6 @@ package com.example.hpnotebook.letshome.activities;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +30,8 @@ public class HomeListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference homeRef, userRef, viewRef, mDatabaseLike, likeRef;
-    ImageView listing_detail_image, listing_host_image, listing_detail_like;
+    DatabaseReference homeRef, userRef, viewRef, favoritesRef;
+    ImageView listing_detail_image, listing_host_image, listing_detail_fav;
     TextView listing_detail_title, listing_detail_rate, listingHostName, listing_detail_location,
             listingGuests, listingRooms, listingBeds, listingBathrooms;
     Button listingRate_btn, goToBooking_button;
@@ -40,7 +39,7 @@ public class HomeListingDetail extends AppCompatActivity {
     float homeRating, average, totalRating;
     int count = 0;
     String homeListingId;
-    private boolean mProcessLike = false;
+    private boolean mProcessFavorite = false;
     HomeListing homeListing;
 
     @Override
@@ -62,12 +61,12 @@ public class HomeListingDetail extends AppCompatActivity {
         homeRef = database.getReference("homes").child(homeListingId);
         viewRef = database.getReference("homes").child(homeListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
-        likeRef = database.getReference("Likes");
+        favoritesRef = database.getReference("favorites");
 
         homeRef.keepSynced(true);
         viewRef.keepSynced(true);
         userRef.keepSynced(true);
-        likeRef.keepSynced(true);
+        favoritesRef.keepSynced(true);
 
         homeRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,8 +74,6 @@ public class HomeListingDetail extends AppCompatActivity {
 
                 //HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
                 homeListing= dataSnapshot.getValue(HomeListing.class);
-
-
 
                 listing_detail_title.setText(homeListing.getListing_title());
 
@@ -177,33 +174,31 @@ public class HomeListingDetail extends AppCompatActivity {
             }
         });
 
-
-
-        listing_detail_like.setOnClickListener(new View.OnClickListener() {
+        listing_detail_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mProcessLike = true;
+                mProcessFavorite = true;
 
-                likeRef.addValueEventListener(new ValueEventListener() {
+                favoritesRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        if (mProcessLike) {
+                        if (mProcessFavorite) {
                             if (dataSnapshot.hasChild(homeListingId)) {
 
-                                likeRef.child(homeListingId).removeValue();
-                                listing_detail_like.setImageResource(R.drawable.heart);
-                                mProcessLike = false;
+                                favoritesRef.child(homeListingId).removeValue();
+                                listing_detail_fav.setImageResource(R.drawable.heart);
+                                mProcessFavorite = false;
 
                             } else {
 
                                 //HomeListing data=dataSnapshot.getValue(HomeListing.class);
                                 Log.e("Home Deatail","dataa "+homeListing);
-                                Log.e("Home Deatail","ref "+likeRef);
-                                likeRef.child(homeListingId).setValue(homeListing);
-                                listing_detail_like.setImageResource(R.drawable.icon_liked);
-                                mProcessLike = false;
+                                Log.e("Home Deatail","ref "+favoritesRef);
+                                favoritesRef.child(homeListingId).setValue(homeListing);
+                                listing_detail_fav.setImageResource(R.drawable.icon_liked);
+                                mProcessFavorite = false;
                             }
                         }
                     }
@@ -225,7 +220,7 @@ public class HomeListingDetail extends AppCompatActivity {
         listing_detail_image = findViewById(R.id.listing_detail_image);
         listing_detail_Ratingbar = findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
-        listing_detail_like = findViewById(R.id.listing_detail_like);
+        listing_detail_fav = findViewById(R.id.listing_detail_fav);
         goToBooking_button = findViewById(R.id.goToBooking_button);
     }
 

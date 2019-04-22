@@ -29,7 +29,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
     private Context mContext;
     FirebaseAuth auth;
     private FirebaseDatabase database;
-    private DatabaseReference likesReference, reference;
+    private DatabaseReference favoritesReference;
 
     public FavoritesAdapter(ArrayList<HomeListing> homeListings, Context context) {
         this.homeListings = homeListings;
@@ -54,9 +54,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
         final HomeListing listing = homeListings.get(i);
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        likesReference = database.getReference().child("Likes");
-
-        // reference = database.getReference().child("homes").child(likesReference);
+        favoritesReference = database.getReference().child("favorites");
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
@@ -65,7 +63,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
         if (listing.getListing_id() != null){
 
-            likesReference.addValueEventListener(new ValueEventListener() {
+            favoritesReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
