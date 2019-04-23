@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hpnotebook.letshome.R;
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.letshome.ListingViewHolder;
 import com.example.hpnotebook.letshome.activities.HomeListingDetail;

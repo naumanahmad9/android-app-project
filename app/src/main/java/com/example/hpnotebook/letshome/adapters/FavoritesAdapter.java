@@ -61,7 +61,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
-        if (listing.getListing_id() != null){
+        if (listing.getHome_listing_id() != null){
 
             favoritesReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -91,7 +91,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<ListingViewHolder> {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("homeListingId", listing.getListing_id());
+                bundle.putString("homeListingId", listing.getHome_listing_id());
                 Intent mIntent = new Intent(mContext, HomeListingDetail.class);
                 mIntent.putExtras(bundle);
                 mContext.startActivity(mIntent);
