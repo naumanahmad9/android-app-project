@@ -18,7 +18,7 @@
         android:outlineSpotShadowColor="@color/colorAccent"
         app:iconifiedByDefault="false"
         app:queryHint="Search"
-        android:visibility="visible" >
+        android:focusableInTouchMode="false" >
 
     </android.support.v7.widget.SearchView>
 

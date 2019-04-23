@@ -52,7 +52,7 @@ public class AddExperienceActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     FirebaseUser user;
     float expr_avgRating;
-    DatabaseReference exprRef, exprRatingRef;
+    DatabaseReference ref, exprRatingRef;
     FirebaseStorage storage;
     StorageReference imageRef;
     String exprId;
@@ -70,7 +70,7 @@ public class AddExperienceActivity extends AppCompatActivity {
         if (bundle != null) {
             exprId = bundle.getString("exprId");
 
-            exprRef.child(exprId).addValueEventListener(new ValueEventListener() {
+            ref.child(exprId).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -106,7 +106,7 @@ public class AddExperienceActivity extends AppCompatActivity {
 
                 key = exprId;
                 if (exprId == null) {
-                    key = exprRef.push().getKey();
+                    key = ref.push().getKey();
                 }
                 imageRef = storage.getReference("experience listing images/" + key);
 
@@ -140,7 +140,7 @@ public class AddExperienceActivity extends AppCompatActivity {
                         if ((task.isSuccessful())) {
                             String imageUrl = task.getResult().toString();
 
-                            exprRatingRef = exprRef.child(exprId).child("exprRating");
+                            exprRatingRef = ref.child(exprId).child("exprRating");
 
                             if (exprRatingRef != null) {
                                 exprRatingRef.addChildEventListener(new ChildEventListener() {
@@ -172,8 +172,8 @@ public class AddExperienceActivity extends AppCompatActivity {
 
                             ExperienceListing experienceListing = new ExperienceListing(exprId, userId, title, location, pricing,
                                     host_name, imageUrl);
-                            exprRef.child(exprId).setValue(experienceListing);
-                            exprRef.child(exprId).child("avgRating").setValue(expr_avgRating);
+                            ref.child(exprId).setValue(experienceListing);
+                            ref.child(exprId).child("avgRating").setValue(expr_avgRating);
 
                             pd.dismiss();
 
@@ -224,7 +224,8 @@ public class AddExperienceActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        exprRef = firebaseDatabase.getReference("experiences");
+        // exprRef = firebaseDatabase.getReference("experiences");
+        ref = firebaseDatabase.getReference("listings");
 
     }
 

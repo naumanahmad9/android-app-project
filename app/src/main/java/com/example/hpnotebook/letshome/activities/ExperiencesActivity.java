@@ -47,14 +47,16 @@ public class ExperiencesActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        exprListingRef=database.getReference("experiences");
+        exprListingRef=database.getReference("listings");
 
         exprListingRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 ExperienceListing experienceListing = dataSnapshot.getValue(ExperienceListing.class);
+
+                if(experienceListing.getExpr_listing_id() != null){
                 exprListings.add(experienceListing);
-                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged(); }
             }
 
             @Override

@@ -181,7 +181,7 @@ public class ExploreFragment extends Fragment  {
                 startActivity(new Intent(getContext(), ExperiencesActivity.class));
             }
         });
-        
+
         cvRest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -51,7 +51,7 @@ public class AddHomeActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     FirebaseUser user;
     float home_avgRating;
-    DatabaseReference homeRef, homeRatingRef;
+    DatabaseReference ref, homeRatingRef;
     FirebaseStorage storage;
     StorageReference imageRef;
     String homeId;
@@ -68,7 +68,7 @@ public class AddHomeActivity extends AppCompatActivity {
         if(bundle != null) {
             homeId = bundle.getString("homeId");
 
-            homeRef.child(homeId).addValueEventListener(new ValueEventListener() {
+            ref.child(homeId).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -108,7 +108,7 @@ public class AddHomeActivity extends AppCompatActivity {
                 key=homeId;
 
                 if (homeId == null) {
-                    key = homeRef.push().getKey();
+                    key = ref.push().getKey();
                 }
 
                 imageRef = storage.getReference("home listing images/" + key);
@@ -144,7 +144,7 @@ public class AddHomeActivity extends AppCompatActivity {
                         if ((task.isSuccessful())) {
                             String imageUrl = task.getResult().toString();
 
-                            homeRatingRef=homeRef.child(homeId).child("homeRating");
+                            homeRatingRef=ref.child(homeId).child("homeRating");
 
                             if (homeRatingRef!=null) {
                                 homeRatingRef.addChildEventListener(new ChildEventListener() {
@@ -173,8 +173,8 @@ public class AddHomeActivity extends AppCompatActivity {
 
                             HomeListing homeListing = new HomeListing(homeId, userId, title, location, pricing,
                                     host_name, guest_space, rooms, bedrooms, bathroom, imageUrl);
-                            homeRef.child(homeId).setValue(homeListing);
-                            homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
+                            ref.child(homeId).setValue(homeListing);
+                            ref.child(homeId).child("avgRating").setValue(home_avgRating);
 
                             pd.dismiss();
 
@@ -224,7 +224,8 @@ public class AddHomeActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        homeRef = firebaseDatabase.getReference("homes");
+        // homeRef = firebaseDatabase.getReference("homes");
+        ref = firebaseDatabase.getReference("listings");
 
     }
 

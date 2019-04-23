@@ -45,14 +45,17 @@ public class HomesActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        homeListingRef=database.getReference("homes");
+        homeListingRef=database.getReference("listings");
 
         homeListingRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
+
+                if(homeListing.getHome_listing_id() != null){
                 homeListings.add(homeListing);
                 adapter.notifyDataSetChanged();
+                }
             }
 
             @Override
