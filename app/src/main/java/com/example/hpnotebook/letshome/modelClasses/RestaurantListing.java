@@ -1,14 +1,14 @@
 package com.example.hpnotebook.letshome.modelClasses;
 
 public class RestaurantListing {
-    private String listing_id, listing_userId, listing_title, listing_location, listing_pricing, listing_host_name,
+    private String rest_listing_id, listing_userId, listing_title, listing_location, listing_pricing, listing_host_name,
                    listing_image;
     private float listing_average_rating;
 
-    public RestaurantListing(String listing_id, String listing_userId, String listing_title, String listing_location,
+    public RestaurantListing(String rest_listing_id, String listing_userId, String listing_title, String listing_location,
                              String listing_pricing, String listing_host_name, String listing_image) {
 
-        this.listing_id = listing_id;
+        this.rest_listing_id = rest_listing_id;
         this.listing_userId = listing_userId;
         this.listing_title = listing_title;
         this.listing_location = listing_location;
@@ -20,12 +20,12 @@ public class RestaurantListing {
     public RestaurantListing() {
     }
 
-    public String getListing_id() {
-        return listing_id;
+    public String getRest_listing_id() {
+        return rest_listing_id;
     }
 
-    public void setListing_id(String listing_id) {
-        this.listing_id = listing_id;
+    public void setRest_listing_id(String rest_listing_id) {
+        this.rest_listing_id = rest_listing_id;
     }
 
     public String getListing_userId() {

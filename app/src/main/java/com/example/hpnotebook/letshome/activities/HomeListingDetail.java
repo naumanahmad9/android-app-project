@@ -40,7 +40,7 @@ public class HomeListingDetail extends AppCompatActivity {
     RatingBar listing_detail_Ratingbar;
     float homeRating, average, totalRating;
     int count = 0;
-    private String homeListingId;
+    private String homeListingId, listing_userId;
     private boolean mProcessFavorite = false;
      HomeListing homeListing;
 
@@ -76,6 +76,8 @@ public class HomeListingDetail extends AppCompatActivity {
 
                 //HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
                 homeListing= dataSnapshot.getValue(HomeListing.class);
+
+                listing_userId = homeListing.getListing_userId();
 
                 listing_detail_title.setText(homeListing.getListing_title());
 
@@ -177,7 +179,10 @@ public class HomeListingDetail extends AppCompatActivity {
 
                 Bundle mBundle = new Bundle();
                 mBundle.putString("homeListingId", homeListingId);
+                mBundle.putString("listing_userId",listing_userId);
                 mBundle.putString("listing_detail_title", listing_detail_title.getText().toString());
+
+                mIntent.putExtras(mBundle);
 
                 startActivity(mIntent);
             }

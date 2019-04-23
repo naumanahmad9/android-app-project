@@ -27,7 +27,7 @@ public class BookingActivity extends AppCompatActivity {
     private String numberofdays, arrivaldate;
     private boolean check;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    private String homeListingId, listing_detail_title;
+    private String homeListingId, listing_userId, listing_detail_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,8 @@ public class BookingActivity extends AppCompatActivity {
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
             homeListingId = mBundle.getString("homeListingId");
-            listing_detail_title= mBundle.getString("listing_detail_title");
+            listing_userId = mBundle.getString("listing_userId");
+            listing_detail_title = mBundle.getString("listing_detail_title");
         }
 
         etTotalDays = (EditText) findViewById(R.id.etTotalDays);
@@ -56,7 +57,7 @@ public class BookingActivity extends AppCompatActivity {
                         BookingActivity.this,
                         android.R.style.Theme_Material_Dialog,
                         mDateSetListener,
-                        year,month,day);
+                        year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#610049")));
                 dialog.show();
             }
@@ -81,17 +82,17 @@ public class BookingActivity extends AppCompatActivity {
         numberofdays = etTotalDays.getText().toString();
         arrivaldate = tvArrivalDate.getText().toString();
 
-        if(Objects.equals(arrivaldate, "")){
+        if (Objects.equals(arrivaldate, "")) {
 
             Toast.makeText(BookingActivity.this, "Enter the arrival date", Toast.LENGTH_LONG).show();
             check = true;
         }
-        if(numberofdays.isEmpty()){
+        if (numberofdays.isEmpty()) {
 
             etTotalDays.setError("Enter Number of Days");
             check = true;
         }
-        if(!check){
+        if (!check) {
 
             Intent mIntent = new Intent(BookingActivity.this, FinalBookingActivity.class);
 
@@ -100,6 +101,7 @@ public class BookingActivity extends AppCompatActivity {
             bundle.putString("arrivalDate", arrivaldate);
             bundle.putString("numberOfDays", numberofdays);
             bundle.putString("homeListingId", homeListingId);
+            bundle.putString("listing_userId", listing_userId);
             bundle.putString("listing_detail_title", listing_detail_title);
 
             mIntent.putExtras(bundle);

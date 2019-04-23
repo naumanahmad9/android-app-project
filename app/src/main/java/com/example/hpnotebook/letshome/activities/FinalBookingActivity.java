@@ -73,7 +73,7 @@ public class FinalBookingActivity extends AppCompatActivity {
 
     boolean notify = false;
 
-    private String homeListingId, listing_detail_title, arrivaldate, numberofdays;
+    private String homeListingId, listing_userId, listing_detail_title, arrivaldate, numberofdays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,7 @@ public class FinalBookingActivity extends AppCompatActivity {
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
             homeListingId = mBundle.getString("homeListingId");
+            listing_userId = mBundle.getString("listing_userId");
             listing_detail_title = mBundle.getString("listing_detail_title");
             arrivaldate = mBundle.getString("arrivaldate");
             numberofdays = mBundle.getString("numberofdays");
@@ -114,7 +115,7 @@ public class FinalBookingActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
-        Log.e("Home Detail","data "+ homeListingId + listing_detail_title);
+        // Log.e("Home Detail","data "+ homeListingId + listing_detail_title);
         /*
         if (!listing_detail_title.isEmpty() && !numberofdays.isEmpty() && !arrivaldate.isEmpty()) {
             String bookMessage = getString(com.example.hpnotebook.letshome.R.string.bookMessageText1)
@@ -130,30 +131,8 @@ public class FinalBookingActivity extends AppCompatActivity {
 
         // listingIdRef= FirebaseDatabase.getInstance().getReference("listing").child(homeListingId);
 
-        listingIdRef= FirebaseDatabase.getInstance().getReference("homes").child(homeListingId);
 
-        listingIdRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                HomeListing mListing = dataSnapshot.getValue(HomeListing.class);
-
-                userid= mListing.getListing_userId();
-            }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
+        userid = listing_userId;
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         btn_send.setOnClickListener(new View.OnClickListener() {
@@ -175,14 +154,16 @@ public class FinalBookingActivity extends AppCompatActivity {
         });
 
         reference = FirebaseDatabase.getInstance().getReference("users").child(userid);
-
+/*
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 User user = dataSnapshot.getValue(User.class);
 
-                username.setText(user.getName());
+                if (user != null) {
+                    username.setText(user.getName());
+                }
 
                 if (user.getImageURL().equals("default")) {
                     profile_image.setImageResource(R.drawable.user_pic_default);
@@ -199,12 +180,15 @@ public class FinalBookingActivity extends AppCompatActivity {
 
             }
         });
+*/
 
         seenMessage(userid);
     }
 
     private void seenMessage(final String userid) {
+
         reference = FirebaseDatabase.getInstance().getReference("Chats");
+
         seenListener = reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -226,6 +210,7 @@ public class FinalBookingActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void sendMessage(String sender, final String receiver, String message) {
@@ -285,6 +270,9 @@ public class FinalBookingActivity extends AppCompatActivity {
 
             }
         });
+        Toast.makeText(FinalBookingActivity.this, "Booking Request Sent", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(FinalBookingActivity.this, MainActivity.class));
+        finish();
     }
 
     private void sendNotifiaction(String receiver, final String username, final String message) {
