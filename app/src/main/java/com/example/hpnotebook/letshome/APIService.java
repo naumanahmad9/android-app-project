@@ -2,8 +2,6 @@ package com.example.hpnotebook.letshome;
 
 import com.example.hpnotebook.letshome.Notifications.MyResponse;
 import com.example.hpnotebook.letshome.Notifications.Sender;
-import com.koddev.chatapp.Notifications.MyResponse;
-import com.koddev.chatapp.Notifications.Sender;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

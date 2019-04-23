@@ -96,6 +96,7 @@ public class AddHomeActivity extends AppCompatActivity {
         addHome_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userId = user.getUid();
                 String title = addHome_title.getText().toString();
                 String location = addHome_location.getText().toString();
                 String pricing = addHome_pricing.getText().toString();
@@ -106,17 +107,19 @@ public class AddHomeActivity extends AppCompatActivity {
                 String bathroom = addHome_bathroom.getText().toString();
 
                 key=homeId;
+
                 if (homeId == null) {
                     key = homeRef.push().getKey();
                 }
+
                 imageRef = storage.getReference("home listing images/" + key);
 
-                addHome(key, title, location, pricing, host_name, guest_space, rooms, bedrooms, bathroom);
+                addHome(key, userId, title, location, pricing, host_name, guest_space, rooms, bedrooms, bathroom);
             }
         });
     }
 
-    private void addHome(final String homeId, final String title, final String location, final String pricing,
+    private void addHome(final String homeId, final String userId, final String title, final String location, final String pricing,
                          final String host_name, final String guest_space,
                          final String rooms, final String bedrooms, final String bathroom) {
 
@@ -164,7 +167,7 @@ public class AddHomeActivity extends AppCompatActivity {
                                 });
                             }
 
-                            HomeListing homeListing = new HomeListing(homeId, title, location, pricing,
+                            HomeListing homeListing = new HomeListing(homeId, userId, title, location, pricing,
                                     host_name, guest_space, rooms, bedrooms, bathroom, imageUrl);
                             homeRef.child(homeId).setValue(homeListing);
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
