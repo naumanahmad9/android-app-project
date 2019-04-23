@@ -8,6 +8,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class ListingViewHolder extends RecyclerView.ViewHolder {
+
     public ImageView listing_image;
     public TextView listing_title;
     public TextView listing_rate;

@@ -5,49 +5,49 @@
     android:layout_margin="25dp">
 
     <ImageView
-        android:id="@+id/homelistingImage"
+        android:id="@+id/listingImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:contentDescription="@string/contentDescription_listing_image"
         android:scaleType="fitXY"
-        android:src="@drawable/scenery_2_wide" />
+        android:src="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/homelistingTitle"
+        android:id="@+id/listingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/homelistingImage"
+        android:layout_below="@id/listingImage"
         android:layout_marginTop="4dp"
-        android:text="@string/listing_title_placeholder_text"
+        android:text=" "
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/homelistingRate"
+        android:id="@+id/listingRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/homelistingTitle"
+        android:layout_below="@id/listingTitle"
         android:layout_marginTop="4dp"
-        android:text="@string/listing_Rate_placeholder_text"
+        android:text=" "
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/text_homelistingRate"
+        android:id="@+id/text_listingRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/homelistingRate"
+        android:layout_alignBaseline="@id/listingRate"
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
-        android:layout_toEndOf="@id/homelistingRate"
+        android:layout_toEndOf="@id/listingRate"
         android:text="@string/listing_Rate_desc_text"
         android:textSize="18sp" />
 
     <RatingBar
-        android:id="@+id/homelistingRatingbar"
+        android:id="@+id/listingRatingbar"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/homelistingRate"
+        android:layout_below="@id/listingRate"
         android:layout_marginTop="6dp"
         android:rating="5"
         android:numStars="5"
@@ -58,11 +58,11 @@
         android:id="@+id/homelistingRatingCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_homelistingRate"
-        android:layout_toEndOf="@id/homelistingRatingbar"
+        android:layout_below="@id/text_listingRate"
+        android:layout_toEndOf="@id/listingRatingbar"
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
-        android:text="@string/number_string"
+        android:text=""
         android:textSize="16sp"
         android:textStyle="bold"
         />

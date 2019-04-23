@@ -52,14 +52,14 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
 
         final HomeListing listing = homeListings.get(i);
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("homes").child(listing.getListing_id());
+        reference = database.getReference().child("homes").child(listing.getHome_listing_id());
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
-        if (listing.getListing_id() != null){
+        if (listing.getHome_listing_id() != null){
             listingRef= reference;
 
             listingRef.addValueEventListener(new ValueEventListener() {
@@ -90,7 +90,7 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("homeListingId", listing.getListing_id());
+                bundle.putString("homeListingId", listing.getHome_listing_id());
                 Intent mIntent = new Intent(mContext, HomeListingDetail.class);
                 mIntent.putExtras(bundle);
                 mContext.startActivity(mIntent);

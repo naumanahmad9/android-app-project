@@ -49,14 +49,14 @@ public class smallRestListingAdapter extends RecyclerView.Adapter<ListingViewHol
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
         final RestaurantListing listing = restListings.get(i);
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference().child("restaurants").child(listing.getListing_id());
+        reference = database.getReference().child("restaurants").child(listing.getRest_listing_id());
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
-        if (listing.getListing_id() != null){
+        if (listing.getRest_listing_id() != null){
             listingRef= reference;
 
             listingRef.addValueEventListener(new ValueEventListener() {
@@ -87,7 +87,7 @@ public class smallRestListingAdapter extends RecyclerView.Adapter<ListingViewHol
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("restListingId", listing.getListing_id());
+                bundle.putString("restListingId", listing.getRest_listing_id());
                 Intent mIntent = new Intent(mContext, RestListingDetail.class);
                 mIntent.putExtras(bundle);
                 mContext.startActivity(mIntent);
