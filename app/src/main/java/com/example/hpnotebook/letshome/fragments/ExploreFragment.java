@@ -43,7 +43,7 @@ public class ExploreFragment extends Fragment  {
 //  implements android.support.v7.widget.SearchView.OnQueryTextListener
 
     RecyclerView homes_recyclerView_main, experiences_recyclerView_main, restaurants_recyclerView_main;
-    CardView cvHome;
+    CardView cvHome, cvExpr, cvRest;
     FragmentManager manager;
     FragmentTransaction transaction;
     ArrayList<HomeListing> homeListings;
@@ -68,6 +68,8 @@ public class ExploreFragment extends Fragment  {
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
         cvHome = view.findViewById(R.id.cvHome);
+        cvExpr = view.findViewById(R.id.cvExpr);
+        cvRest = view.findViewById(R.id.cvRest);
 
         button_homes = view.findViewById(R.id.button_homes);
         button_experiences = view.findViewById(R.id.button_experiences);
@@ -173,6 +175,19 @@ public class ExploreFragment extends Fragment  {
             }
         });
 
+        cvExpr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ExperiencesActivity.class));
+            }
+        });
+        
+        cvRest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), RestaurantsActivity.class));
+            }
+        });
         button_homes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
