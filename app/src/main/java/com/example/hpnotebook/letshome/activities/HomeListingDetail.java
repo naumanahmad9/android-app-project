@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.nio.BufferUnderflowException;
+
 public class HomeListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
@@ -38,9 +40,9 @@ public class HomeListingDetail extends AppCompatActivity {
     RatingBar listing_detail_Ratingbar;
     float homeRating, average, totalRating;
     int count = 0;
-    String homeListingId;
+    private String homeListingId;
     private boolean mProcessFavorite = false;
-    HomeListing homeListing;
+     HomeListing homeListing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,7 +172,14 @@ public class HomeListingDetail extends AppCompatActivity {
         goToBooking_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeListingDetail.this, BookingActivity.class));
+
+                Intent mIntent= new Intent(HomeListingDetail.this, BookingActivity.class);
+
+                Bundle mBundle = new Bundle();
+                mBundle.putString("homeListingId", homeListingId);
+                mBundle.putString("listing_detail_title", listing_detail_title.getText().toString());
+
+                startActivity(mIntent);
             }
         });
 

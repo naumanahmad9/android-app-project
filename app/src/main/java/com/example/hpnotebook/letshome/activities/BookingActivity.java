@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -26,11 +27,18 @@ public class BookingActivity extends AppCompatActivity {
     private String numberofdays, arrivaldate;
     private boolean check;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private String homeListingId, listing_detail_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
+
+        Bundle mBundle = getIntent().getExtras();
+        if (mBundle != null) {
+            homeListingId = mBundle.getString("homeListingId");
+            listing_detail_title= mBundle.getString("listing_detail_title");
+        }
 
         etTotalDays = (EditText) findViewById(R.id.etTotalDays);
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
@@ -89,8 +97,10 @@ public class BookingActivity extends AppCompatActivity {
 
             Bundle bundle = new Bundle();
 
-            bundle.putString(arrivaldate, "arrivalDate");
-            bundle.putString(numberofdays, "numberOfDays");
+            bundle.putString("arrivalDate", arrivaldate);
+            bundle.putString("numberOfDays", numberofdays);
+            bundle.putString("homeListingId", homeListingId);
+            bundle.putString("listing_detail_title", listing_detail_title);
 
             mIntent.putExtras(bundle);
 
