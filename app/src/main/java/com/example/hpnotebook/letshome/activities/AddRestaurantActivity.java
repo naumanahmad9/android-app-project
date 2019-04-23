@@ -98,6 +98,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         addRest_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userId = user.getUid();
                 String title = addRest_title.getText().toString();
                 String location = addRest_location.getText().toString();
                 String pricing = addRest_pricing.getText().toString();
@@ -109,13 +110,18 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 }
                 restImageRef = storage.getReference("restaurant listing images/" + key);
 
-                addRest(key, title, location, pricing, host_name);
+                addRest(key, userId, title, location, pricing, host_name);
             }
         });
     }
 
-    private void addRest(final String restId, final String title, final String location, final String pricing,
+    private void addRest(final String restId, final String userId, final String title, final String location, final String pricing,
                          final String host_name) {
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Uploading");
+        pd.setMessage("Please Wait...");
+        pd.show();
 
         BitmapDrawable drawable = (BitmapDrawable) addRest_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -165,12 +171,17 @@ public class AddRestaurantActivity extends AppCompatActivity {
                                 });
                             }
 
-                            RestaurantListing restaurantListing = new RestaurantListing(restId, title, location, pricing,
+                            RestaurantListing restaurantListing = new RestaurantListing(restId, userId, title, location, pricing,
                                     host_name, imageUrl);
                             restRef.child(restId).setValue(restaurantListing);
                             restRef.child(restId).child("avgRating").setValue(rest_avgRating);
+
+                            pd.dismiss();
+
                             Toast.makeText(AddRestaurantActivity.this, "Listing added", Toast.LENGTH_LONG).show();
+
                             startActivity(new Intent(AddRestaurantActivity.this, MainActivity.class));
+
                             finish();
 
                         }

@@ -1,14 +1,15 @@
 package com.example.hpnotebook.letshome.modelClasses;
 
 public class ExperienceListing {
-    private String listing_id, listing_title, listing_location, listing_pricing, listing_host_name,
+    private String listing_id, listing_userId, listing_title, listing_location, listing_pricing, listing_host_name,
                    listing_image;
     private float listing_average_rating;
 
-    public ExperienceListing(String listing_id, String listing_title, String listing_location,
+    public ExperienceListing(String listing_id, String listing_userId, String listing_title, String listing_location,
                    String listing_pricing, String listing_host_name, String listing_image) {
 
         this.listing_id = listing_id;
+        this.listing_userId = listing_userId;
         this.listing_title = listing_title;
         this.listing_location = listing_location;
         this.listing_pricing = listing_pricing;
@@ -25,6 +26,14 @@ public class ExperienceListing {
 
     public void setListing_id(String listing_id) {
         this.listing_id = listing_id;
+    }
+
+    public String getListing_userId() {
+        return listing_userId;
+    }
+
+    public void setListing_userId(String listing_userId) {
+        this.listing_userId = listing_userId;
     }
 
     public String getListing_title() {

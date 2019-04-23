@@ -98,6 +98,7 @@ public class AddExperienceActivity extends AppCompatActivity {
         addExpr_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userId = user.getUid();
                 String title = addExpr_title.getText().toString();
                 String location = addExpr_location.getText().toString();
                 String pricing = addExpr_pricing.getText().toString();
@@ -109,13 +110,18 @@ public class AddExperienceActivity extends AppCompatActivity {
                 }
                 imageRef = storage.getReference("experience listing images/" + key);
 
-                addExpr(key, title, location, pricing, host_name);
+                addExpr(key, userId, title, location, pricing, host_name);
             }
         });
     }
 
-    private void addExpr(final String exprId, final String title, final String location, final String pricing,
+    private void addExpr(final String exprId, final String userId, final String title, final String location, final String pricing,
                          final String host_name) {
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Uploading");
+        pd.setMessage("Please Wait...");
+        pd.show();
 
         BitmapDrawable drawable = (BitmapDrawable) addExpr_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -164,10 +170,12 @@ public class AddExperienceActivity extends AppCompatActivity {
                                 });
                             }
 
-                            ExperienceListing experienceListing = new ExperienceListing(exprId, title, location, pricing,
+                            ExperienceListing experienceListing = new ExperienceListing(exprId, userId, title, location, pricing,
                                     host_name, imageUrl);
                             exprRef.child(exprId).setValue(experienceListing);
                             exprRef.child(exprId).child("avgRating").setValue(expr_avgRating);
+
+                            pd.dismiss();
 
                             Toast.makeText(AddExperienceActivity.this, "Listing added", Toast.LENGTH_LONG).show();
 

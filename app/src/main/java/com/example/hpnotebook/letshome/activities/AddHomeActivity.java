@@ -56,7 +56,6 @@ public class AddHomeActivity extends AppCompatActivity {
     StorageReference imageRef;
     String homeId;
     String key;
-    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +122,11 @@ public class AddHomeActivity extends AppCompatActivity {
                          final String host_name, final String guest_space,
                          final String rooms, final String bedrooms, final String bathroom) {
 
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Uploading");
+        pd.setMessage("Please Wait...");
+        pd.show();
+
         BitmapDrawable drawable = (BitmapDrawable) addHome_images.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
 
@@ -172,7 +176,7 @@ public class AddHomeActivity extends AppCompatActivity {
                             homeRef.child(homeId).setValue(homeListing);
                             homeRef.child(homeId).child("avgRating").setValue(home_avgRating);
 
-                            progressDialog.dismiss();
+                            pd.dismiss();
 
                             Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
 
@@ -188,7 +192,7 @@ public class AddHomeActivity extends AppCompatActivity {
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
 
                 double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                progressDialog.setMessage((int) progress + "% Uploaded");
+                pd.setMessage((int) progress + "% Uploaded");
 
 
             }
@@ -214,10 +218,6 @@ public class AddHomeActivity extends AppCompatActivity {
         addHome_images = findViewById(R.id.addHome_images);
 
         addHome_button = findViewById(R.id.addHome_button);
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Uploading");
-        progressDialog.setMessage("Please Wait...");
 
         storage = FirebaseStorage.getInstance();
 
