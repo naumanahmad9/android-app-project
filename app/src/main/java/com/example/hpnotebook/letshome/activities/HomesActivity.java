@@ -45,7 +45,7 @@ public class HomesActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        homeListingRef=database.getReference("listings");
+        homeListingRef=database.getReference("home");
 
         homeListingRef.addChildEventListener(new ChildEventListener() {
             @Override

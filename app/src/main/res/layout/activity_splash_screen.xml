@@ -6,36 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activities.SplashScreen">
 
-    <!--<com.airbnb.lottie.LottieAnimationView-->
-        <!--android:id="@+id/animation_view_1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--app:lottie_fileName="gradient_animated_background.json"-->
-        <!--app:lottie_loop="true"-->
-        <!--android:scaleType="fitXY"-->
-        <!--app:lottie_autoPlay="true"-->
-        <!--/>-->
-    <!---->
-
-
     <ImageView
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:src="@mipmap/logo1"
+        android:src="@mipmap/logo2"
         android:adjustViewBounds="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         />
-
-    <!--<com.airbnb.lottie.LottieAnimationView-->
-        <!--android:id="@+id/animation_view_2"-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--app:lottie_fileName="trail_loading.json"-->
-        <!--app:lottie_loop="true"-->
-        <!--app:lottie_autoPlay="true"-->
-        <!--/>-->
 
 </RelativeLayout>

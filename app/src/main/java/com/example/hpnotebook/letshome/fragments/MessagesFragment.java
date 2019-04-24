@@ -60,6 +60,7 @@ public class MessagesFragment extends Fragment {
 
         usersList = new ArrayList<>();
 
+
         reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,6 +69,7 @@ public class MessagesFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chatlist chatlist = snapshot.getValue(Chatlist.class);
                     usersList.add(chatlist);
+
                 }
 
                 chatList();
@@ -93,7 +95,7 @@ public class MessagesFragment extends Fragment {
 
     private void chatList() {
         mUsers = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference = FirebaseDatabase.getInstance().getReference("users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
