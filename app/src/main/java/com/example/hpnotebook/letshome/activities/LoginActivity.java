@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
             }
         });
@@ -201,6 +202,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private void init() {
         login_container= findViewById(R.id.login_container);
         login_email=findViewById(R.id.login_email);
@@ -218,10 +220,8 @@ public class LoginActivity extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(this, signInOptions);
     }
-    public void signup(View view) {
-        startActivity(new Intent(this, SignupActivity.class));
-        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-    }
+
     @Override
     public void onBackPressed() { }
+
 }

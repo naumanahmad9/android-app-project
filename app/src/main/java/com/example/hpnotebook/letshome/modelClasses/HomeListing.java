@@ -4,6 +4,7 @@ public class HomeListing {
     private String home_listing_id,listing_userId, listing_title, listing_location, listing_pricing, listing_host_name,
             listing_guest_space, listing_room, listing_bedrooms, listing_bathroom, listing_image;
     private float listing_average_rating;
+    private int viewsCount;
 
     public HomeListing(String home_listing_id, String listing_userId, String listing_title, String listing_location,
                        String listing_pricing, String listing_host_name, String listing_guest_space,
@@ -130,5 +131,13 @@ public class HomeListing {
 
     public void setListing_average_rating(float listing_average_rating) {
         this.listing_average_rating = listing_average_rating;
+    }
+
+    public int getViewsCount() {
+        return viewsCount;
+    }
+
+    public void setViewsCount(int viewsCount) {
+        this.viewsCount = viewsCount;
     }
 }

@@ -37,7 +37,7 @@ public class RestListingDetail extends AppCompatActivity {
     RatingBar listing_detail_Ratingbar;
     float homeRating, average, totalRating;
     int count = 0;
-    private String exprListingId, listingId, listing_userId;
+    private String restListingId, listingId, listing_userId;
     private boolean mProcessFavorite = false;
     RestaurantListing restListing;
 
@@ -51,17 +51,17 @@ public class RestListingDetail extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            exprListingId = bundle.getString("exprListingId");
+            restListingId = bundle.getString("restListingId");
         }
 
-        listingId = exprListingId;
+        listingId = restListingId;
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
         database = FirebaseDatabase.getInstance();
-        restRef = database.getReference("restaurants").child(exprListingId);
-        viewRef = database.getReference("restaurants").child(exprListingId).child("views");
+        restRef = database.getReference("restaurants").child(restListingId);
+        viewRef = database.getReference("restaurants").child(restListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         favoritesRef = database.getReference("favorites");
 
@@ -216,15 +216,15 @@ public class RestListingDetail extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         if (mProcessFavorite) {
-                            if (dataSnapshot.hasChild(exprListingId)) {
+                            if (dataSnapshot.hasChild(restListingId)) {
 
-                                favoritesRef.child(exprListingId).removeValue();
+                                favoritesRef.child(restListingId).removeValue();
                                 listing_detail_fav.setImageResource(R.drawable.heart);
                                 mProcessFavorite = false;
 
                             } else {
 
-                                favoritesRef.child(exprListingId).setValue(restListing);
+                                favoritesRef.child(restListingId).setValue(restListing);
                                 listing_detail_fav.setImageResource(R.drawable.icon_liked);
                                 mProcessFavorite = false;
                             }

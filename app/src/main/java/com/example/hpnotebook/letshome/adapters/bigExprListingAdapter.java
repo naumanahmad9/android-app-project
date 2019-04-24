@@ -28,7 +28,7 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
     private ArrayList<ExperienceListing> exprListings;
     private Context mContext;
     private FirebaseDatabase database;
-    private DatabaseReference reference, listingRef;
+    private DatabaseReference reference;
 
     public bigExprListingAdapter(ArrayList<ExperienceListing> exprListings, Context context) {
         this.exprListings = exprListings;
@@ -57,24 +57,24 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
-        if (listing.getExpr_listing_id() != null){
-            listingRef= reference;
-
-            listingRef.addValueEventListener(new ValueEventListener() {
+            reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     if(dataSnapshot.hasChild("avgRating")) {
                         Float averageRating = dataSnapshot.child("avgRating").getValue(Float.class);
 
-                        Log.e("averageRating ","averageRating "+ averageRating);
+                        //Log.e("averageRating ","averageRating "+ averageRating);
 
                         listingViewHolder.listing_ratingbar.setRating(averageRating);
 
-                        Log.e("Detail ","listing object "+ dataSnapshot);
+                       // Log.e("Detail ","listing object "+ dataSnapshot);
                     }
                     if(dataSnapshot.hasChild("viewCount")) {
                         listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));
+                    }
+                    else {
+                        listingViewHolder.listing_rating_count.setText("0");
                     }
 
                 }
@@ -82,8 +82,31 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-        }
 
+
+            /*
+             reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Object avg = dataSnapshot.child("avgRating").getValue();
+                Object viewCount = dataSnapshot.child("viewCount").getValue();
+
+                if (avg != null)
+                    listingViewHolder.listing_ratingbar.setRating(String.valueOf(avg));
+
+                if (viewCount!=null) {
+                    String strViews = String.valueOf(viewCount);
+                    listingViewHolder.listing_rating_count.setText(strViews);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+           });
+           */
         listingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

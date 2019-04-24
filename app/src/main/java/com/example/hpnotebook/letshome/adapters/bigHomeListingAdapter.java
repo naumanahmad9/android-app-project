@@ -27,7 +27,7 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
     private ArrayList<HomeListing> homeListings;
     private Context mContext;
     private FirebaseDatabase database;
-    private DatabaseReference reference, listingRef;
+    private DatabaseReference reference;
 
     public bigHomeListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
         this.homeListings = homeListings;
@@ -57,10 +57,7 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
-        if (listing.getHome_listing_id() != null){
-            listingRef= reference;
-
-            listingRef.addValueEventListener(new ValueEventListener() {
+            reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -76,13 +73,15 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
                     if(dataSnapshot.hasChild("viewCount")) {
                         listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));
                     }
+                    else {
+                        listingViewHolder.listing_rating_count.setText("0");
+                    }
 
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-        }
 
         listingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

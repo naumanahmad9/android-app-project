@@ -27,7 +27,7 @@ public class bigRestListingAdapter extends RecyclerView.Adapter<ListingViewHolde
     private ArrayList<RestaurantListing> restListings;
     private Context mContext;
     private FirebaseDatabase database;
-    private DatabaseReference reference, listingRef;
+    private DatabaseReference reference;
 
     public bigRestListingAdapter(ArrayList<RestaurantListing> restListings, Context context) {
         this.restListings = restListings;
@@ -47,6 +47,7 @@ public class bigRestListingAdapter extends RecyclerView.Adapter<ListingViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
+
         final RestaurantListing listing = restListings.get(i);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("restaurants").child(listing.getRest_listing_id());
@@ -56,10 +57,7 @@ public class bigRestListingAdapter extends RecyclerView.Adapter<ListingViewHolde
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
 
-        if (listing.getRest_listing_id() != null){
-            listingRef= reference;
-
-            listingRef.addValueEventListener(new ValueEventListener() {
+            reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -75,13 +73,15 @@ public class bigRestListingAdapter extends RecyclerView.Adapter<ListingViewHolde
                     if(dataSnapshot.hasChild("viewCount")) {
                         listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));
                     }
+                    else {
+                        listingViewHolder.listing_rating_count.setText("0");
+                    }
 
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-        }
 
         listingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

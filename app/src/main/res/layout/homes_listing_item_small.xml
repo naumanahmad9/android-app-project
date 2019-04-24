@@ -57,6 +57,17 @@
         android:rating="5"
         android:stepSize="0.1" />
 
+    <ImageView
+        android:id="@+id/listing_views_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_eye_black_24dp"
+        android:layout_toRightOf="@id/listingRatingbar"
+        android:layout_below="@id/text_listingRate"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        />
+
     <TextView
         android:id="@+id/listingRatingCount"
         android:layout_width="wrap_content"
@@ -64,8 +75,8 @@
         android:layout_below="@id/text_listingRate"
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@id/listingRatingbar"
-        android:text=""
+        android:layout_toEndOf="@id/listing_views_icon"
+        android:text="0"
         android:textSize="16sp"
         android:textStyle="bold" />
 </RelativeLayout>
