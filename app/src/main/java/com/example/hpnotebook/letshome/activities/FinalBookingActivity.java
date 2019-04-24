@@ -86,8 +86,8 @@ public class FinalBookingActivity extends AppCompatActivity {
             homeListingId = mBundle.getString("homeListingId");
             listing_userId = mBundle.getString("listing_userId");
             listing_detail_title = mBundle.getString("listing_detail_title");
-            arrivaldate = mBundle.getString("arrivaldate");
-            numberofdays = mBundle.getString("numberofdays");
+            arrivaldate = mBundle.getString("arrivalDate");
+            numberofdays = mBundle.getString("numberOfDays");
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -119,12 +119,11 @@ public class FinalBookingActivity extends AppCompatActivity {
 
         if (!listing_detail_title.isEmpty() && !numberofdays.isEmpty() && !arrivaldate.isEmpty()) {
             String bookMessage = getString(com.example.hpnotebook.letshome.R.string.bookMessageText1)
-                                + listing_detail_title + getString(com.example.hpnotebook.letshome.R.string.bookMessageText2)
-                                  + numberofdays + getString(com.example.hpnotebook.letshome.R.string.bookMessageText3)
+                                + listing_detail_title  + getString(com.example.hpnotebook.letshome.R.string.bookMessageText2)
+                                  + numberofdays  + getString(com.example.hpnotebook.letshome.R.string.bookMessageText3)
                                     + arrivaldate + ".";
             text_send.setText(bookMessage);
         }
-
 
 //        intent = getIntent();
 //        userid = intent.getStringExtra("userid");

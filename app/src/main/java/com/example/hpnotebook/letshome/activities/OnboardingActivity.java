@@ -39,6 +39,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
         continueBtn = (Button) findViewById(R.id.continueBtn);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+
         OnboardingViewPagerAdapter viewPagerAdapter = new OnboardingViewPagerAdapter(OnboardingActivity.class,this);
         viewPager.setAdapter(viewPagerAdapter);
 
