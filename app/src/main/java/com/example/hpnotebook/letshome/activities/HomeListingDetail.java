@@ -40,9 +40,9 @@ public class HomeListingDetail extends AppCompatActivity {
     RatingBar listing_detail_Ratingbar;
     float homeRating, average, totalRating;
     int count = 0;
-    private String homeListingId, listingId, listing_userId, listing_userImage;
+    private String homeListingId, listingId, listing_userId;
     private boolean mProcessFavorite = false;
-     HomeListing homeListing;
+    HomeListing homeListing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +78,20 @@ public class HomeListingDetail extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 //HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
-                homeListing= dataSnapshot.getValue(HomeListing.class);
-
-                listing_userId = homeListing.getListing_userId();
+                homeListing = dataSnapshot.getValue(HomeListing.class);
 
                 listing_detail_title.setText(homeListing.getListing_title());
+                listing_detail_rate.setText(homeListing.getListing_pricing());
+                listingHostName.setText(homeListing.getListing_host_name());
+                listing_detail_location.setText(homeListing.getListing_location());
+                listingGuests.setText(homeListing.getListing_guest_space());
+                listingRooms.setText(homeListing.getListing_room());
+                listingBeds.setText(homeListing.getListing_bedrooms());
+                listingBathrooms.setText(homeListing.getListing_bathroom());
 
                 Glide.with(getApplicationContext()).load(homeListing.getListing_image()).into(listing_detail_image);
+
+                listing_userId = homeListing.getListing_userId();
 
                 listingUserIdRef = database.getReference("users").child(listing_userId);
 
@@ -98,6 +105,7 @@ public class HomeListingDetail extends AppCompatActivity {
                                 .load(listing_user.getImageURL())
                                 .into(listing_host_image);
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
@@ -195,12 +203,12 @@ public class HomeListingDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mIntent= new Intent(HomeListingDetail.this, BookingActivity.class);
+                Intent mIntent = new Intent(HomeListingDetail.this, BookingActivity.class);
 
                 Bundle mBundle = new Bundle();
                 // mBundle.putString("homeListingId", homeListingId);
                 mBundle.putString("listingId", listingId);
-                mBundle.putString("listing_userId",listing_userId);
+                mBundle.putString("listing_userId", listing_userId);
                 mBundle.putString("listing_detail_title", listing_detail_title.getText().toString());
 
                 mIntent.putExtras(mBundle);
@@ -229,8 +237,8 @@ public class HomeListingDetail extends AppCompatActivity {
                             } else {
 
                                 //HomeListing data=dataSnapshot.getValue(HomeListing.class);
-                                Log.e("Home Deatail","dataa "+homeListing);
-                                Log.e("Home Deatail","ref "+favoritesRef);
+                                Log.e("Home Deatail", "dataa " + homeListing);
+                                Log.e("Home Deatail", "ref " + favoritesRef);
                                 favoritesRef.child(homeListingId).setValue(homeListing);
                                 listing_detail_fav.setImageResource(R.drawable.icon_liked);
                                 mProcessFavorite = false;
@@ -252,6 +260,13 @@ public class HomeListingDetail extends AppCompatActivity {
     private void init() {
 
         listing_detail_title = findViewById(R.id.listing_detail_title);
+        listing_detail_rate= findViewById(R.id.listing_detail_rate);
+        listingHostName= findViewById(R.id.listingHostName);
+        listing_detail_location= findViewById(R.id.listing_detail_location);
+        listingGuests= findViewById(R.id.listingGuests);
+        listingRooms= findViewById(R.id.listingRooms);
+        listingBeds= findViewById(R.id.listingBeds);
+        listingBathrooms= findViewById(R.id.listingBathrooms);
         listing_detail_image = findViewById(R.id.listing_detail_image);
         listing_host_image = findViewById(R.id.listing_host_image);
         listing_detail_Ratingbar = findViewById(R.id.listing_detail_Ratingbar);
