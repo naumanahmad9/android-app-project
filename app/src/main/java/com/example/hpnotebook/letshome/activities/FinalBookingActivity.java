@@ -116,7 +116,7 @@ public class FinalBookingActivity extends AppCompatActivity {
         text_send = findViewById(R.id.text_send);
 
         // Log.e("Home Detail","data "+ homeListingId + listing_detail_title);
-        /*
+
         if (!listing_detail_title.isEmpty() && !numberofdays.isEmpty() && !arrivaldate.isEmpty()) {
             String bookMessage = getString(com.example.hpnotebook.letshome.R.string.bookMessageText1)
                                 + listing_detail_title + getString(com.example.hpnotebook.letshome.R.string.bookMessageText2)
@@ -124,7 +124,7 @@ public class FinalBookingActivity extends AppCompatActivity {
                                     + arrivaldate + ".";
             text_send.setText(bookMessage);
         }
-        */
+
 
 //        intent = getIntent();
 //        userid = intent.getStringExtra("userid");
@@ -154,7 +154,7 @@ public class FinalBookingActivity extends AppCompatActivity {
         });
 
         reference = FirebaseDatabase.getInstance().getReference("users").child(userid);
-/*
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -167,8 +167,8 @@ public class FinalBookingActivity extends AppCompatActivity {
 
                 if (user.getImageURL().equals("default")) {
                     profile_image.setImageResource(R.drawable.user_pic_default);
-                } else {
-                    //and this
+                }
+                else {
                     Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
 
@@ -180,7 +180,7 @@ public class FinalBookingActivity extends AppCompatActivity {
 
             }
         });
-*/
+
 
         seenMessage(userid);
     }

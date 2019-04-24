@@ -10,6 +10,7 @@
         android:scaleType="fitXY" />
 
     <Button
+        android:id="@+id/continueBtn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -21,5 +22,6 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textColor="#fff"
+        android:visibility="gone"
         />
 </RelativeLayout>

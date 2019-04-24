@@ -1,22 +1,31 @@
 package com.example.hpnotebook.letshome;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.hpnotebook.letshome.activities.LoginActivity;
+import com.example.hpnotebook.letshome.activities.OnboardingActivity;
 
 public class OnboardingViewPagerAdapter extends PagerAdapter {
 
-    private Context context;
+    private Class<OnboardingActivity> context;
+    private  Context context1;
     private LayoutInflater layoutInflater;
+    private Button continueBtn;
     private Integer [] images = {R.drawable.onboarding_image_1, R.drawable.onboarding_image_2, R.drawable.onboarding_image_3, R.drawable.onboarding_image_4};
 
-    public OnboardingViewPagerAdapter(Context context) {
+
+    public OnboardingViewPagerAdapter(Class<OnboardingActivity> context, Context context1) {
         this.context = context;
+        this.context1 = context1;
     }
 
     @Override
@@ -32,10 +41,25 @@ public class OnboardingViewPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        layoutInflater = (LayoutInflater) context1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.onboarding_screens_layout, null);
+
+        continueBtn = view.findViewById(R.id.continueBtn);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
+
+        if(position == 3){
+            continueBtn.setVisibility(View.VISIBLE);
+        }
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                context1.startActivity(new Intent(context1, LoginActivity.class));
+            }
+        });
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
