@@ -73,7 +73,7 @@ public class FinalBookingActivity extends AppCompatActivity {
 
     boolean notify = false;
 
-    private String homeListingId, listing_userId, listing_detail_title, arrivaldate, numberofdays;
+    private String listingId, listing_userId, listing_detail_title, arrivaldate, numberofdays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class FinalBookingActivity extends AppCompatActivity {
 
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
-            homeListingId = mBundle.getString("homeListingId");
+            listingId = mBundle.getString("listingId");
             listing_userId = mBundle.getString("listing_userId");
             listing_detail_title = mBundle.getString("listing_detail_title");
             arrivaldate = mBundle.getString("arrivalDate");
@@ -119,9 +119,9 @@ public class FinalBookingActivity extends AppCompatActivity {
 
         if (!listing_detail_title.isEmpty() && !numberofdays.isEmpty() && !arrivaldate.isEmpty()) {
             String bookMessage = getString(com.example.hpnotebook.letshome.R.string.bookMessageText1)
-                                + listing_detail_title  + getString(com.example.hpnotebook.letshome.R.string.bookMessageText2)
-                                  + numberofdays  + getString(com.example.hpnotebook.letshome.R.string.bookMessageText3)
-                                    + arrivaldate + ".";
+                    + " " + listing_detail_title + " " + getString(com.example.hpnotebook.letshome.R.string.bookMessageText2)
+                    + " " + numberofdays + " " + getString(com.example.hpnotebook.letshome.R.string.bookMessageText3)
+                    + " " + arrivaldate + ".";
             text_send.setText(bookMessage);
         }
 
@@ -166,8 +166,7 @@ public class FinalBookingActivity extends AppCompatActivity {
 
                 if (user.getImageURL().equals("default")) {
                     profile_image.setImageResource(R.drawable.user_pic_default);
-                }
-                else {
+                } else {
                     Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
 

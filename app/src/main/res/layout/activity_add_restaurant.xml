@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddRestaurantActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,15 +31,16 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
-            android:text="Add images"
+            android:text="Add image"
             android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/addRest_images"
-            android:layout_width="150dp"
+            android:layout_width="190dp"
             android:layout_height="150dp"
             android:layout_marginStart="20dp"
             android:onClick="opengallery"
+            android:scaleType="fitXY"
             android:src="@drawable/add_image_icon" />
 
         <TextView
@@ -58,7 +58,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:hint="listing_title"
+            android:hint="title"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
             android:maxLines="1"
@@ -79,7 +79,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:hint="listing_location"
+            android:hint="location"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
             android:maxLines="1"
@@ -100,7 +100,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:hint="listing_pricing"
+            android:hint="pricing"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLines="1"
@@ -121,7 +121,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:hint="listing_host_name"
+            android:hint="host name"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:maxLines="1"
@@ -142,7 +142,28 @@
             android:layout_height="60dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:hint="listing_guest_space"
+            android:hint="guest space"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="Add listing Description"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/addRest_description"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:hint="description"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLines="1"

@@ -27,7 +27,7 @@ public class BookingActivity extends AppCompatActivity {
     private String numberofdays, arrivaldate;
     private boolean check;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    private String homeListingId, listing_userId, listing_detail_title;
+    private String listingId, listing_userId, listing_detail_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class BookingActivity extends AppCompatActivity {
 
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
-            homeListingId = mBundle.getString("homeListingId");
+            listingId = mBundle.getString("listingId");
             listing_userId = mBundle.getString("listing_userId");
             listing_detail_title = mBundle.getString("listing_detail_title");
         }
@@ -100,7 +100,7 @@ public class BookingActivity extends AppCompatActivity {
 
             bundle.putString("arrivalDate", arrivaldate);
             bundle.putString("numberOfDays", numberofdays);
-            bundle.putString("homeListingId", homeListingId);
+            bundle.putString("listingId", listingId);
             bundle.putString("listing_userId", listing_userId);
             bundle.putString("listing_detail_title", listing_detail_title);
 

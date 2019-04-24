@@ -47,7 +47,7 @@ public class ExperiencesActivity extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        exprListingRef=database.getReference("listings");
+        exprListingRef=database.getReference("experiences");
 
         exprListingRef.addChildEventListener(new ChildEventListener() {
             @Override

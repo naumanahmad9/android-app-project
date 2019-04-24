@@ -42,7 +42,7 @@ import java.io.ByteArrayOutputStream;
 public class AddExperienceActivity extends AppCompatActivity {
 
     EditText addExpr_title, addExpr_location, addExpr_pricing, addExpr_host_name,
-            addExpr_guest_space;
+            addExpr_guest_space, addRest_description;
     ImageView addExpr_images;
     Button addExpr_button;
     private int Pick_image = 1;
@@ -83,8 +83,7 @@ public class AddExperienceActivity extends AppCompatActivity {
 
                     addExpr_pricing.setText(experienceListing.getListing_pricing());
 
-                    Glide
-                         .with(AddExperienceActivity.this)
+                    Glide.with(AddExperienceActivity.this)
                          .load(experienceListing.getListing_image())
                          .into(addExpr_images);
                 }
@@ -103,6 +102,7 @@ public class AddExperienceActivity extends AppCompatActivity {
                 String location = addExpr_location.getText().toString();
                 String pricing = addExpr_pricing.getText().toString();
                 String host_name = addExpr_host_name.getText().toString();
+                String description = addRest_description.getText().toString();
 
                 key = exprId;
                 if (exprId == null) {
@@ -110,13 +110,13 @@ public class AddExperienceActivity extends AppCompatActivity {
                 }
                 imageRef = storage.getReference("experience listing images/" + key);
 
-                addExpr(key, userId, title, location, pricing, host_name);
+                addExpr(key, userId, title, location, pricing, host_name, description);
             }
         });
     }
 
     private void addExpr(final String exprId, final String userId, final String title, final String location, final String pricing,
-                         final String host_name) {
+                         final String host_name, final String description) {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading");
@@ -171,7 +171,7 @@ public class AddExperienceActivity extends AppCompatActivity {
                             }
 
                             ExperienceListing experienceListing = new ExperienceListing(exprId, userId, title, location, pricing,
-                                    host_name, imageUrl);
+                                    host_name, description, imageUrl);
                             ref.child(exprId).setValue(experienceListing);
                             ref.child(exprId).child("avgRating").setValue(expr_avgRating);
 
@@ -212,6 +212,7 @@ public class AddExperienceActivity extends AppCompatActivity {
         addExpr_pricing = findViewById(R.id.addExpr_pricing);
         addExpr_host_name = findViewById(R.id.addExpr_host_name);
         addExpr_guest_space = findViewById(R.id.addExpr_guest_space);
+        addRest_description = findViewById(R.id.addRest_description);
         addExpr_images = findViewById(R.id.addExpr_images);
 
         addExpr_button = findViewById(R.id.addExpr_button);

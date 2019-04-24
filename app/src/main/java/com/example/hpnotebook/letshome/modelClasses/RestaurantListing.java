@@ -1,12 +1,12 @@
 package com.example.hpnotebook.letshome.modelClasses;
 
 public class RestaurantListing {
-    private String rest_listing_id, listing_userId, listing_title, listing_location, listing_pricing, listing_host_name,
-                   listing_image;
+    private String rest_listing_id, listing_userId, listing_title, listing_location, listing_pricing,
+            listing_host_name,  listing_description, listing_image;
     private float listing_average_rating;
 
     public RestaurantListing(String rest_listing_id, String listing_userId, String listing_title, String listing_location,
-                             String listing_pricing, String listing_host_name, String listing_image) {
+                             String listing_pricing, String listing_host_name, String listing_description, String listing_image) {
 
         this.rest_listing_id = rest_listing_id;
         this.listing_userId = listing_userId;
@@ -14,6 +14,7 @@ public class RestaurantListing {
         this.listing_location = listing_location;
         this.listing_pricing = listing_pricing;
         this.listing_host_name = listing_host_name;
+        this.listing_description =  listing_description;
         this.listing_image = listing_image;
     }
 
@@ -66,6 +67,14 @@ public class RestaurantListing {
 
     public void setListing_host_name(String listing_host_name) {
         this.listing_host_name = listing_host_name;
+    }
+
+    public String getListing_description() {
+        return listing_description;
+    }
+
+    public void setListing_description(String listing_description) {
+        this.listing_description = listing_description;
     }
 
     public String getListing_image() {

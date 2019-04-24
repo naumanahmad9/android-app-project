@@ -11,10 +11,10 @@
     <string name="number_string">50</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment"> Hello blank fragment &#032;</string>
-    <string name="bookMessageText1"> Hi, I want to book &#032; </string>
-    <string name="bookMessageText2"> &#032; for &#032; </string>
-    <string name="bookMessageText3">  &#032; days and my arrival date is &#032; </string>
+    <string name="hello_blank_fragment"> Hello blank fragment </string>
+    <string name="bookMessageText1"> Hi, I want to book </string>
+    <string name="bookMessageText2"> for </string>
+    <string name="bookMessageText3"> days and my arrival date is </string>
 
 
 </resources>

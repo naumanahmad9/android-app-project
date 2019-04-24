@@ -42,7 +42,7 @@ import java.io.ByteArrayOutputStream;
 public class AddRestaurantActivity extends AppCompatActivity {
 
     EditText addRest_title, addRest_location, addRest_pricing, addRest_host_name,
-            addRest_guest_space;
+            addRest_guest_space, addExpr_description;
     ImageView addRest_images;
     Button addRest_button;
     private int Pick_image = 1;
@@ -83,8 +83,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
 
                     addRest_pricing.setText(restaurantListing.getListing_pricing());
 
-                    Glide
-                            .with(AddRestaurantActivity.this)
+                    Glide.with(AddRestaurantActivity.this)
                             .load(restaurantListing.getListing_image())
                             .into(addRest_images);
                 }
@@ -103,6 +102,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 String location = addRest_location.getText().toString();
                 String pricing = addRest_pricing.getText().toString();
                 String host_name = addRest_host_name.getText().toString();
+                String description = addExpr_description.getText().toString();
 
                 key = restId;
                 if (restId == null) {
@@ -110,13 +110,13 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 }
                 restImageRef = storage.getReference("restaurant listing images/" + key);
 
-                addRest(key, userId, title, location, pricing, host_name);
+                addRest(key, userId, title, location, pricing, host_name, description);
             }
         });
     }
 
     private void addRest(final String restId, final String userId, final String title, final String location, final String pricing,
-                         final String host_name) {
+                         final String host_name, final String description) {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading");
@@ -172,7 +172,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
                             }
 
                             RestaurantListing restaurantListing = new RestaurantListing(restId, userId, title, location, pricing,
-                                    host_name, imageUrl);
+                                    host_name, description, imageUrl);
                             restRef.child(restId).setValue(restaurantListing);
                             restRef.child(restId).child("avgRating").setValue(rest_avgRating);
 
@@ -212,6 +212,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         addRest_pricing = findViewById(R.id.addRest_pricing);
         addRest_host_name = findViewById(R.id.addRest_host_name);
         addRest_guest_space = findViewById(R.id.addRest_guest_space);
+        addExpr_description = findViewById(R.id.addExpr_description);
         addRest_images = findViewById(R.id.addRest_images);
 
         addRest_button = findViewById(R.id.addRest_button);

@@ -1,9 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbarStyle="outsideOverlay"
     tools:context=".activities.ExprListingDetail">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/listing_detail_image"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:contentDescription="@string/contentDescription_listing_image"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_launcher_background" />
+
+            <ImageView
+                android:id="@+id/listing_detail_fav"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_alignParentEnd="true"
+                android:padding="12dp"
+                android:src="@drawable/heart"/>
+
+            <TextView
+                android:id="@+id/listing_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/listing_detail_image"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/listing_title_placeholder_text"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/listing_detail_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/text_listing_detail_rate"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/listing_detail_title"
+                android:text="@string/listing_Rate_placeholder_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_listing_detail_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/listing_detail_title"
+                android:layout_toEndOf="@id/listing_detail_rate"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/listing_Rate_desc_text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+
+            <TextView
+                android:id="@+id/text_listing_detail_HostName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_listing_detail_rate"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/listing_HostName_desc_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/listingHostName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/text_listing_detail_HostName"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/text_listing_detail_HostName"
+                android:text="@string/listing_HostName_placeholder_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/listing_detail_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_listing_detail_HostName"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="25dp"
+                android:text="@string/listing_location_placeholder_text"
+                android:textSize="16sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/listing_host_image"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_alignBaseline="@id/text_listing_detail_rate"
+                android:layout_alignParentEnd="true"
+                android:padding="10dp"
+                android:src="@drawable/user_pic_default"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/listing_detail_location"
+                android:background="#80CFCFCF" />
+
+            <TextView
+                android:id="@+id/listingDescription_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:text="Description"
+                android:layout_below="@id/listing_detail_location"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/listingDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_below="@id/listingDescription_text"
+                android:textSize="16sp"
+                />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/listingDescription"
+                android:layout_marginTop="3dp"
+                android:background="#80CFCFCF" />
+
+            <RatingBar
+                android:id="@+id/listing_detail_Ratingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/line2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:progressTint="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/listingRate_btn"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/listing_detail_Ratingbar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="65dp"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Rate"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/goToBooking_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_corners_2"
+        android:text="Request To Book"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+</RelativeLayout>

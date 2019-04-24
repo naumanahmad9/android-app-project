@@ -32,15 +32,15 @@ public class HomeListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference homeRef, userRef, viewRef, favoritesRef;
-    ImageView listing_detail_image, listing_host_image, listing_detail_fav;
-    TextView listing_detail_title, listing_detail_rate, listingHostName, listing_detail_location,
+    DatabaseReference homeRef, userRef, viewRef, favoritesRef, listingUserIdRef;
+    private ImageView listing_detail_image, listing_host_image, listing_detail_fav;
+    private TextView listing_detail_title, listing_detail_rate, listingHostName, listing_detail_location,
             listingGuests, listingRooms, listingBeds, listingBathrooms;
     Button listingRate_btn, goToBooking_button;
     RatingBar listing_detail_Ratingbar;
     float homeRating, average, totalRating;
     int count = 0;
-    private String homeListingId, listing_userId;
+    private String homeListingId, listingId, listing_userId, listing_userImage;
     private boolean mProcessFavorite = false;
      HomeListing homeListing;
 
@@ -56,6 +56,8 @@ public class HomeListingDetail extends AppCompatActivity {
             homeListingId = bundle.getString("homeListingId");
         }
 
+        listingId = homeListingId;
+
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
@@ -64,6 +66,7 @@ public class HomeListingDetail extends AppCompatActivity {
         viewRef = database.getReference("homes").child(homeListingId).child("views");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         favoritesRef = database.getReference("favorites");
+
 
         homeRef.keepSynced(true);
         viewRef.keepSynced(true);
@@ -82,6 +85,23 @@ public class HomeListingDetail extends AppCompatActivity {
                 listing_detail_title.setText(homeListing.getListing_title());
 
                 Glide.with(getApplicationContext()).load(homeListing.getListing_image()).into(listing_detail_image);
+
+                listingUserIdRef = database.getReference("users").child(listing_userId);
+
+                listingUserIdRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        User listing_user = dataSnapshot.getValue(User.class);
+
+                        Glide.with(getApplicationContext())
+                                .load(listing_user.getImageURL())
+                                .into(listing_host_image);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
 
             }
 
@@ -178,7 +198,8 @@ public class HomeListingDetail extends AppCompatActivity {
                 Intent mIntent= new Intent(HomeListingDetail.this, BookingActivity.class);
 
                 Bundle mBundle = new Bundle();
-                mBundle.putString("homeListingId", homeListingId);
+                // mBundle.putString("homeListingId", homeListingId);
+                mBundle.putString("listingId", listingId);
                 mBundle.putString("listing_userId",listing_userId);
                 mBundle.putString("listing_detail_title", listing_detail_title.getText().toString());
 
@@ -232,6 +253,7 @@ public class HomeListingDetail extends AppCompatActivity {
 
         listing_detail_title = findViewById(R.id.listing_detail_title);
         listing_detail_image = findViewById(R.id.listing_detail_image);
+        listing_host_image = findViewById(R.id.listing_host_image);
         listing_detail_Ratingbar = findViewById(R.id.listing_detail_Ratingbar);
         listingRate_btn = findViewById(R.id.listingRate_btn);
         listing_detail_fav = findViewById(R.id.listing_detail_fav);
