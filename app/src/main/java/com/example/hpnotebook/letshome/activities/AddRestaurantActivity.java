@@ -182,6 +182,8 @@ public class AddRestaurantActivity extends AppCompatActivity {
 
                             startActivity(new Intent(AddRestaurantActivity.this, MainActivity.class));
 
+                            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
                             finish();
 
                         }

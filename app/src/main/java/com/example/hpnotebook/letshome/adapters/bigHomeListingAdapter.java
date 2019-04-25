@@ -34,10 +34,6 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
         this.mContext = context;
     }
 
-//    public bigHomeListingAdapter(ArrayList<HomeListing> homeListings) {
-//        this.homeListings = homeListings;
-//    }
-
     @NonNull
     @Override
     public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

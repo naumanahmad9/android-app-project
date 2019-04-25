@@ -268,9 +268,12 @@ public class FinalBookingActivity extends AppCompatActivity {
 
             }
         });
+
         Toast.makeText(FinalBookingActivity.this, "Booking Request Sent", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(FinalBookingActivity.this, MainActivity.class));
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         finish();
+
     }
 
     private void sendNotifiaction(String receiver, final String username, final String message) {

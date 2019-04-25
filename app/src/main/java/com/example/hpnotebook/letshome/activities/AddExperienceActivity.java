@@ -181,6 +181,8 @@ public class AddExperienceActivity extends AppCompatActivity {
 
                             startActivity(new Intent(AddExperienceActivity.this, MainActivity.class));
 
+                            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
                             finish();
 
                         }

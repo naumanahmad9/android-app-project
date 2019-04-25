@@ -107,6 +107,7 @@ public class BookingActivity extends AppCompatActivity {
             mIntent.putExtras(bundle);
 
             startActivity(mIntent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         }
     }
 }

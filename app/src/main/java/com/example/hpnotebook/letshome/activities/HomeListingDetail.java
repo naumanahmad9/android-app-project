@@ -214,6 +214,7 @@ public class HomeListingDetail extends AppCompatActivity {
                 mIntent.putExtras(mBundle);
 
                 startActivity(mIntent);
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
         });
 

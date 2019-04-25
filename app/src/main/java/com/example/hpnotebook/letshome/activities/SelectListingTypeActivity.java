@@ -25,6 +25,7 @@ public class SelectListingTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SelectListingTypeActivity.this, AddHomeActivity.class));
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
         });
 
@@ -32,12 +33,14 @@ public class SelectListingTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SelectListingTypeActivity.this, AddExperienceActivity.class));
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
         });
         listingType_restaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SelectListingTypeActivity.this, AddRestaurantActivity.class));
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
         });
     }

@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                             String email = acc.getEmail();
                             String uid = user.getUid();
                             String imageURL = String.valueOf(acc.getPhotoUrl());
-                                    
+
                             signupUser(name, email,uid, imageURL);
 
                         } else
@@ -190,6 +190,7 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User(name, uid, email, imageURL);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(this, MainActivity.class));
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 
     private void testConnection() {
@@ -249,6 +250,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                 }
             }
         });

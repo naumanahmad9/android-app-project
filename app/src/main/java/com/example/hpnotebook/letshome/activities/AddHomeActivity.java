@@ -181,6 +181,7 @@ public class AddHomeActivity extends AppCompatActivity {
                             Toast.makeText(AddHomeActivity.this, "Listing added", Toast.LENGTH_LONG).show();
 
                             startActivity(new Intent(AddHomeActivity.this, MainActivity.class));
+                            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
                             finish();
                         }
@@ -234,6 +235,7 @@ public class AddHomeActivity extends AppCompatActivity {
         gallery.setAction(Intent.ACTION_PICK);
         gallery.setType("image/*");
         startActivityForResult(Intent.createChooser(gallery, "Select"), Pick_image);
+
     }
 
     @Override
