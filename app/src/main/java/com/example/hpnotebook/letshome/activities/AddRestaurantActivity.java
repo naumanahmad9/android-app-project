@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.letshome.R;
-import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.example.hpnotebook.letshome.modelClasses.ListingRating;
 import com.example.hpnotebook.letshome.modelClasses.RestaurantListing;
 import com.google.android.gms.tasks.OnCompleteListener;

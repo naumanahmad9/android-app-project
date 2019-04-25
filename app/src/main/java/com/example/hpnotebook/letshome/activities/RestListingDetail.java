@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.letshome.R;
-import com.example.hpnotebook.letshome.modelClasses.ExperienceListing;
 import com.example.hpnotebook.letshome.modelClasses.ListingRating;
 import com.example.hpnotebook.letshome.modelClasses.RestaurantListing;
 import com.example.hpnotebook.letshome.modelClasses.User;

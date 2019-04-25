@@ -7,12 +7,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.hpnotebook.letshome.OnboardingViewPagerAdapter;
 import com.example.hpnotebook.letshome.R;
 
 import java.util.Timer;

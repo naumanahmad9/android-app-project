@@ -1,4 +1,4 @@
-package com.example.hpnotebook.letshome;
+package com.example.hpnotebook.letshome.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.hpnotebook.letshome.activities.LoginActivity;
-import com.example.hpnotebook.letshome.activities.OnboardingActivity;
+import com.example.hpnotebook.letshome.R;
 
 public class OnboardingViewPagerAdapter extends PagerAdapter {
 
