@@ -65,7 +65,7 @@
         android:layout_marginTop="4dp"
         />
     <TextView
-        android:id="@+id/homelistingRatingCount"
+        android:id="@+id/listingRatingCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_listingRate"

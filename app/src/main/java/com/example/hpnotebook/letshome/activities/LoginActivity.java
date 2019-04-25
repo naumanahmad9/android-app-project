@@ -9,6 +9,7 @@ import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,16 +19,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.modelClasses.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,10 +47,11 @@ public class LoginActivity extends AppCompatActivity {
     ImageView google_signin_btn;
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
+    DatabaseReference userRef;
     FirebaseUser user;
     GoogleSignInClient googleSignInClient;
     GoogleSignInOptions signInOptions;
-    private int LOGIN=1;
+    private int LOGIN = 1;
     private boolean fieldCheck;
     ProgressDialog progressDialog;
 
@@ -60,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        NetworkCapabilities capabilities  = null;
+        NetworkCapabilities capabilities = null;
         // NetworkCapabilities capabilities  = manager.getNetworkCapabilities(manager.getActiveNetwork());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -77,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             }
-        } else if (info == null){
+        } else if (info == null) {
             testConnection();
 
             snackbar.setActionTextColor(Color.parseColor("#e6610049"));
@@ -94,30 +102,29 @@ public class LoginActivity extends AppCompatActivity {
 //        TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
 //        textView.setTextColor(Color.parseColor("#e6610049"));
 
-        if(user != null){
+        if (user != null) {
             startActivity(new Intent(this, MainActivity.class));
         }
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email=login_email.getText().toString();
-                String pass=login_pass.getText().toString();
+                String email = login_email.getText().toString();
+                String pass = login_pass.getText().toString();
 
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     login_email.setError("This field is empty");
                     fieldCheck = true;
                 }
-                if(pass.isEmpty()){
+                if (pass.isEmpty()) {
                     login_pass.setError("This field is empty");
                     fieldCheck = true;
-                }
-                else if(pass.length() <= 6){
+                } else if (pass.length() <= 6) {
                     login_pass.setError("Password is too short");
                     fieldCheck = true;
                 }
-                if(!fieldCheck){
-                    authUser(email,pass);
+                if (!fieldCheck) {
+                    authUser(email, pass);
                 }
 
             }
@@ -128,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = googleSignInClient.getSignInIntent();
-                startActivityForResult(intent,LOGIN);
+                startActivityForResult(intent, LOGIN);
 
             }
         });
@@ -141,6 +148,48 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if (requestCode == LOGIN) {
+
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            if (task.isSuccessful()) {
+
+                final GoogleSignInAccount acc = task.getResult();
+
+                AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
+                auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+                            Toast.makeText(LoginActivity.this, "sign in successful", Toast.LENGTH_SHORT).show();
+                            user = auth.getCurrentUser();
+
+                            String name = acc.getDisplayName();
+                            String email = acc.getEmail();
+                            String uid = user.getUid();
+                            String imageURL = String.valueOf(acc.getPhotoUrl());
+                                    
+                            signupUser(name, email,uid, imageURL);
+
+                        } else
+                            Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
+    }
+
+    private void signupUser(String name, String email, String uid, String imageURL ) {
+
+        User user = new User(name, uid, email, imageURL);
+        userRef.child(uid).setValue(user);
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void testConnection() {
@@ -191,14 +240,14 @@ public class LoginActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 progressDialog.dismiss();
 
-                if(task.isSuccessful()){
-                    user=auth.getCurrentUser();
+                if (task.isSuccessful()) {
+                    user = auth.getCurrentUser();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
             }
@@ -206,14 +255,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
-        login_container= findViewById(R.id.login_container);
-        login_email=findViewById(R.id.login_email);
-        login_pass=findViewById(R.id.login_password);
-        login_btn=findViewById(R.id.login_btn);
-        textview_signup=findViewById(R.id.textview_signup);
-        firebaseDatabase=FirebaseDatabase.getInstance();
-        auth=FirebaseAuth.getInstance();
-        google_signin_btn=findViewById(R.id.google_signin_btn);
+        login_container = findViewById(R.id.login_container);
+        login_email = findViewById(R.id.login_email);
+        login_pass = findViewById(R.id.login_password);
+        login_btn = findViewById(R.id.login_btn);
+        textview_signup = findViewById(R.id.textview_signup);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
+        userRef = firebaseDatabase.getReference("users");
+        google_signin_btn = findViewById(R.id.google_signin_btn);
 
         signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("1011663763173-9on2bfkrdf66cnhpq8kskfn8jt296p1r.apps.googleusercontent.com")
@@ -224,6 +274,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() { }
+    public void onBackPressed() {
+    }
 
 }

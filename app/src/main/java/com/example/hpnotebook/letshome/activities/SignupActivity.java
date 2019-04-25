@@ -186,7 +186,6 @@ public class SignupActivity extends AppCompatActivity {
                     user = auth.getCurrentUser();
                     signupUser(name, email, pass, user.getUid(), imageURL);
 
-
                 } else {
                     Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                 }

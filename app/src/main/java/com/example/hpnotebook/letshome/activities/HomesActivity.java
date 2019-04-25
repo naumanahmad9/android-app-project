@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -56,6 +57,7 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
         homeListingRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 HomeListing homeListing = dataSnapshot.getValue(HomeListing.class);
 
                 if(homeListing.getHome_listing_id() != null){
@@ -93,6 +95,8 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
 
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+
+        Log.e("Home","search "+searchView);
         searchView.setQueryHint("Search");
         searchView.setOnQueryTextListener(this);
 
@@ -100,8 +104,10 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
     }
 
     public ArrayList<HomeListing> Search(ArrayList<HomeListing> homeListing, String query) {
+
         query = query.toLowerCase();
         final ArrayList<HomeListing> searchHomeListings = new ArrayList<>();
+
         for (HomeListing s : homeListing) {
             final String name = s.getListing_title().toLowerCase();
             if (name.contains(query)) {
@@ -118,15 +124,21 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
 
     @Override
     public boolean onQueryTextChange(String newText) {
+
+        Log.e("Home","search "+newText);
         final ArrayList<HomeListing> searchHomeListings = Search(homeListings, newText);
 
         if (searchHomeListings.size() > 0) {
-            adapter = new bigHomeListingAdapter(searchHomeListings);
+
+            Log.e("Home","search "+searchHomeListings.size());
+            adapter = new bigHomeListingAdapter(searchHomeListings, HomesActivity.this);
             recyclerView_homes.setAdapter(adapter);
             adapter.setFilter(searchHomeListings);
             return true;
-        } else {
-            Toast.makeText(HomesActivity.this, "No Record Found", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            Toast.makeText(HomesActivity.this, "No Result", Toast.LENGTH_SHORT).show();
             recyclerView_homes.setAdapter(null);
             return false;
         }
