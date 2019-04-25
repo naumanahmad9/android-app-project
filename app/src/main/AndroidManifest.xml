@@ -16,7 +16,7 @@
         <activity android:name=".activities.HomesActivity" />
         <activity android:name=".activities.HomeListingDetail" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SplashScreen">
+        <activity android:name=".activities.SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

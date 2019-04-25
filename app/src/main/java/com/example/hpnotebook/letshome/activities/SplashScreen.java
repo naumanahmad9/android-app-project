@@ -18,6 +18,8 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        getSupportActionBar().hide();
+        
         videoBG = (VideoView) findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" // First start with this,
                 + getPackageName() // then retrieve your package name,

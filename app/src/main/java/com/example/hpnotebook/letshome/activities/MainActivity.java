@@ -1,18 +1,11 @@
 package com.example.hpnotebook.letshome.activities;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.SearchView;
 
 import com.example.hpnotebook.letshome.R;
 import com.example.hpnotebook.letshome.fragments.ExploreFragment;
