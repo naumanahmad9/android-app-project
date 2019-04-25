@@ -1,8 +1,10 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.VideoView;
 import com.example.hpnotebook.letshome.R;
@@ -19,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         getSupportActionBar().hide();
-        
+
         videoBG = (VideoView) findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" // First start with this,
                 + getPackageName() // then retrieve your package name,
@@ -47,6 +49,15 @@ public class SplashScreen extends AppCompatActivity {
                 }
             }
         });
+        Handler handler=new Handler();
+
+        Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(SplashScreen.this, OnboardingActivity.class));
+            }
+        };
+        handler.postDelayed(runnable,6000);
     }
 
     /*================================ Important Section! ================================
@@ -78,14 +89,3 @@ public class SplashScreen extends AppCompatActivity {
     }
 
 }
-
-/* Handler handler=new Handler();
-
-        Runnable runnable=new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
-            }
-        };
-        handler.postDelayed(runnable,5000);
- */

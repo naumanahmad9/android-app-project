@@ -41,7 +41,7 @@ import java.io.ByteArrayOutputStream;
 public class AddExperienceActivity extends AppCompatActivity {
 
     EditText addExpr_title, addExpr_location, addExpr_pricing, addExpr_host_name,
-            addExpr_guest_space, addRest_description;
+            addExpr_guest_space, addExpr_description;
     ImageView addExpr_images;
     Button addExpr_button;
     private int Pick_image = 1;
@@ -101,7 +101,7 @@ public class AddExperienceActivity extends AppCompatActivity {
                 String location = addExpr_location.getText().toString();
                 String pricing = addExpr_pricing.getText().toString();
                 String host_name = addExpr_host_name.getText().toString();
-                String description = addRest_description.getText().toString();
+                String description = addExpr_description.getText().toString();
 
                 key = exprId;
                 if (exprId == null) {
@@ -213,7 +213,7 @@ public class AddExperienceActivity extends AppCompatActivity {
         addExpr_pricing = findViewById(R.id.addExpr_pricing);
         addExpr_host_name = findViewById(R.id.addExpr_host_name);
         addExpr_guest_space = findViewById(R.id.addExpr_guest_space);
-        addRest_description = findViewById(R.id.addRest_description);
+        addExpr_description = findViewById(R.id.addExpr_description);
         addExpr_images = findViewById(R.id.addExpr_images);
 
         addExpr_button = findViewById(R.id.addExpr_button);

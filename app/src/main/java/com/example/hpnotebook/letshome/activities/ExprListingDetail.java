@@ -45,6 +45,8 @@ public class ExprListingDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expr_listing_detail);
 
+
+        getSupportActionBar().hide();
         init();
 
         Bundle bundle = getIntent().getExtras();

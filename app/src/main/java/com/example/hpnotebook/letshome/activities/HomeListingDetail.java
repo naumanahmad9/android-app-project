@@ -46,6 +46,7 @@ public class HomeListingDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_listing_detail);
 
+        getSupportActionBar().hide();
         init();
 
         Bundle bundle = getIntent().getExtras();

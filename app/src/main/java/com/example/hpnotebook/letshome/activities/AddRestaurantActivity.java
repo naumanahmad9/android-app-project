@@ -41,7 +41,7 @@ import java.io.ByteArrayOutputStream;
 public class AddRestaurantActivity extends AppCompatActivity {
 
     EditText addRest_title, addRest_location, addRest_pricing, addRest_host_name,
-            addRest_guest_space, addExpr_description;
+            addRest_guest_space, addRest_description;
     ImageView addRest_images;
     Button addRest_button;
     private int Pick_image = 1;
@@ -101,7 +101,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
                 String location = addRest_location.getText().toString();
                 String pricing = addRest_pricing.getText().toString();
                 String host_name = addRest_host_name.getText().toString();
-                String description = addExpr_description.getText().toString();
+                String description = addRest_description.getText().toString();
 
                 key = restId;
                 if (restId == null) {
@@ -213,7 +213,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         addRest_pricing = findViewById(R.id.addRest_pricing);
         addRest_host_name = findViewById(R.id.addRest_host_name);
         addRest_guest_space = findViewById(R.id.addRest_guest_space);
-        addExpr_description = findViewById(R.id.addExpr_description);
+        addRest_description = findViewById(R.id.addRest_description);
         addRest_images = findViewById(R.id.addRest_images);
 
         addRest_button = findViewById(R.id.addRest_button);

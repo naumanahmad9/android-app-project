@@ -46,6 +46,7 @@ public class RestListingDetail extends AppCompatActivity {
         setContentView(R.layout.activity_rest_listing_detail);
 
 
+        getSupportActionBar().hide();
         init();
 
         Bundle bundle = getIntent().getExtras();
