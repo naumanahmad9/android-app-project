@@ -58,7 +58,7 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
-/*
+
         if (listing.getHome_listing_id() != null){
             listingRef= reference;
 
@@ -85,7 +85,7 @@ public class smallHomeListingAdapter extends RecyclerView.Adapter<ListingViewHol
                 }
             });
         }
-*/
+
         listingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

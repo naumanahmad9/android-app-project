@@ -1,11 +1,17 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.hpnotebook.letshome.adapters.bigHomeListingAdapter;
 import com.example.hpnotebook.letshome.R;
@@ -19,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class HomesActivity extends AppCompatActivity {
+public class HomesActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     android.support.v7.widget.SearchView searchview_homes;
     RecyclerView recyclerView_homes;
@@ -34,7 +40,7 @@ public class HomesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homes);
 
-        searchview_homes = findViewById(R.id.searchview_homes);
+
         recyclerView_homes = findViewById(R.id.recyclerView_homes);
 
         homeListings = new ArrayList<>();
@@ -80,6 +86,54 @@ public class HomesActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.search_listings, menu);
 
+        MenuItem menuItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setQueryHint("Search");
+        searchView.setOnQueryTextListener(this);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public ArrayList<HomeListing> Search(ArrayList<HomeListing> homeListing, String query) {
+        query = query.toLowerCase();
+        final ArrayList<HomeListing> searchHomeListings = new ArrayList<>();
+        for (HomeListing s : homeListing) {
+            final String name = s.getListing_title().toLowerCase();
+            if (name.contains(query)) {
+                searchHomeListings.add(s);
+            }
+        }
+        return searchHomeListings;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        final ArrayList<HomeListing> searchHomeListings = Search(homeListings, newText);
+
+        if (searchHomeListings.size() > 0) {
+            adapter = new bigHomeListingAdapter(searchHomeListings);
+            recyclerView_homes.setAdapter(adapter);
+            adapter.setFilter(searchHomeListings);
+            return true;
+        } else {
+            Toast.makeText(HomesActivity.this, "No Record Found", Toast.LENGTH_SHORT).show();
+            recyclerView_homes.setAdapter(null);
+            return false;
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

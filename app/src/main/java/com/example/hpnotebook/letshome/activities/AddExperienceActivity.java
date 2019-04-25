@@ -226,7 +226,7 @@ public class AddExperienceActivity extends AppCompatActivity {
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         // exprRef = firebaseDatabase.getReference("experiences");
-        ref = firebaseDatabase.getReference("listings");
+        ref = firebaseDatabase.getReference("experiences");
 
     }
 

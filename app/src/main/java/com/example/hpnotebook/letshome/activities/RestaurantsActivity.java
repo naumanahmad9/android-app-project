@@ -35,7 +35,6 @@ public class RestaurantsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
 
-        searchview_restaurants = findViewById(R.id.searchview_restaurants);
         recyclerView_restaurants = findViewById(R.id.recyclerView_restaurants);
 
         restListings = new ArrayList<>();

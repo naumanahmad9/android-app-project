@@ -36,7 +36,6 @@ public class ExperiencesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiences);
 
-        searchview_experiences = findViewById(R.id.searchview_experiences);
         recyclerView_experiences = findViewById(R.id.recyclerView_experiences);
 
         exprListings = new ArrayList<>();

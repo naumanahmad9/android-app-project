@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolder>{
+public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolder> {
 
     private ArrayList<ExperienceListing> exprListings;
     private Context mContext;
@@ -83,30 +83,6 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
                 }
             });
 
-
-            /*
-             reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Object avg = dataSnapshot.child("avgRating").getValue();
-                Object viewCount = dataSnapshot.child("viewCount").getValue();
-
-                if (avg != null)
-                    listingViewHolder.listing_ratingbar.setRating(String.valueOf(avg));
-
-                if (viewCount!=null) {
-                    String strViews = String.valueOf(viewCount);
-                    listingViewHolder.listing_rating_count.setText(strViews);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-           });
-           */
         listingViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,3 +108,29 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
     }
 
 }
+
+
+
+/*
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Object avg = dataSnapshot.child("avgRating").getValue();
+                Object viewCount = dataSnapshot.child("viewCount").getValue();
+
+                if (avg != null) {
+                    listingViewHolder.listing_ratingbar.setRating(Float.parseFloat(String.valueOf(avg)));
+                }
+                if (viewCount != null) {
+                    String strViews = String.valueOf(viewCount);
+                    listingViewHolder.listing_rating_count.setText(strViews);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+*/

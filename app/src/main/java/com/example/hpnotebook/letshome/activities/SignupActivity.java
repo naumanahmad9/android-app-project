@@ -47,6 +47,8 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        getSupportActionBar().hide();
+
         init();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");

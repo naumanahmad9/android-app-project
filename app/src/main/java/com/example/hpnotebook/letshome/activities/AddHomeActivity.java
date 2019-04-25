@@ -225,7 +225,7 @@ public class AddHomeActivity extends AppCompatActivity {
         user = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         // homeRef = firebaseDatabase.getReference("homes");
-        ref = firebaseDatabase.getReference("listings");
+        ref = firebaseDatabase.getReference("homes");
 
     }
 

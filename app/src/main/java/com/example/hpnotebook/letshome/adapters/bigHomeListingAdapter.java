@@ -49,7 +49,9 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
     public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
 
         final HomeListing listing = homeListings.get(i);
+
         database = FirebaseDatabase.getInstance();
+
         reference = database.getReference().child("homes").child(listing.getHome_listing_id());
 
         listingViewHolder.listing_title.setText(listing.getListing_title());
@@ -72,9 +74,6 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
                     }
                     if(dataSnapshot.hasChild("viewCount")) {
                         listingViewHolder.listing_rating_count.setText(String.valueOf(dataSnapshot.child("viewCount").getValue(Long.class)));
-                    }
-                    else {
-                        listingViewHolder.listing_rating_count.setText("0");
                     }
 
                 }
