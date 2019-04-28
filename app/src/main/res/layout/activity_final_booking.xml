@@ -50,6 +50,12 @@
         android:text="Send message to the host to request the booking."
         android:textSize="22sp"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#80CFCFCF"
+        android:layout_below="@id/text1"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -62,7 +68,7 @@
         android:layout_width="match_parent"
         android:padding="8dp"
         android:id="@+id/bottom"
-        android:background="#fff"
+        android:background="#d7eeeeee"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content">
 
@@ -70,9 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:id="@+id/text_send"
-            android:background="@android:color/transparent"
             android:textSize="20sp"
-            android:inputType="text"
             android:hint="Type a message..."
             android:layout_toLeftOf="@id/btn_send"
             android:layout_centerVertical="true"/>
@@ -87,7 +91,6 @@
             android:layout_alignParentRight="true" />
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>

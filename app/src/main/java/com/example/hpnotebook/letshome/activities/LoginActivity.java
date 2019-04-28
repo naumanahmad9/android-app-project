@@ -132,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /*
         google_signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +142,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+        */
+
         textview_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,15 +184,16 @@ public class LoginActivity extends AppCompatActivity {
                 user = auth.getCurrentUser();
                 final String name = acc != null ? acc.getDisplayName() : null;
                 final String email = acc != null ? acc.getEmail() : null;
+                final String pass = "";
                 final String uid = user != null ? user.getUid() : null;
-                final String imageURL = "default";
+                final String imageURL = String.valueOf(acc.getPhotoUrl());
 
                 AuthCredential authCredential = GoogleAuthProvider.getCredential(acc != null ? acc.getIdToken() : null, null);
                 auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            signupUser(name, email, uid, imageURL);
+                            signupUser(name, email, pass, uid, imageURL);
                             Toast.makeText(LoginActivity.this, "sign in successful", Toast.LENGTH_SHORT).show();
                         }
                         else {
@@ -201,9 +205,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void signupUser(String name, String email, String uid, String imageURL ) {
+    private void signupUser(String name, String email, String pass, String uid, String imageURL ) {
 
-        User user = new User(name, uid, email, imageURL);
+        User user = new User(name, uid, email, pass, imageURL);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(this, MainActivity.class));
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
@@ -281,7 +285,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         userRef = firebaseDatabase.getReference("users");
-        google_signin_btn = findViewById(R.id.google_signin_btn);
+        // google_signin_btn = findViewById(R.id.google_signin_btn);
 
         signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("1011663763173-9on2bfkrdf66cnhpq8kskfn8jt296p1r.apps.googleusercontent.com")

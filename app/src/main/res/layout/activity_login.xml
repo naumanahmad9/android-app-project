@@ -67,25 +67,12 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-        <ImageView
-
-            android:layout_width="220dp"
-            android:layout_height="45dp"
-            android:id="@+id/google_signin_btn"
-            android:layout_below="@id/login_btn"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="90dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/google_signin_icon"
-            android:contentDescription="google sign in button" />
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/google_signin_btn"
+        android:layout_below="@id/login_btn"
         android:orientation="horizontal"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="160dp"
         android:layout_centerHorizontal="true">
 
         <TextView
@@ -109,3 +96,15 @@
     </LinearLayout>
 
 </RelativeLayout>
+
+<!--<ImageView-->
+
+<!--android:layout_width="220dp"-->
+<!--android:layout_height="45dp"-->
+<!--android:id="@+id/google_signin_btn"-->
+<!--android:layout_below="@id/login_btn"-->
+<!--android:layout_centerHorizontal="true"-->
+<!--android:layout_marginTop="90dp"-->
+<!--android:scaleType="fitXY"-->
+<!--android:src="@drawable/google_signin_icon"-->
+<!--android:contentDescription="google sign in button" />-->

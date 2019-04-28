@@ -3,14 +3,14 @@ package com.example.hpnotebook.letshome.modelClasses;
 public class User {
 
     private String name, uid, email, pass, imageURL, status;
-/*
+
     public User(String name, String uid, String email, String pass) {
         this.name = name;
         this.uid = uid;
         this.email = email;
         this.pass = pass;
     }
-*/
+
     public User() {
     }
 
@@ -29,13 +29,6 @@ public class User {
         this.uid = uid;
         this.email = email;
         this.pass = pass;
-        this.imageURL = imageURL;
-    }
-
-    public User(String name, String uid, String email, String imageURL) {
-        this.name = name;
-        this.uid = uid;
-        this.email = email;
         this.imageURL = imageURL;
     }
 
