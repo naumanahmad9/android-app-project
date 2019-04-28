@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class RestListingDetail extends AppCompatActivity {
 
     FirebaseAuth auth;
@@ -45,8 +47,7 @@ public class RestListingDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest_listing_detail);
 
-
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         init();
 
         Bundle bundle = getIntent().getExtras();
@@ -138,6 +139,7 @@ public class RestListingDetail extends AppCompatActivity {
         listingRate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 homeRating = listing_detail_Ratingbar.getRating();
 
                 userRef.addValueEventListener(new ValueEventListener() {

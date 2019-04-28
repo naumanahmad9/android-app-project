@@ -34,10 +34,6 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
         this.mContext = context;
     }
 
-    public bigExprListingAdapter(ArrayList<ExperienceListing> exprListings) {
-        this.exprListings = exprListings;
-    }
-
     @NonNull
     @Override
     public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -107,29 +103,3 @@ public class bigExprListingAdapter extends RecyclerView.Adapter<ListingViewHolde
     }
 
 }
-
-
-
-/*
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Object avg = dataSnapshot.child("avgRating").getValue();
-                Object viewCount = dataSnapshot.child("viewCount").getValue();
-
-                if (avg != null) {
-                    listingViewHolder.listing_ratingbar.setRating(Float.parseFloat(String.valueOf(avg)));
-                }
-                if (viewCount != null) {
-                    String strViews = String.valueOf(viewCount);
-                    listingViewHolder.listing_rating_count.setText(strViews);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-*/

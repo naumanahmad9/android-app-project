@@ -1,10 +1,10 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -13,8 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.hpnotebook.letshome.adapters.bigHomeListingAdapter;
 import com.example.hpnotebook.letshome.R;
+import com.example.hpnotebook.letshome.adapters.bigHomeListingAdapter;
 import com.example.hpnotebook.letshome.modelClasses.HomeListing;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 public class HomesActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
-    android.support.v7.widget.SearchView searchview_homes;
     RecyclerView recyclerView_homes;
     ArrayList<HomeListing> homeListings;
     bigHomeListingAdapter adapter;
@@ -40,11 +39,10 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homes);
 
-
         recyclerView_homes = findViewById(R.id.recyclerView_homes);
 
         homeListings = new ArrayList<>();
-        adapter=new bigHomeListingAdapter(homeListings, this);
+        adapter = new bigHomeListingAdapter(homeListings, this);
 
         recyclerView_homes.setLayoutManager(new LinearLayoutManager(this));
         recyclerView_homes.setAdapter(adapter);

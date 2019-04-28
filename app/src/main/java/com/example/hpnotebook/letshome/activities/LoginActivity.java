@@ -37,6 +37,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     RelativeLayout login_container;
@@ -48,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userRef;
-    FirebaseUser user;
+    FirebaseUser user, firebaseUser;
     GoogleSignInClient googleSignInClient;
     GoogleSignInOptions signInOptions;
     private int LOGIN = 1;
@@ -151,6 +153,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        //check if user is null
+        if (firebaseUser != null){
+
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+    }
+
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         if (requestCode == LOGIN) {
@@ -161,24 +178,23 @@ public class LoginActivity extends AppCompatActivity {
 
                 final GoogleSignInAccount acc = task.getResult();
 
-                AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
+                user = auth.getCurrentUser();
+                final String name = acc != null ? acc.getDisplayName() : null;
+                final String email = acc != null ? acc.getEmail() : null;
+                final String uid = user != null ? user.getUid() : null;
+                final String imageURL = "default";
+
+                AuthCredential authCredential = GoogleAuthProvider.getCredential(acc != null ? acc.getIdToken() : null, null);
                 auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+                            signupUser(name, email, uid, imageURL);
                             Toast.makeText(LoginActivity.this, "sign in successful", Toast.LENGTH_SHORT).show();
-                            user = auth.getCurrentUser();
-
-                            String name = acc.getDisplayName();
-                            String email = acc.getEmail();
-                            String uid = user.getUid();
-                            String imageURL = String.valueOf(acc.getPhotoUrl());
-
-                            signupUser(name, email,uid, imageURL);
-
-                        } else
-                            Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(LoginActivity.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }

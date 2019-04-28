@@ -34,10 +34,6 @@ public class bigRestListingAdapter extends RecyclerView.Adapter<ListingViewHolde
         this.mContext = context;
     }
 
-    public bigRestListingAdapter(ArrayList<RestaurantListing> restListings) {
-        this.restListings = restListings;
-    }
-
     @NonNull
     @Override
     public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

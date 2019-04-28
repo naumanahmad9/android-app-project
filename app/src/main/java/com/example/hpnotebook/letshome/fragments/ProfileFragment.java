@@ -90,8 +90,8 @@ public class ProfileFragment extends Fragment {
 
                 User user = dataSnapshot.getValue(User.class);
 
-                profile_name.setText(user.getName());
-                profile_email.setText(user.getEmail());
+                profile_name.setText(user != null ? user.getName() : null);
+                profile_email.setText(user != null ? user.getEmail() : null);
 
                 if (user.getImageURL().equals("default")){
                     profile_pic.setImageResource(R.drawable.user_pic_default);
