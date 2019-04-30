@@ -65,7 +65,6 @@ public class HomeListingDetail extends AppCompatActivity {
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         favoritesRef = database.getReference("favorites");
 
-
         homeRef.keepSynced(true);
         viewRef.keepSynced(true);
         userRef.keepSynced(true);
