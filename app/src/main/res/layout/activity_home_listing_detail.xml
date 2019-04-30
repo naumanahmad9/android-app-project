@@ -65,6 +65,17 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/listing_host_image"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_alignBaseline="@id/text_listing_detail_rate"
+                android:layout_alignParentEnd="true"
+                android:scaleType="fitXY"
+                android:padding="10dp"
+                android:src="@drawable/user_pic_default"
+                />
+
             <TextView
                 android:id="@+id/text_listing_detail_HostName"
                 android:layout_width="wrap_content"
@@ -86,6 +97,8 @@
                 android:text="@string/listing_HostName_placeholder_text"
                 android:textSize="16sp" />
 
+
+
             <TextView
                 android:id="@+id/listing_detail_location"
                 android:layout_width="wrap_content"
@@ -97,16 +110,7 @@
                 android:text="@string/listing_location_placeholder_text"
                 android:textSize="16sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/listing_host_image"
-                android:layout_width="95dp"
-                android:layout_height="95dp"
-                android:layout_alignBaseline="@id/text_listing_detail_rate"
-                android:layout_alignParentEnd="true"
-                android:padding="10dp"
-                android:src="@drawable/user_pic_default"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp" />
+
 
             <View
                 android:layout_width="match_parent"
@@ -285,3 +289,5 @@
         />
 
 </RelativeLayout>
+
+

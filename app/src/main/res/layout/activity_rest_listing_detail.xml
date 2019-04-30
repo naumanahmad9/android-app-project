@@ -98,16 +98,16 @@
                 android:text="@string/listing_location_placeholder_text"
                 android:textSize="16sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/listing_host_image"
                 android:layout_width="95dp"
                 android:layout_height="95dp"
                 android:layout_alignBaseline="@id/text_listing_detail_rate"
                 android:layout_alignParentEnd="true"
+                android:scaleType="fitXY"
                 android:padding="10dp"
                 android:src="@drawable/user_pic_default"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp" />
+                />
 
             <View
                 android:layout_width="match_parent"
