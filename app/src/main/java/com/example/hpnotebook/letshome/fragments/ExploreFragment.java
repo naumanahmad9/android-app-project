@@ -219,41 +219,4 @@ public class ExploreFragment extends Fragment  {
         transaction.replace(R.id.fragmentContainer_main, fragmentObject).addToBackStack( "tag" ).commit();
     }
 
-//    public ArrayList<HomeListing> Search(ArrayList<HomeListing> studentList, String query) {
-//        query = query.toLowerCase();
-//        final ArrayList<HomeListing> searchList = new ArrayList<>();
-//        for (HomeListing s : studentList) {
-//            final String name = s.getListing_location().toLowerCase();
-//            if (name.contains(query)) {
-//                searchList.add(s);
-//            }
-//        }
-//        return searchList;
-//    }
-//
-//    @Override
-//    public boolean onQueryTextSubmit(String s) {
-//
-//
-//        return false;
-//    }
-
-//    @Override
-//    public boolean onQueryTextChange(String s) {
-//
-//        final ArrayList<HomeListing> searchList = Search(homeListings, s);
-//
-//        if (searchList.size() > 0) {
-//            adapter = new HomeListingAdapter(searchList);
-//            homes_recyclerView_main.setAdapter(adapter);
-//            adapter.setFilter(searchList);
-//            return true;
-//
-//        } else {
-//            Toast.makeText(getContext(), "No Record Found", Toast.LENGTH_SHORT).show();
-//            homes_recyclerView_main.setAdapter(null);
-//            return false;
-//        }
-//    }
-
 }
