@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hpnotebook.letshome.ListingDetailViewHolder;
 import com.example.hpnotebook.letshome.R;
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.letshome.ListingViewHolder;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHolder>{
+public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingDetailViewHolder>{
 
     private ArrayList<HomeListing> homeListings;
     private Context mContext;
@@ -36,13 +37,14 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingViewHold
 
     @NonNull
     @Override
-    public ListingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ListingDetailViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.homes_listing_item_big, viewGroup, false);
-        return new ListingViewHolder(view);
+        return new ListingDetailViewHolder(view);
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull final ListingViewHolder listingViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ListingDetailViewHolder listingViewHolder, int i) {
 
         final HomeListing listing = homeListings.get(i);
 

@@ -1,6 +1,7 @@
 package com.example.hpnotebook.letshome.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -86,7 +87,8 @@ public class HomeListingDetail extends AppCompatActivity {
                 listingBeds.setText(homeListing.getListing_bedrooms());
                 listingBathrooms.setText(homeListing.getListing_bathroom());
 
-                Glide.with(getApplicationContext()).load(homeListing.getListing_image()).into(listing_detail_image);
+                 Glide.with(getApplicationContext()).load(homeListing.getListing_image()).into(listing_detail_image);
+
 
                 listing_userId = homeListing.getListing_userId();
 
