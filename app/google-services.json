@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1011663763173-5cd7mk52qu17akn1agfhd5f65fje1s7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hpnotebook.letshome",
+            "certificate_hash": "bd4ae64de86ff56e793d9c149051659d395c136f"
+          }
+        },
+        {
           "client_id": "1011663763173-fto5du17cl1rk8bj38i69on2iblt73lg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -23,13 +31,34 @@
           }
         },
         {
-          "client_id": "1011663763173-5cd7mk52qu17akn1agfhd5f65fje1s7n.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.hpnotebook.letshome",
-            "certificate_hash": "bd4ae64de86ff56e793d9c149051659d395c136f"
-          }
-        },
+          "client_id": "1011663763173-9on2bfkrdf66cnhpq8kskfn8jt296p1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsOjRU_ti8QLPwLBFuBxJyBgSnH_roj8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011663763173-9on2bfkrdf66cnhpq8kskfn8jt296p1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011663763173:android:c40f62099d0f61c3",
+        "android_client_info": {
+          "package_name": "com.letshomeco.hpnotebook.letshome"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "1011663763173-9on2bfkrdf66cnhpq8kskfn8jt296p1r.apps.googleusercontent.com",
           "client_type": 3

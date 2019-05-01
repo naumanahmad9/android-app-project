@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.hpnotebook.letshome"
+        applicationId "com.letshomeco.hpnotebook.letshome"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -41,7 +41,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     implementation 'com.airbnb.android:lottie:2.7.0'
-    // implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
