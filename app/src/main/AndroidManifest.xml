@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo2"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo_circle"
+        android:roundIcon="@drawable/icon"
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:supportsRtl="true"
