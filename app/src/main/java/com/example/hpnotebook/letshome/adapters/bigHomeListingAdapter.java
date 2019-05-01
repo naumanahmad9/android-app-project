@@ -42,7 +42,6 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingDetailVi
         return new ListingDetailViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull final ListingDetailViewHolder listingViewHolder, int i) {
 

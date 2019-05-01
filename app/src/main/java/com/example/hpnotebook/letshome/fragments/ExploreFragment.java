@@ -33,13 +33,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ExploreFragment extends Fragment  {
-
-//  implements android.support.v7.widget.SearchView.OnQueryTextListener
 
     RecyclerView homes_recyclerView_main, experiences_recyclerView_main, restaurants_recyclerView_main;
     CardView cvHome, cvExpr, cvRest;

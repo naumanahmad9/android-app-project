@@ -5,9 +5,24 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MessagesFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Messages"
+        android:textSize="22sp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#80CFCFCF"
+        android:layout_marginTop="50dp"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="15dp"/>
 
 </FrameLayout>
