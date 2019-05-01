@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,10 +35,13 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
     FirebaseDatabase database;
     DatabaseReference homeListingRef;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homes);
+
+
 
         recyclerView_homes = findViewById(R.id.recyclerView_homes);
 
@@ -52,6 +56,8 @@ public class HomesActivity extends AppCompatActivity implements SearchView.OnQue
         homeListingRef=database.getReference("homes");
 
         homeListingRef.addChildEventListener(new ChildEventListener() {
+
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 

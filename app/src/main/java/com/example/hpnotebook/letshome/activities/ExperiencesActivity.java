@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,12 +36,14 @@ public class ExperiencesActivity extends AppCompatActivity implements SearchView
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference exprListingRef;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiences);
 
+        progressDialog = new ProgressDialog(this);
         recyclerView_experiences = findViewById(R.id.recyclerView_experiences);
 
         exprListings = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.example.hpnotebook.letshome.adapters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingDetailVi
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
+    ProgressDialog progressDialog;
+
     public bigHomeListingAdapter(ArrayList<HomeListing> homeListings, Context context) {
         this.homeListings = homeListings;
         this.mContext = context;
@@ -45,6 +48,10 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingDetailVi
     @Override
     public void onBindViewHolder(@NonNull final ListingDetailViewHolder listingViewHolder, int i) {
 
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setMessage("loading...");
+        progressDialog.show();
+
         final HomeListing listing = homeListings.get(i);
 
         database = FirebaseDatabase.getInstance();
@@ -55,6 +62,8 @@ public class bigHomeListingAdapter  extends RecyclerView.Adapter<ListingDetailVi
         listingViewHolder.listing_rate.setText(listing.getListing_pricing());
 
         Glide.with(mContext).load(listing.getListing_image()).into(listingViewHolder.listing_image);
+
+        progressDialog.dismiss();
 
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
