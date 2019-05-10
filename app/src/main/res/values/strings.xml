@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LetsHome</string>
+    <string name="app_name">TravelNorth</string>
     <string name="signup_button_text">Sign Up</string>
     <string name="listing_title_placeholder_text">The Cozy Cottage</string>
     <string name="listing_HostName_desc_text">Hosted by</string>
