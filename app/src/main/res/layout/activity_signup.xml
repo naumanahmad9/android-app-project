@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF7B005C"
     android:id="@+id/signup_container"
+    android:background="@drawable/colored_foreground"
     tools:context=".activities.SignupActivity">
-
+<!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="#b47b005c"
         android:scaleType="fitXY"
         android:src="@drawable/scenery_bg_1" />
-
+-->
     <EditText
         android:id="@+id/signup_name"
         android:layout_width="match_parent"

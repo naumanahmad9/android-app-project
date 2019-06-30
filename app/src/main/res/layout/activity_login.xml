@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:background="@drawable/colored_foreground"
     tools:context=".activities.LoginActivity">
-
+<!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="#b47b005c"
         android:scaleType="fitXY"
         android:src="@drawable/scenery_bg_1" />
-
+-->
     <EditText
         android:id="@+id/login_email"
         android:layout_width="match_parent"
